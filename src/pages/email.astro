@@ -89,7 +89,7 @@ const categories = [
 const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
 ---
 
-<Layout title="Email" active="email">
+<Layout title="System Messaging" active="email">
   <div class="max-w-[900px] mx-auto px-10 py-16">
 
     <!-- Page Header -->
@@ -100,7 +100,7 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
         <div class="w-10 h-[2px] bg-teal"></div>
       </div>
       <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
-        Emails
+        System Messaging
       </h1>
       <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
         {totalEmails} email templates across 7 categories — from onboarding through winback.
