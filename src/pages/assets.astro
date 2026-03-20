@@ -170,9 +170,11 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
-    <!-- Product Vials -->
+    <!-- Product / Platform -->
     <section id="product" class="mb-20">
-      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Product Photography</h2>
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Product / Platform</h2>
+
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Product Photography</h3>
       <div class="bg-dark rounded-3xl p-8 mb-6">
         <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
           <img src="/vials/vial1.png" alt="Vial 1" class="w-full aspect-[2/3] object-contain" />
@@ -183,14 +185,40 @@ import Layout from '../layouts/Layout.astro';
           <img src="/vials/NB_Vial9.jpg" alt="Vial 9" class="w-full aspect-[2/3] object-contain" />
         </div>
       </div>
-      <div class="bg-warm-gray rounded-3xl p-8">
-        <h3 class="font-inter text-sm font-semibold mb-4">Product Photo Rules</h3>
-        <ul class="space-y-2 font-inter text-sm text-dark/60">
-          <li>Always shown on dark backgrounds for contrast</li>
-          <li>Clean, isolated product shots — no busy backgrounds</li>
-          <li>Consistent lighting and angle across product line</li>
-          <li>Transparent PNG format preferred for flexibility</li>
-        </ul>
+
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">App & Portal</h3>
+      <div class="grid grid-cols-1 gap-4 mb-6">
+        <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+          <img src="/images/Portal/Dashboard.png" alt="Nimbus portal dashboard" class="w-full block" />
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+          <img src="/images/Portal/Mobile.png" alt="Nimbus mobile app" class="w-full block" />
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+          <img src="/images/Portal/Optimized.jpg" alt="Nimbus optimized view" class="w-full block" />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+            <img src="/images/Portal/platform-1.png" alt="Platform screen 1" class="w-full block" />
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+            <img src="/images/Portal/platform-2.png" alt="Platform screen 2" class="w-full block" />
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+            <img src="/images/Portal/platform-3.png" alt="Platform screen 3" class="w-full block" />
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+            <img src="/images/Portal/platform-4.png" alt="Platform screen 4" class="w-full block" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+            <img src="/images/Portal/hormone-step-01.png" alt="Hormone step 1" class="w-full block" />
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+            <img src="/images/Portal/hormone-step-02.png" alt="Hormone step 2" class="w-full block" />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -235,59 +263,6 @@ import Layout from '../layouts/Layout.astro';
             <p>Custom play/pause controls (no default browser UI)</p>
             <p>Rounded corners matching container radius (24px)</p>
             <p>Poster frame should be visually compelling</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- App & Portal Screenshots -->
-    <section class="mb-20">
-      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">App & Portal</h2>
-      <div class="grid grid-cols-1 gap-4">
-        <div>
-          <p class="font-inter text-dark/30 text-xs font-semibold uppercase tracking-[0.12em] mb-3">Dashboard</p>
-          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-            <img src="/images/Portal/Dashboard.png" alt="Nimbus portal dashboard" class="w-full block" />
-          </div>
-        </div>
-        <div>
-          <p class="font-inter text-dark/30 text-xs font-semibold uppercase tracking-[0.12em] mb-3">Mobile App</p>
-          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-            <img src="/images/Portal/Mobile.png" alt="Nimbus mobile app" class="w-full block" />
-          </div>
-        </div>
-        <div>
-          <p class="font-inter text-dark/30 text-xs font-semibold uppercase tracking-[0.12em] mb-3">Optimized</p>
-          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-            <img src="/images/Portal/Optimized.jpg" alt="Nimbus optimized view" class="w-full block" />
-          </div>
-        </div>
-        <div>
-          <p class="font-inter text-dark/30 text-xs font-semibold uppercase tracking-[0.12em] mb-3">Platform</p>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-              <img src="/images/Portal/platform-1.png" alt="Platform screen 1" class="w-full block" />
-            </div>
-            <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-              <img src="/images/Portal/platform-2.png" alt="Platform screen 2" class="w-full block" />
-            </div>
-            <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-              <img src="/images/Portal/platform-3.png" alt="Platform screen 3" class="w-full block" />
-            </div>
-            <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-              <img src="/images/Portal/platform-4.png" alt="Platform screen 4" class="w-full block" />
-            </div>
-          </div>
-        </div>
-        <div>
-          <p class="font-inter text-dark/30 text-xs font-semibold uppercase tracking-[0.12em] mb-3">Hormone Steps</p>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-              <img src="/images/Portal/hormone-step-01.png" alt="Hormone step 1" class="w-full block" />
-            </div>
-            <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-              <img src="/images/Portal/hormone-step-02.png" alt="Hormone step 2" class="w-full block" />
-            </div>
           </div>
         </div>
       </div>
