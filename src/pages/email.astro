@@ -10,7 +10,7 @@ const categories = [
       { name: 'Payment Confirmed', slug: 'payment-confirmed', subject: 'You\'re all set — here\'s your plan', tags: ['Hero'], isNew: false },
       { name: 'Prescription Confirmed', slug: 'prescription-confirmed', subject: 'Great news — your treatment is approved', tags: ['Hero'], isNew: false },
       { name: 'Treatment Shipped', slug: 'treatment-shipped', subject: 'Your treatment is on its way', tags: ['Hero'], isNew: false },
-      { name: 'Treatment Delivered', slug: 'treatment-delivered', subject: 'It\'s here — let\'s get started', tags: ['Hero'], isNew: true },
+      { name: 'Treatment Delivered', slug: 'treatment-delivered', subject: 'It\'s here — let\'s get started', tags: ['Hero'], isNew: false },
       { name: 'Email Verification', slug: 'email-verification', subject: 'Verify your email to get started', tags: ['Trust'], isNew: false },
     ]
   },
@@ -18,12 +18,12 @@ const categories = [
     name: 'Refill & Check-in',
     description: 'Monthly cycle notifications and check-in reminders',
     emails: [
-      { name: 'Refill Heads Up', slug: 'refill-heads-up', subject: 'Heads up — your check-in opens soon', tags: ['Inline img'], isNew: true },
+      { name: 'Refill Heads Up', slug: 'refill-heads-up', subject: 'Heads up — your check-in opens soon', tags: ['Inline img'], isNew: false },
       { name: 'Check-in Trigger', slug: 'check-in-trigger', subject: 'Your 60-second check-in is ready', tags: ['Inline img'], isNew: false },
       { name: 'Reminder 1 (Gentle)', slug: 'reminder-1', subject: 'Just a gentle nudge, {{FIRST_NAME}}', tags: ['Trust'], isNew: false },
       { name: 'Reminder 2 (Direct)', slug: 'reminder-2', subject: 'Your check-in is still waiting', tags: ['Trust'], isNew: false },
       { name: 'Reminder 3 (Final)', slug: 'reminder-3', subject: 'We don\'t want you to miss your refill', tags: ['Trust'], isNew: false },
-      { name: 'Refill Confirmation', slug: 'refill-confirmation', subject: 'Check-in received — you\'re all set', tags: ['Trust'], isNew: true },
+      { name: 'Refill Confirmation', slug: 'refill-confirmation', subject: 'Check-in received — you\'re all set', tags: ['Trust'], isNew: false },
     ]
   },
   {
@@ -45,13 +45,13 @@ const categories = [
     description: 'Payment, subscription, and referral management',
     emails: [
       { name: 'Payment Received', slug: 'payment-received', subject: 'Payment received — thank you', tags: ['Trust'], isNew: false },
-      { name: 'Payment Failed', slug: 'payment-failed', subject: 'Heads up — your payment didn\'t go through', tags: ['Trust'], isNew: true },
+      { name: 'Payment Failed', slug: 'payment-failed', subject: 'Heads up — your payment didn\'t go through', tags: ['Trust'], isNew: false },
       { name: 'Subscription Paused', slug: 'subscription-paused', subject: 'Your plan is paused — no worries', tags: ['Trust'], isNew: false },
       { name: 'Subscription Resumed', slug: 'subscription-resumed', subject: 'Welcome back — your plan is active again', tags: ['Trust'], isNew: false },
-      { name: 'Cancellation Confirmation', slug: 'cancellation-confirmation', subject: 'Your subscription has been cancelled', tags: ['Trust'], isNew: true },
-      { name: 'Renewal Reminder', slug: 'renewal-reminder', subject: 'Your next payment is coming up', tags: ['Trust'], isNew: true },
+      { name: 'Cancellation Confirmation', slug: 'cancellation-confirmation', subject: 'Your subscription has been cancelled', tags: ['Trust'], isNew: false },
+      { name: 'Renewal Reminder', slug: 'renewal-reminder', subject: 'Your next payment is coming up', tags: ['Trust'], isNew: false },
       { name: 'Plan Change', slug: 'plan-change', subject: 'Your plan has been updated', tags: ['Trust'], isNew: false },
-      { name: 'Review New Plan', slug: 'review-new-plan', subject: 'New plan updates for you!', tags: ['Trust'], isNew: true },
+      { name: 'Review New Plan', slug: 'review-new-plan', subject: 'New plan updates for you!', tags: ['Trust'], isNew: false },
       { name: 'Referral Invitation', slug: 'referral-invitation', subject: 'Share the groove', tags: ['Trust'], isNew: false },
       { name: 'Referral Coupon Earned', slug: 'referral-coupon-earned', subject: 'You earned a discount', tags: ['Trust'], isNew: false },
     ]
@@ -60,29 +60,29 @@ const categories = [
     name: 'Clinical',
     description: 'Provider decisions, medication updates, and escalations',
     emails: [
-      { name: 'Prescription Denied', slug: 'prescription-denied', subject: 'An update on your treatment review', tags: ['Trust'], isNew: true },
-      { name: 'Medication Switch Result', slug: 'medication-switch-result', subject: 'Update on your medication switch request', tags: ['Trust'], isNew: true },
-      { name: 'Dose Change Confirmation', slug: 'dose-change-confirmation', subject: 'Your dose has been adjusted', tags: ['Inline img'], isNew: true },
-      { name: 'Red Flag Escalation', slug: 'red-flag-escalation', subject: 'Important — your care team is reviewing your report', tags: ['Trust'], isNew: true },
+      { name: 'Prescription Denied', slug: 'prescription-denied', subject: 'An update on your treatment review', tags: ['Trust'], isNew: false },
+      { name: 'Medication Switch Result', slug: 'medication-switch-result', subject: 'Update on your medication switch request', tags: ['Trust'], isNew: false },
+      { name: 'Dose Change Confirmation', slug: 'dose-change-confirmation', subject: 'Your dose has been adjusted', tags: ['Inline img'], isNew: false },
+      { name: 'Red Flag Escalation', slug: 'red-flag-escalation', subject: 'Important — your care team is reviewing your report', tags: ['Trust'], isNew: false },
     ]
   },
   {
     name: 'Winback',
     description: 'Post-cancellation re-engagement campaigns',
     emails: [
-      { name: 'Winback — Day 14', slug: 'winback-day-14', subject: 'We saved your spot', tags: ['Hero'], isNew: true },
-      { name: 'Winback — Day 30', slug: 'winback-day-30', subject: 'Still thinking about it?', tags: ['Hero'], isNew: true },
-      { name: 'Winback — Day 60', slug: 'winback-day-60', subject: 'The door is always open', tags: ['Hero'], isNew: true },
+      { name: 'Winback — Day 14', slug: 'winback-day-14', subject: 'We saved your spot', tags: ['Hero'], isNew: false },
+      { name: 'Winback — Day 30', slug: 'winback-day-30', subject: 'Still thinking about it?', tags: ['Hero'], isNew: false },
+      { name: 'Winback — Day 60', slug: 'winback-day-60', subject: 'The door is always open', tags: ['Hero'], isNew: false },
     ]
   },
   {
     name: 'Milestones & Feedback',
     description: 'Celebrations, progress markers, and satisfaction surveys',
     emails: [
-      { name: 'Milestone — 1 Month', slug: 'milestone-1-month', subject: 'One month in — look at you go!', tags: ['Hero'], isNew: true },
-      { name: 'Milestone — 3 Months', slug: 'milestone-3-months', subject: 'Three months of steady rhythm', tags: ['Hero'], isNew: true },
-      { name: 'Milestone — 6 Months', slug: 'milestone-6-months', subject: 'Six months — this is who you are now', tags: ['Hero'], isNew: true },
-      { name: 'NPS Survey', slug: 'nps-survey', subject: 'Quick question — how are we doing?', tags: ['Inline img'], isNew: true },
+      { name: 'Milestone — 1 Month', slug: 'milestone-1-month', subject: 'One month in — look at you go!', tags: ['Hero'], isNew: false },
+      { name: 'Milestone — 3 Months', slug: 'milestone-3-months', subject: 'Three months of steady rhythm', tags: ['Hero'], isNew: false },
+      { name: 'Milestone — 6 Months', slug: 'milestone-6-months', subject: 'Six months — this is who you are now', tags: ['Hero'], isNew: false },
+      { name: 'NPS Survey', slug: 'nps-survey', subject: 'Quick question — how are we doing?', tags: ['Inline img'], isNew: false },
     ]
   },
 ];
