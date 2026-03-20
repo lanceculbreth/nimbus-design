@@ -6,7 +6,11 @@ import Layout from '../layouts/Layout.astro';
   { label: 'Intakes', id: 'live' },
   { label: 'Flow', id: 'flow' },
   { label: 'Progress Bar', id: 'progress' },
+  { label: 'Programs', id: 'programs' },
+  { label: 'Pricing', id: 'pricing' },
   { label: 'Form Elements', id: 'forms' },
+  { label: 'Health Screening', id: 'screening' },
+  { label: 'Photo Upload', id: 'photos' },
   { label: 'Checkout', id: 'checkout' },
   { label: 'Layout', id: 'layout' },
 ]}>
@@ -17,7 +21,7 @@ import Layout from '../layouts/Layout.astro';
         Intakes
       </h1>
       <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
-        Design patterns for patient onboarding, intake forms, and the checkout experience.
+        Design patterns for patient onboarding, intake forms, program selection, pricing, and the checkout experience.
       </p>
     </div>
 
@@ -54,18 +58,44 @@ import Layout from '../layouts/Layout.astro';
     <section id="flow" class="mb-20">
       <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Intake Flow</h2>
 
-      <div class="bg-warm-gray rounded-3xl p-8 mb-8">
-        <h3 class="font-inter text-sm font-semibold mb-4">Flow Structure</h3>
-        <p class="font-inter text-dark/60 text-sm leading-[1.6] mb-4">
-          The intake is a multi-step wizard that guides patients from program selection through payment. Each step is a single focused question or group.
+      <div class="bg-warm-gray rounded-3xl p-8 mb-6">
+        <h3 class="font-inter text-sm font-semibold mb-2">Flow Structure</h3>
+        <p class="font-inter text-dark/60 text-sm leading-[1.6] mb-6">
+          The intake is an 18-step wizard that guides patients from state eligibility through payment and onboarding. Each step is a single focused question or group of related inputs.
         </p>
         <div class="flex flex-wrap gap-2">
-          {['Program Select', 'Personal Info', 'Health History', 'Medications', 'Allergies', 'Goals', 'Lab Selection', 'Photo Upload', 'Provider Review', 'Checkout'].map((step, i) => (
+          {[
+            'State Selection',
+            'Date of Birth & Sex',
+            'Height & Weight',
+            'Health Goals',
+            'GLP-1 Experience',
+            'Account Setup',
+            'Plan & Pricing',
+            'Checkout',
+            'Safety Screening',
+            'Comorbidities',
+            'Founder Intro',
+            'Current Medications',
+            'Medication Allergies',
+            'Government ID',
+            'Body Photo',
+            'Shipping Address',
+            'Order Confirmation',
+            'Summary',
+          ].map((step, i) => (
             <div class="bg-cream rounded-full px-4 py-2 font-inter text-xs font-medium text-dark/60">
               <span class="text-teal font-semibold mr-1">{i + 1}</span> {step}
             </div>
           ))}
         </div>
+      </div>
+
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <h3 class="font-inter text-sm font-semibold mb-4">Nimy — AI Health Coach Intro</h3>
+        <p class="font-inter text-dark/60 text-sm leading-[1.6]">
+          The flow opens with Nimy, a virtual health coach persona, to set a warm, guided tone before clinical questions begin. Messaging: <span class="italic">"Hi, I'm Nimy — your health coach from Nimbus Healthcare."</span> IntelliHealth™ clinical review is disclosed at this step.
+        </p>
       </div>
     </section>
 
@@ -74,12 +104,21 @@ import Layout from '../layouts/Layout.astro';
       <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Progress Bar</h2>
 
       <div class="bg-dark rounded-3xl p-8 mb-6">
-        <div class="mb-6">
-          <div class="w-full h-1 bg-cream/10 rounded-full overflow-hidden">
-            <div class="h-full bg-teal rounded-full" style="width: 35%"></div>
-          </div>
+        <div class="flex items-center justify-between mb-3">
+          <span class="font-inter text-cream/40 text-xs">Step 3 of 18</span>
+          <span class="font-inter text-cream/40 text-xs">17%</span>
         </div>
-        <p class="font-inter text-cream/40 text-xs">Teal fill on cream/10 track. Full width, 4px height, rounded-full.</p>
+        <div class="w-full h-1 bg-cream/10 rounded-full overflow-hidden mb-8">
+          <div class="h-full bg-teal rounded-full" style="width: 17%"></div>
+        </div>
+        <div class="flex items-center justify-between mb-3">
+          <span class="font-inter text-cream/40 text-xs">Step 11 of 18</span>
+          <span class="font-inter text-cream/40 text-xs">61%</span>
+        </div>
+        <div class="w-full h-1 bg-cream/10 rounded-full overflow-hidden">
+          <div class="h-full bg-teal rounded-full" style="width: 61%"></div>
+        </div>
+        <p class="font-inter text-cream/30 text-xs mt-6">Teal fill on cream/10 track · 4px height · rounded-full · percentage shown top-right</p>
       </div>
 
       <div class="bg-warm-gray rounded-3xl p-8">
@@ -88,7 +127,175 @@ import Layout from '../layouts/Layout.astro';
           <li>Fixed at top of the intake viewport</li>
           <li>Teal fill (<code class="bg-dark/5 px-1.5 py-0.5 rounded text-xs">#2A9D8F</code>) on <code class="bg-dark/5 px-1.5 py-0.5 rounded text-xs">cream/10</code> track</li>
           <li>Smooth transition on step change (<code class="bg-dark/5 px-1.5 py-0.5 rounded text-xs">transition: width 500ms ease-out</code>)</li>
-          <li>Percentage reflects current step / total steps</li>
+          <li>Percentage reflects current step / total steps · Step counter shown alongside</li>
+          <li>Back button with phase label visible in top-left</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Programs -->
+    <section id="programs" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Programs</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+        <!-- CarniSema -->
+        <div class="bg-dark rounded-3xl p-7">
+          <div class="mb-4">
+            <p class="font-inter text-cream/40 text-xs font-medium uppercase tracking-widest mb-1">Semaglutide</p>
+            <h3 class="font-fraunces text-cream text-2xl tracking-tight">CarniSema<sup class="text-sm">®</sup></h3>
+          </div>
+          <p class="font-inter text-cream/60 text-sm leading-[1.6] mb-5">
+            Semaglutide + L-Carnitine. GLP-1 receptor agonist that reduces appetite and supports fat metabolism.
+          </p>
+          <div class="border-t border-cream/10 pt-4 space-y-2">
+            <div class="flex justify-between font-inter text-sm">
+              <span class="text-cream/50">Month-to-Month</span>
+              <span class="text-cream font-medium">$179/mo</span>
+            </div>
+            <div class="flex justify-between font-inter text-sm">
+              <span class="text-cream/50">3-Month Journey</span>
+              <span class="text-cream font-medium">$149/mo</span>
+            </div>
+            <div class="flex justify-between font-inter text-sm">
+              <span class="text-cream/50">6-Month Transformation</span>
+              <span class="text-cream font-medium">$129/mo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CarniTide -->
+        <div class="bg-dark rounded-3xl p-7">
+          <div class="mb-4">
+            <p class="font-inter text-cream/40 text-xs font-medium uppercase tracking-widest mb-1">Tirzepatide</p>
+            <h3 class="font-fraunces text-cream text-2xl tracking-tight">CarniTide<sup class="text-sm">®</sup></h3>
+          </div>
+          <p class="font-inter text-cream/60 text-sm leading-[1.6] mb-5">
+            Tirzepatide + L-Carnitine. Dual-action GLP-1/GIP agonist for enhanced weight loss and metabolic support.
+          </p>
+          <div class="border-t border-cream/10 pt-4 space-y-2">
+            <div class="flex justify-between font-inter text-sm">
+              <span class="text-cream/50">Month-to-Month</span>
+              <span class="text-cream font-medium">$299/mo</span>
+            </div>
+            <div class="flex justify-between font-inter text-sm">
+              <span class="text-cream/50">3-Month Journey</span>
+              <span class="text-cream font-medium">$249/mo</span>
+            </div>
+            <div class="flex justify-between font-inter text-sm">
+              <span class="text-cream/50">6-Month Transformation</span>
+              <span class="text-cream font-medium">$219/mo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <h3 class="font-inter text-sm font-semibold mb-3">Program Card Rules</h3>
+        <ul class="space-y-2 font-inter text-sm text-dark/60">
+          <li>Medication type label: Inter, 11px, uppercase, wide tracking, cream/40</li>
+          <li>Product name: Fraunces 24px, cream — registered mark as superscript</li>
+          <li>Description: Inter 14px, cream/60, 1.6 line height</li>
+          <li>Pricing rows separated by a cream/10 top border</li>
+          <li>Selected state: border-2 teal/30, bg teal/5 ring around card</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Pricing Tables -->
+    <section id="pricing" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Pricing Tables</h2>
+
+      <div class="space-y-8 mb-6">
+        <!-- CarniSema Pricing Table -->
+        <div class="bg-dark rounded-3xl overflow-hidden">
+          <div class="px-8 pt-7 pb-5">
+            <h3 class="font-fraunces text-cream text-xl tracking-tight">
+              CarniSema<sup class="text-sm">®</sup> <span class="font-inter font-normal text-cream/50 text-base">Pricing (Semaglutide)</span>
+            </h3>
+          </div>
+          <table class="w-full">
+            <thead>
+              <tr class="border-t border-b border-cream/10">
+                <th class="px-8 py-4 text-left font-inter text-sm font-semibold text-cream">Commitment</th>
+                <th class="px-8 py-4 text-left font-inter text-sm font-semibold text-cream">Monthly Price</th>
+                <th class="px-8 py-4 text-left font-inter text-sm font-semibold text-cream">Savings</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-cream/5">
+                <td class="px-8 py-4 font-inter text-sm text-cream/70">Month-to-Month</td>
+                <td class="px-8 py-4 font-inter text-sm font-semibold text-cream">$179/mo</td>
+                <td class="px-8 py-4 font-inter text-sm text-cream/40">—</td>
+              </tr>
+              <tr class="border-b border-cream/5">
+                <td class="px-8 py-4 font-inter text-sm text-cream/70">3-Month Journey</td>
+                <td class="px-8 py-4 font-inter text-sm font-semibold text-cream">$149/mo</td>
+                <td class="px-8 py-4 font-inter text-sm text-teal font-medium">Save 17%</td>
+              </tr>
+              <tr>
+                <td class="px-8 py-4 font-inter text-sm text-cream/70">6-Month Transformation</td>
+                <td class="px-8 py-4 font-inter text-sm font-semibold text-cream">$129/mo</td>
+                <td class="px-8 py-4 font-inter text-sm text-teal font-medium">Save 28%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- CarniTide Pricing Table -->
+        <div class="bg-dark rounded-3xl overflow-hidden">
+          <div class="px-8 pt-7 pb-5">
+            <h3 class="font-fraunces text-cream text-xl tracking-tight">
+              CarniTide<sup class="text-sm">®</sup> <span class="font-inter font-normal text-cream/50 text-base">Pricing (Tirzepatide)</span>
+            </h3>
+          </div>
+          <table class="w-full">
+            <thead>
+              <tr class="border-t border-b border-cream/10">
+                <th class="px-8 py-4 text-left font-inter text-sm font-semibold text-cream">Commitment</th>
+                <th class="px-8 py-4 text-left font-inter text-sm font-semibold text-cream">Monthly Price</th>
+                <th class="px-8 py-4 text-left font-inter text-sm font-semibold text-cream">Savings</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-cream/5">
+                <td class="px-8 py-4 font-inter text-sm text-cream/70">Month-to-Month</td>
+                <td class="px-8 py-4 font-inter text-sm font-semibold text-cream">$299/mo</td>
+                <td class="px-8 py-4 font-inter text-sm text-cream/40">—</td>
+              </tr>
+              <tr class="border-b border-cream/5">
+                <td class="px-8 py-4 font-inter text-sm text-cream/70">3-Month Journey</td>
+                <td class="px-8 py-4 font-inter text-sm font-semibold text-cream">$249/mo</td>
+                <td class="px-8 py-4 font-inter text-sm text-teal font-medium">Save 17%</td>
+              </tr>
+              <tr>
+                <td class="px-8 py-4 font-inter text-sm text-cream/70">6-Month Transformation</td>
+                <td class="px-8 py-4 font-inter text-sm font-semibold text-cream">$219/mo</td>
+                <td class="px-8 py-4 font-inter text-sm text-teal font-medium">Save 27%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Commitment Toggle -->
+      <div class="bg-dark rounded-3xl p-8 mb-6">
+        <h3 class="font-inter text-cream text-sm font-semibold mb-5">Commitment Toggle</h3>
+        <div class="inline-flex bg-cream/5 rounded-full p-1 gap-1 mb-5">
+          <button class="px-5 py-2 rounded-full bg-cream text-dark font-inter text-sm font-medium">Monthly</button>
+          <button class="px-5 py-2 rounded-full font-inter text-sm font-medium text-cream/50">3-Month</button>
+          <button class="px-5 py-2 rounded-full font-inter text-sm font-medium text-cream/50">6-Month</button>
+        </div>
+        <p class="font-inter text-cream/30 text-xs">Pill toggle switches active pricing column · Active tab: cream bg, dark text · Inactive: cream/50</p>
+      </div>
+
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <h3 class="font-inter text-sm font-semibold mb-4">Pricing Table Rules</h3>
+        <ul class="space-y-2 font-inter text-sm text-dark/60">
+          <li>Product title: Fraunces 20px cream · subtitle: Inter normal cream/50</li>
+          <li>Table headers: Inter 14px semibold cream · rows separated by cream/5 border</li>
+          <li>Price column: Inter semibold cream · Savings column: teal for discounted, cream/40 dash for baseline</li>
+          <li>Plan names: "Month-to-Month", "3-Month Journey", "6-Month Transformation"</li>
+          <li>Toggle pill: cream/5 bg container · active state cream bg, dark text</li>
         </ul>
       </div>
     </section>
@@ -100,21 +307,28 @@ import Layout from '../layouts/Layout.astro';
       <div class="space-y-6">
         <!-- Text Input -->
         <div class="bg-dark rounded-3xl p-8">
-          <h3 class="font-inter text-cream text-sm font-semibold mb-4">Text Input</h3>
-          <div class="max-w-[400px]">
-            <label class="block font-inter text-cream/60 text-sm mb-2">Full Name</label>
-            <input type="text" placeholder="Enter your full name" class="w-full bg-cream/5 border border-cream/10 rounded-xl px-4 py-3.5 font-inter text-cream text-sm placeholder:text-cream/30 focus:outline-none focus:border-teal/50 transition-colors" />
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Text Input</h3>
+          <div class="max-w-[400px] space-y-4">
+            <div>
+              <label class="block font-inter text-cream/60 text-sm mb-2">Full Name</label>
+              <input type="text" placeholder="Enter your full name" class="w-full bg-cream/5 border border-cream/10 rounded-xl px-4 py-3.5 font-inter text-cream text-sm placeholder:text-cream/30 focus:outline-none focus:border-teal/50 transition-colors" />
+            </div>
+            <div>
+              <label class="block font-inter text-cream/60 text-sm mb-2">Email Address</label>
+              <input type="email" placeholder="you@example.com" class="w-full bg-cream/5 border border-cream/10 rounded-xl px-4 py-3.5 font-inter text-cream text-sm placeholder:text-cream/30 focus:outline-none focus:border-teal/50 transition-colors" />
+            </div>
           </div>
-          <div class="mt-4 font-inter text-cream/30 text-xs space-y-1">
-            <p>Background: cream/5 &middot; Border: cream/10 &middot; Focus border: teal/50</p>
-            <p>Radius: 12px (rounded-xl) &middot; Padding: 14px 16px &middot; Font: Inter 14px</p>
+          <div class="mt-5 font-inter text-cream/30 text-xs space-y-1">
+            <p>Background: cream/5 · Border: cream/10 · Focus border: teal/50</p>
+            <p>Radius: 12px (rounded-xl) · Padding: 14px 16px · Font: Inter 14px</p>
+            <p>Date of birth input auto-formats as MM/DD/YYYY</p>
           </div>
         </div>
 
         <!-- Selection Cards -->
         <div class="bg-dark rounded-3xl p-8">
-          <h3 class="font-inter text-cream text-sm font-semibold mb-4">Selection Cards</h3>
-          <div class="grid grid-cols-2 gap-3 max-w-[400px]">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Selection Cards (Single-Select)</h3>
+          <div class="grid grid-cols-2 gap-3 max-w-[400px] mb-6">
             <button class="border-2 border-teal/30 bg-teal/5 rounded-2xl p-4 text-left">
               <p class="font-inter text-cream text-sm font-medium">Male</p>
             </button>
@@ -122,26 +336,239 @@ import Layout from '../layouts/Layout.astro';
               <p class="font-inter text-cream/60 text-sm font-medium">Female</p>
             </button>
           </div>
-          <div class="mt-4 font-inter text-cream/30 text-xs space-y-1">
-            <p>Selected: border-2 teal/30, bg teal/5</p>
-            <p>Unselected: border cream/10, hover cream/20</p>
+          <h3 class="font-inter text-cream text-sm font-semibold mb-3">Multi-Select Cards (Goals / Comorbidities)</h3>
+          <div class="grid grid-cols-2 gap-3 max-w-[400px]">
+            <button class="border-2 border-teal/30 bg-teal/5 rounded-2xl p-4 text-left">
+              <p class="font-inter text-cream text-sm font-medium">Lose Weight</p>
+              <p class="font-inter text-cream/40 text-xs mt-0.5">Selected</p>
+            </button>
+            <button class="border-2 border-teal/30 bg-teal/5 rounded-2xl p-4 text-left">
+              <p class="font-inter text-cream text-sm font-medium">More Energy</p>
+              <p class="font-inter text-cream/40 text-xs mt-0.5">Selected</p>
+            </button>
+            <button class="border border-cream/10 hover:border-cream/20 rounded-2xl p-4 text-left transition-colors">
+              <p class="font-inter text-cream/60 text-sm font-medium">Better Sleep</p>
+            </button>
+            <button class="border border-cream/10 hover:border-cream/20 rounded-2xl p-4 text-left transition-colors">
+              <p class="font-inter text-cream/60 text-sm font-medium">Reduce Meds</p>
+            </button>
+          </div>
+          <div class="mt-5 font-inter text-cream/30 text-xs space-y-1">
+            <p>Selected: border-2 teal/30, bg teal/5, full-opacity text</p>
+            <p>Unselected: border cream/10, hover cream/20, text cream/60</p>
+            <p>Multi-select allows multiple active states simultaneously</p>
             <p>Radius: 16px (rounded-2xl)</p>
           </div>
         </div>
 
+        <!-- State Selection -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">State Selection</h3>
+          <div class="flex flex-wrap gap-2 max-w-[500px]">
+            {['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD'].map(state => (
+              <button class={`px-3 py-2 rounded-xl font-inter text-xs font-medium border transition-colors ${state === 'TX' ? 'border-2 border-teal/30 bg-teal/5 text-cream' : 'border-cream/10 text-cream/50 hover:border-cream/20'}`}>
+                {state}
+              </button>
+            ))}
+            <span class="font-inter text-cream/30 text-xs self-center ml-1">… all 50 states</span>
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">Abbreviation pills · Selected: teal/30 border, teal/5 bg · Unselected: cream/10 border · Radius: 12px</p>
+        </div>
+
+        <!-- Stepper Inputs -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Stepper Inputs (Height & Weight)</h3>
+          <div class="flex gap-6 max-w-[400px]">
+            <div class="flex-1">
+              <label class="block font-inter text-cream/60 text-xs mb-3">Feet</label>
+              <div class="flex items-center gap-3">
+                <button class="w-10 h-10 rounded-full border border-cream/20 text-cream font-inter text-lg flex items-center justify-center hover:border-cream/40 transition-colors">−</button>
+                <span class="font-fraunces text-cream text-3xl w-8 text-center">5</span>
+                <button class="w-10 h-10 rounded-full border border-cream/20 text-cream font-inter text-lg flex items-center justify-center hover:border-cream/40 transition-colors">+</button>
+              </div>
+            </div>
+            <div class="flex-1">
+              <label class="block font-inter text-cream/60 text-xs mb-3">Inches</label>
+              <div class="flex items-center gap-3">
+                <button class="w-10 h-10 rounded-full border border-cream/20 text-cream font-inter text-lg flex items-center justify-center hover:border-cream/40 transition-colors">−</button>
+                <span class="font-fraunces text-cream text-3xl w-8 text-center">8</span>
+                <button class="w-10 h-10 rounded-full border border-cream/20 text-cream font-inter text-lg flex items-center justify-center hover:border-cream/40 transition-colors">+</button>
+              </div>
+            </div>
+            <div class="flex-1">
+              <label class="block font-inter text-cream/60 text-xs mb-3">lbs</label>
+              <div class="flex items-center gap-3">
+                <button class="w-10 h-10 rounded-full border border-cream/20 text-cream font-inter text-lg flex items-center justify-center hover:border-cream/40 transition-colors">−</button>
+                <span class="font-fraunces text-cream text-3xl w-10 text-center">185</span>
+                <button class="w-10 h-10 rounded-full border border-cream/20 text-cream font-inter text-lg flex items-center justify-center hover:border-cream/40 transition-colors">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 font-inter text-cream/30 text-xs space-y-1">
+            <p>+/− buttons: 40px circle, border cream/20, hover cream/40</p>
+            <p>Value: Fraunces 30px cream · Label: Inter 12px cream/60</p>
+            <p>Separate steppers for feet, inches, and lbs</p>
+          </div>
+        </div>
+
+        <!-- Medication Search -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Medication Search</h3>
+          <div class="max-w-[420px]">
+            <input type="text" placeholder="Search medications…" class="w-full bg-cream/5 border border-cream/10 rounded-xl px-4 py-3.5 font-inter text-cream text-sm placeholder:text-cream/30 focus:outline-none focus:border-teal/50 transition-colors mb-4" />
+            <div class="space-y-2">
+              {['Blood Pressure', 'Thyroid', 'Diabetes', 'Mental Health', 'Cholesterol', 'Vitamins & Supplements'].map(cat => (
+                <div class="flex items-center justify-between px-4 py-3 bg-cream/5 rounded-xl border border-cream/5">
+                  <span class="font-inter text-cream/70 text-sm">{cat}</span>
+                  <span class="font-inter text-cream/30 text-xs">›</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">Search input filters within category · Categories: Blood Pressure, Thyroid, Diabetes, Mental Health, Cholesterol, Vitamins</p>
+        </div>
+
         <!-- Continue Button -->
         <div class="bg-dark rounded-3xl p-8">
-          <h3 class="font-inter text-cream text-sm font-semibold mb-4">Continue Button</h3>
-          <div class="max-w-[400px]">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Continue Button</h3>
+          <div class="max-w-[400px] space-y-3">
             <button class="w-full bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-colors">
               Continue
             </button>
+            <button class="w-full bg-terracotta/40 text-cream/40 font-montserrat font-medium text-base rounded-full px-10 py-4 cursor-not-allowed" disabled>
+              Continue
+            </button>
           </div>
-          <div class="mt-4 font-inter text-cream/30 text-xs space-y-1">
-            <p>Full width within form container</p>
-            <p>Terracotta bg &rarr; Terracotta Hover on hover</p>
-            <p>Montserrat medium 16px &middot; Rounded full &middot; Padding: 16px 40px</p>
+          <div class="mt-5 font-inter text-cream/30 text-xs space-y-1">
+            <p>Active: Terracotta bg → Terracotta Hover on hover</p>
+            <p>Disabled: terracotta/40, text cream/40, cursor-not-allowed</p>
+            <p>Full width · Montserrat medium 16px · rounded-full · Padding: 16px 40px</p>
+            <p>Continue button only becomes active once a selection is made</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Health Screening -->
+    <section id="screening" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Health Screening</h2>
+
+      <div class="space-y-6">
+        <!-- Safety Questions -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Safety Screening (Yes/No)</h3>
+          <div class="space-y-4 max-w-[520px]">
+            {[
+              'Are you currently pregnant or breastfeeding?',
+              'Do you have a personal or family history of medullary thyroid carcinoma or MEN 2?',
+              'Have you ever been diagnosed with pancreatitis?',
+              'Do you have gastroparesis?',
+            ].map((q, i) => (
+              <div class="bg-cream/5 rounded-2xl p-5">
+                <p class="font-inter text-cream/80 text-sm leading-[1.5] mb-4">{q}</p>
+                <div class="flex gap-3">
+                  <button class={`px-6 py-2 rounded-full font-inter text-sm font-medium border transition-colors ${i === 2 ? 'border-2 border-teal/30 bg-teal/5 text-cream' : 'border-cream/10 text-cream/50'}`}>Yes</button>
+                  <button class={`px-6 py-2 rounded-full font-inter text-sm font-medium border transition-colors ${i !== 2 ? 'border-2 border-teal/30 bg-teal/5 text-cream' : 'border-cream/10 text-cream/50'}`}>No</button>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">One question per card · Yes/No pill buttons · Answering "Yes" to contraindicated questions triggers disqualification</p>
+        </div>
+
+        <!-- Comorbidity Checkboxes -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-2">Comorbidity Selection</h3>
+          <p class="font-inter text-cream/40 text-xs mb-5">Select all that apply</p>
+          <div class="grid grid-cols-2 gap-3 max-w-[500px]">
+            {[
+              { label: 'Type 2 Diabetes', checked: true },
+              { label: 'Hypertension', checked: true },
+              { label: 'Heart Disease', checked: false },
+              { label: 'Sleep Apnea', checked: false },
+              { label: 'PCOS', checked: false },
+              { label: 'Fatty Liver Disease', checked: true },
+              { label: 'Depression / Anxiety', checked: false },
+              { label: 'Joint Pain / Arthritis', checked: false },
+              { label: 'Kidney Disease', checked: false },
+              { label: 'None of the above', checked: false },
+            ].map(item => (
+              <div class={`flex items-center gap-3 px-4 py-3 rounded-xl border transition-colors ${item.checked ? 'border-teal/30 bg-teal/5' : 'border-cream/10'}`}>
+                <div class={`w-4 h-4 rounded flex items-center justify-center flex-shrink-0 ${item.checked ? 'bg-teal' : 'border border-cream/20 bg-transparent'}`}>
+                  {item.checked && <span class="text-dark text-[10px] font-bold leading-none">✓</span>}
+                </div>
+                <span class={`font-inter text-sm ${item.checked ? 'text-cream' : 'text-cream/50'}`}>{item.label}</span>
+              </div>
+            ))}
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">Checkbox grid · 2-column · Checked: teal bg, teal/30 border · Unchecked: cream/10 border · "None of the above" deselects all others</p>
+        </div>
+
+        <!-- GLP-1 Experience -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">GLP-1 Experience</h3>
+          <div class="space-y-3 max-w-[400px]">
+            {[
+              { label: 'No prior experience', sub: 'This is my first time', selected: false },
+              { label: 'Tried before, stopped', sub: 'Side effects or cost', selected: true },
+              { label: 'Currently taking', sub: 'Switching to Nimbus', selected: false },
+            ].map(opt => (
+              <button class={`w-full text-left px-5 py-4 rounded-2xl border transition-colors ${opt.selected ? 'border-2 border-teal/30 bg-teal/5' : 'border-cream/10 hover:border-cream/20'}`}>
+                <p class={`font-inter text-sm font-medium ${opt.selected ? 'text-cream' : 'text-cream/70'}`}>{opt.label}</p>
+                <p class="font-inter text-xs text-cream/40 mt-0.5">{opt.sub}</p>
+              </button>
+            ))}
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">Option cards with label + sub-label · Same selected/unselected pattern as selection cards</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Upload -->
+    <section id="photos" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Photo Upload</h2>
+
+      <div class="space-y-6">
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Upload Cards</h3>
+          <div class="grid grid-cols-2 gap-4 max-w-[480px]">
+            <!-- Government ID -->
+            <div class="border-2 border-dashed border-cream/20 rounded-2xl aspect-[4/3] flex flex-col items-center justify-center gap-3 hover:border-cream/40 transition-colors cursor-pointer">
+              <div class="w-10 h-10 rounded-full bg-cream/5 flex items-center justify-center">
+                <span class="text-cream/50 text-lg">🪪</span>
+              </div>
+              <div class="text-center px-3">
+                <p class="font-inter text-cream/60 text-xs font-medium">Government ID</p>
+                <p class="font-inter text-cream/30 text-[10px] mt-0.5">Tap to upload or take photo</p>
+              </div>
+            </div>
+            <!-- Body Photo -->
+            <div class="border-2 border-dashed border-cream/20 rounded-2xl aspect-[4/3] flex flex-col items-center justify-center gap-3 hover:border-cream/40 transition-colors cursor-pointer">
+              <div class="w-10 h-10 rounded-full bg-cream/5 flex items-center justify-center">
+                <span class="text-cream/50 text-lg">📷</span>
+              </div>
+              <div class="text-center px-3">
+                <p class="font-inter text-cream/60 text-xs font-medium">Body Photo</p>
+                <p class="font-inter text-cream/30 text-[10px] mt-0.5">Tap to upload or take photo</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 font-inter text-cream/30 text-xs space-y-1">
+            <p>Dashed border-2 cream/20 · Hover: cream/40 · Aspect ratio 4/3</p>
+            <p>Camera or file library options on tap · Preview with remove button once uploaded</p>
+            <p>Body photo tips shown before upload: good lighting, front-facing, full body</p>
+          </div>
+        </div>
+
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold mb-4">Upload Rules</h3>
+          <ul class="space-y-2 font-inter text-sm text-dark/60">
+            <li>Government ID required for identity verification before provider review</li>
+            <li>Body photo used for clinical baseline — optional but encouraged</li>
+            <li>Both support camera capture or file library on mobile</li>
+            <li>Once uploaded: thumbnail preview with ✕ remove button in top-right corner</li>
+            <li>File types: JPG, PNG, HEIC · Max size: 10MB per image</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -149,15 +576,124 @@ import Layout from '../layouts/Layout.astro';
     <!-- Checkout -->
     <section id="checkout" class="mb-20">
       <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Checkout</h2>
-      <div class="bg-warm-gray rounded-3xl p-8">
-        <h3 class="font-inter text-sm font-semibold mb-4">Checkout Rules</h3>
-        <ul class="space-y-2 font-inter text-sm text-dark/60">
-          <li>Embedded within the intake flow (not a separate page redirect)</li>
-          <li>Order summary visible alongside payment form</li>
-          <li>Submit button uses primary CTA pattern (terracotta, full-width)</li>
-          <li>Trust indicators: SSL badge, pharmacy accreditation, refund policy link</li>
-          <li>Disclaimer text at bottom: cream/30, 12px Inter</li>
-        </ul>
+
+      <div class="space-y-6">
+        <!-- Order Summary -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Order Summary</h3>
+          <div class="max-w-[400px] bg-cream/5 rounded-2xl p-5 space-y-3">
+            <div class="flex justify-between">
+              <span class="font-inter text-cream/60 text-sm">Product</span>
+              <span class="font-inter text-cream text-sm font-medium">CarniSema®</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="font-inter text-cream/60 text-sm">Commitment</span>
+              <span class="font-inter text-cream text-sm font-medium">3-Month Journey</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="font-inter text-cream/60 text-sm">Monthly Rate</span>
+              <span class="font-inter text-cream text-sm font-medium">$149/mo</span>
+            </div>
+            <div class="border-t border-cream/10 pt-3 flex justify-between">
+              <span class="font-inter text-cream/60 text-sm">Due Today</span>
+              <span class="font-fraunces text-cream text-xl">$447</span>
+            </div>
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">Order summary always visible during checkout · Due today = monthly rate × commitment months</p>
+        </div>
+
+        <!-- Payment Fields -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Payment Fields</h3>
+          <div class="max-w-[400px] space-y-3">
+            <div>
+              <label class="block font-inter text-cream/60 text-xs mb-1.5">Card Number</label>
+              <input type="text" placeholder="1234 5678 9012 3456" class="w-full bg-cream/5 border border-cream/10 rounded-xl px-4 py-3.5 font-inter text-cream text-sm placeholder:text-cream/30 focus:outline-none focus:border-teal/50 transition-colors" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block font-inter text-cream/60 text-xs mb-1.5">Expiry</label>
+                <input type="text" placeholder="MM / YY" class="w-full bg-cream/5 border border-cream/10 rounded-xl px-4 py-3.5 font-inter text-cream text-sm placeholder:text-cream/30 focus:outline-none focus:border-teal/50 transition-colors" />
+              </div>
+              <div>
+                <label class="block font-inter text-cream/60 text-xs mb-1.5">CVV</label>
+                <input type="text" placeholder="•••" class="w-full bg-cream/5 border border-cream/10 rounded-xl px-4 py-3.5 font-inter text-cream text-sm placeholder:text-cream/30 focus:outline-none focus:border-teal/50 transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label class="block font-inter text-cream/60 text-xs mb-1.5">Name on Card</label>
+              <input type="text" placeholder="First Last" class="w-full bg-cream/5 border border-cream/10 rounded-xl px-4 py-3.5 font-inter text-cream text-sm placeholder:text-cream/30 focus:outline-none focus:border-teal/50 transition-colors" />
+            </div>
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">Same input pattern as intake forms · Card number, expiry, CVV, name · Auto-formats card number with spaces</p>
+        </div>
+
+        <!-- Express Checkout -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Express Checkout</h3>
+          <div class="max-w-[400px] space-y-3">
+            <div class="grid grid-cols-3 gap-3">
+              <button class="bg-black text-white rounded-xl py-3 font-inter text-xs font-medium flex items-center justify-center gap-1.5 border border-cream/10">
+                <span></span> Pay
+              </button>
+              <button class="bg-white text-black rounded-xl py-3 font-inter text-xs font-medium flex items-center justify-center gap-1.5">
+                <span>G</span> Pay
+              </button>
+              <button class="bg-[#5A31F4] text-white rounded-xl py-3 font-inter text-xs font-medium">
+                Shop Pay
+              </button>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="flex-1 h-px bg-cream/10"></div>
+              <span class="font-inter text-cream/30 text-xs">or pay by card</span>
+              <div class="flex-1 h-px bg-cream/10"></div>
+            </div>
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">Apple Pay · Google Pay · Shop Pay shown above card form · Divider: "or pay by card"</p>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Trust Indicators</h3>
+          <div class="flex flex-wrap gap-4 mb-5">
+            <div class="flex items-center gap-2 bg-cream/5 rounded-xl px-4 py-2.5">
+              <span class="text-teal text-sm">🔒</span>
+              <span class="font-inter text-cream/70 text-xs">HIPAA Compliant</span>
+            </div>
+            <div class="flex items-center gap-2 bg-cream/5 rounded-xl px-4 py-2.5">
+              <span class="text-teal text-sm">✓</span>
+              <span class="font-inter text-cream/70 text-xs">NABP Accredited</span>
+            </div>
+            <div class="flex items-center gap-2 bg-cream/5 rounded-xl px-4 py-2.5">
+              <span class="text-teal text-sm">★</span>
+              <span class="font-inter text-cream/70 text-xs">4.8 Trustpilot</span>
+            </div>
+          </div>
+          <p class="font-inter text-cream/30 text-xs">Badges shown at checkout · Disclaimer text below submit: cream/30, 12px Inter · Refund policy link inline</p>
+        </div>
+
+        <!-- What Happens Next -->
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold mb-5">What Happens Next (Post-Checkout)</h3>
+          <div class="space-y-4">
+            {[
+              { step: '1', label: 'Provider Review', desc: 'A licensed provider reviews your intake within 24 hours.' },
+              { step: '2', label: 'Prescription Issued', desc: 'If approved, your prescription is sent to the pharmacy.' },
+              { step: '3', label: 'Medication Shipped', desc: 'Your medication ships within 2–3 business days.' },
+              { step: '4', label: 'You Begin', desc: 'Your health coach checks in on day one.' },
+            ].map(item => (
+              <div class="flex gap-4">
+                <div class="w-7 h-7 rounded-full bg-teal/10 border border-teal/20 flex items-center justify-center flex-shrink-0">
+                  <span class="font-inter text-teal text-xs font-semibold">{item.step}</span>
+                </div>
+                <div>
+                  <p class="font-inter text-dark text-sm font-semibold">{item.label}</p>
+                  <p class="font-inter text-dark/50 text-sm">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
 
@@ -175,7 +711,7 @@ import Layout from '../layouts/Layout.astro';
               <span class="font-inter text-cream/30 text-sm">Form Content</span>
             </div>
           </div>
-          <p class="font-inter text-cream/30 text-xs mt-4">Desktop uses a 50/50 split. Left: hero media. Right: form on charcoal (#22201E).</p>
+          <p class="font-inter text-cream/30 text-xs mt-4">Desktop uses a 50/50 split. Left: hero media (video or image). Right: form on charcoal (#22201E). Progress bar spans full width above both panels.</p>
         </div>
 
         <div class="bg-dark rounded-3xl p-8">
@@ -185,7 +721,20 @@ import Layout from '../layouts/Layout.astro';
               <span class="font-inter text-cream/30 text-xs">Form Content</span>
             </div>
           </div>
-          <p class="font-inter text-cream/30 text-xs mt-4 text-center">Mobile hides the media panel. Full-width form on dark background.</p>
+          <p class="font-inter text-cream/30 text-xs mt-4 text-center">Mobile hides the media panel. Full-width form on dark background. Progress bar fixed at top.</p>
+        </div>
+
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold mb-4">Exit Modal</h3>
+          <div class="max-w-[360px] bg-dark rounded-2xl p-6">
+            <p class="font-fraunces text-cream text-lg mb-2">Leave the intake?</p>
+            <p class="font-inter text-cream/50 text-sm mb-6">Your progress will be saved. You can return anytime.</p>
+            <div class="flex gap-3">
+              <button class="flex-1 border border-cream/20 text-cream/70 font-inter text-sm rounded-full py-2.5">Leave</button>
+              <button class="flex-1 bg-terracotta text-cream font-inter text-sm font-medium rounded-full py-2.5">Keep going</button>
+            </div>
+          </div>
+          <p class="font-inter text-dark/50 text-xs mt-4">Exit confirmation modal appears on browser back or close · "Keep going" = terracotta CTA · "Leave" = ghost button</p>
         </div>
       </div>
     </section>
