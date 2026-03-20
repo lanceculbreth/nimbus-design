@@ -15,14 +15,30 @@ import Layout from '../layouts/Layout.astro';
           The Nimbus patient-facing app — web dashboard and mobile experience for WeightWise and NimCore.
         </p>
       </div>
-      <a
-        href="https://nimbus-26.vercel.app"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-dark text-cream text-sm font-medium hover:bg-dark/80 transition-colors"
-      >
-        View Portal &rarr;
-      </a>
+      <div class="flex-shrink-0 flex flex-col items-end gap-3">
+        <!-- Demo credentials -->
+        <div class="bg-dark/5 border border-dark/8 rounded-2xl px-5 py-4 text-sm font-inter">
+          <p class="text-dark/40 text-xs font-semibold uppercase tracking-[0.1em] mb-3">Demo Login</p>
+          <div class="space-y-2 mb-4">
+            <div class="flex items-center justify-between gap-8">
+              <span class="text-dark/40">Email</span>
+              <span class="font-medium text-dark select-all">demo@nimbushealthcare.com</span>
+            </div>
+            <div class="flex items-center justify-between gap-8">
+              <span class="text-dark/40">Password</span>
+              <span class="font-medium text-dark select-all">Nimbus2026!</span>
+            </div>
+          </div>
+          <a
+            href="https://nimbus-26.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 w-full px-5 py-2.5 rounded-full bg-dark text-cream text-sm font-medium hover:bg-dark/80 transition-colors"
+          >
+            Open Portal &rarr;
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- Web Dashboard -->
