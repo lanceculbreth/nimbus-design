@@ -4,164 +4,50 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Portal" active="portal">
   <div class="max-w-[900px] mx-auto px-10 py-16">
+
     <!-- Page Header -->
-    <div class="mb-16">
-      <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
-        Portal
-      </h1>
-      <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
-        Design patterns for the Nimbus patient portal, including login, dashboard, and account management.
-      </p>
+    <div class="mb-12 flex items-end justify-between gap-6 flex-wrap">
+      <div>
+        <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
+          Portal
+        </h1>
+        <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[520px]">
+          The Nimbus patient-facing app — web dashboard and mobile experience for WeightWise and NimCore.
+        </p>
+      </div>
+      <a
+        href="https://nimbus-26.vercel.app"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-dark text-cream text-sm font-medium hover:bg-dark/80 transition-colors"
+      >
+        View Portal &rarr;
+      </a>
     </div>
 
-    <!-- Login -->
-    <section id="login" class="mb-20">
-      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Login</h2>
-
-      <div class="bg-dark rounded-3xl p-8 mb-6">
-        <div class="max-w-[360px] mx-auto">
-          <div class="text-center mb-8">
-            <span class="font-fraunces text-cream text-xl">Nimbus</span>
-            <p class="font-inter text-cream/40 text-sm mt-1">Patient Portal</p>
-          </div>
-          <div class="space-y-4">
-            <div>
-              <label class="block font-inter text-cream/60 text-sm mb-2">Email</label>
-              <input type="email" placeholder="you@example.com" class="w-full bg-cream/5 border border-cream/10 rounded-xl px-4 py-3.5 font-inter text-cream text-sm placeholder:text-cream/30 focus:outline-none focus:border-teal/50 transition-colors" />
-            </div>
-            <div>
-              <label class="block font-inter text-cream/60 text-sm mb-2">Password</label>
-              <input type="password" placeholder="Enter password" class="w-full bg-cream/5 border border-cream/10 rounded-xl px-4 py-3.5 font-inter text-cream text-sm placeholder:text-cream/30 focus:outline-none focus:border-teal/50 transition-colors" />
-            </div>
-            <button class="w-full bg-terracotta text-cream font-montserrat font-semibold text-base rounded-full py-4 mt-2 transition-colors">
-              Sign In
-            </button>
-            <p class="text-center font-inter text-cream/40 text-sm">Forgot your password?</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-warm-gray rounded-3xl p-8">
-        <h3 class="font-inter text-sm font-semibold mb-4">Login Page Rules</h3>
-        <ul class="space-y-2 font-inter text-sm text-dark/60">
-          <li>Dark background (#1A1816), centered card</li>
-          <li>Logo + "Patient Portal" subtitle at top</li>
-          <li>Input fields: cream/5 bg, cream/10 border, teal/50 focus border</li>
-          <li>Submit: full-width terracotta CTA</li>
-          <li>Forgot password: cream/40 link below</li>
-        </ul>
+    <!-- Web Dashboard -->
+    <section class="mb-6">
+      <p class="font-inter text-xs font-semibold text-dark/30 uppercase tracking-[0.12em] mb-4">Web Dashboard</p>
+      <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+        <img
+          src="/images/Portal/Dashboard.png"
+          alt="Nimbus web portal dashboard"
+          class="w-full block"
+        />
       </div>
     </section>
 
-    <!-- Portal Dashboard -->
-    <section id="dashboard" class="mb-20">
-      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Dashboard</h2>
-
-      <div class="bg-warm-gray rounded-3xl p-8 mb-6">
-        <h3 class="font-inter text-sm font-semibold mb-4">Dashboard Principles</h3>
-        <ul class="space-y-2 font-inter text-sm text-dark/60">
-          <li>Clean, data-forward layout. No visual clutter.</li>
-          <li>Treatment status and next steps always visible above the fold</li>
-          <li>Cards for each major section: Treatment, Messages, Lab Results, Appointments</li>
-          <li>Use the same color system — teal for active/positive states, terracotta for action items</li>
-        </ul>
-      </div>
-
-      <div class="bg-dark rounded-3xl p-8">
-        <h3 class="font-inter text-cream text-sm font-semibold mb-6">Card Layout Example</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="bg-charcoal border-t-2 border-teal/30 rounded-2xl p-5">
-            <p class="font-inter text-cream/40 text-xs font-semibold tracking-[0.1em] uppercase mb-2">Treatment</p>
-            <p class="font-fraunces text-cream text-lg mb-1">WeightWise GLP-1</p>
-            <p class="font-inter text-cream/50 text-sm">Next dose: March 22</p>
-          </div>
-          <div class="bg-charcoal border-t-2 border-teal/30 rounded-2xl p-5">
-            <p class="font-inter text-cream/40 text-xs font-semibold tracking-[0.1em] uppercase mb-2">Messages</p>
-            <p class="font-fraunces text-cream text-lg mb-1">2 unread</p>
-            <p class="font-inter text-cream/50 text-sm">From Dr. Harris</p>
-          </div>
-          <div class="bg-charcoal border-t-2 border-teal/30 rounded-2xl p-5">
-            <p class="font-inter text-cream/40 text-xs font-semibold tracking-[0.1em] uppercase mb-2">Lab Results</p>
-            <p class="font-fraunces text-cream text-lg mb-1">Up to date</p>
-            <p class="font-inter text-teal text-sm">View results &rarr;</p>
-          </div>
-          <div class="bg-charcoal border-t-2 border-terracotta/30 rounded-2xl p-5">
-            <p class="font-inter text-cream/40 text-xs font-semibold tracking-[0.1em] uppercase mb-2">Action Needed</p>
-            <p class="font-fraunces text-cream text-lg mb-1">Upload photo</p>
-            <p class="font-inter text-terracotta text-sm">Complete now &rarr;</p>
-          </div>
-        </div>
-        <div class="font-inter text-cream/30 text-xs mt-4 space-y-1">
-          <p>Teal top-border for standard cards. Terracotta top-border for action-required cards.</p>
-          <p>Charcoal bg (#22201E). 16px radius. 20px internal padding.</p>
-        </div>
+    <!-- Mobile App -->
+    <section class="mb-6">
+      <p class="font-inter text-xs font-semibold text-dark/30 uppercase tracking-[0.12em] mb-4">Mobile App</p>
+      <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+        <img
+          src="/images/Portal/Mobile.png"
+          alt="Nimbus mobile app"
+          class="w-full block"
+        />
       </div>
     </section>
 
-    <!-- Portal Navigation -->
-    <section id="portal-nav" class="mb-20">
-      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Portal Navigation</h2>
-      <div class="bg-warm-gray rounded-3xl p-8">
-        <h3 class="font-inter text-sm font-semibold mb-4">Navigation Patterns</h3>
-        <ul class="space-y-2 font-inter text-sm text-dark/60">
-          <li><span class="text-dark font-medium">Desktop:</span> Left sidebar with icon + label nav items</li>
-          <li><span class="text-dark font-medium">Mobile:</span> Bottom tab bar with 4–5 primary destinations</li>
-          <li><span class="text-dark font-medium">Active state:</span> Teal text + teal/10 background on the active item</li>
-          <li><span class="text-dark font-medium">Inactive:</span> cream/40 text, hover &rarr; cream/60</li>
-          <li><span class="text-dark font-medium">Sections:</span> Dashboard, Treatment, Messages, Lab Results, Profile</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Status Indicators -->
-    <section id="status" class="mb-20">
-      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Status Indicators</h2>
-
-      <div class="bg-dark rounded-3xl p-8 mb-6">
-        <div class="space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-2.5 h-2.5 rounded-full bg-teal"></div>
-            <span class="font-inter text-cream text-sm">Active — Treatment in progress, results available</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="w-2.5 h-2.5 rounded-full bg-terracotta"></div>
-            <span class="font-inter text-cream text-sm">Action needed — Upload, appointment, payment</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="w-2.5 h-2.5 rounded-full bg-cream/30"></div>
-            <span class="font-inter text-cream text-sm">Pending — Awaiting provider review</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="w-2.5 h-2.5 rounded-full bg-cream/10"></div>
-            <span class="font-inter text-cream text-sm">Inactive — Completed or paused</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-warm-gray rounded-3xl p-8">
-        <ul class="space-y-2 font-inter text-sm text-dark/60">
-          <li><span class="text-dark font-medium">Teal:</span> Positive / active / success states</li>
-          <li><span class="text-dark font-medium">Terracotta:</span> Action required / attention needed</li>
-          <li><span class="text-dark font-medium">Cream/30:</span> Pending / in-progress</li>
-          <li><span class="text-dark font-medium">Cream/10:</span> Inactive / disabled</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Notifications -->
-    <section id="notifications">
-      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Notifications & Alerts</h2>
-      <div class="bg-warm-gray rounded-3xl p-8">
-        <h3 class="font-inter text-sm font-semibold mb-4">Alert Patterns</h3>
-        <ul class="space-y-2 font-inter text-sm text-dark/60">
-          <li>Toast notifications: slide in from top-right, auto-dismiss after 5s</li>
-          <li>Success: teal/10 bg with teal text</li>
-          <li>Action: terracotta/10 bg with terracotta text</li>
-          <li>Info: charcoal bg with cream text</li>
-          <li>Border radius: 14px (inner element pattern)</li>
-          <li>Font: Inter 14px, medium weight</li>
-        </ul>
-      </div>
-    </section>
   </div>
 </Layout>
