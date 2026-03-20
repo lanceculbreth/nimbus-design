@@ -116,6 +116,17 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
       <button onclick="switchTab('journey')" id="tab-journey" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark">CX Journey</button>
     </div>
 
+    <!-- NimCore coming soon -->
+    <div id="panel-nimcore" class="hidden">
+      <div class="flex flex-col items-center justify-center py-32 text-center">
+        <p class="font-fraunces text-dark text-3xl tracking-[-0.02em] mb-3">NimCore</p>
+        <p class="font-inter text-dark/40 text-base max-w-[400px]">Touchpoints and journey templates for NimCore are coming soon.</p>
+      </div>
+    </div>
+
+    <!-- WeightWise content -->
+    <div id="panel-weightwise">
+
     <!-- Tab: Emails -->
     <div id="panel-emails">
 
@@ -454,6 +465,8 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
       </div>
     </div>
 
+    </div><!-- /panel-weightwise -->
+
   </div>
 
   <!-- Fullscreen Preview Overlay -->
@@ -492,6 +505,22 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
           ? 'px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark text-cream'
           : 'px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark';
       });
+      // Show/hide product content
+      const ww = document.getElementById('panel-weightwise');
+      const nc = document.getElementById('panel-nimcore');
+      const tabRow = document.querySelectorAll('#cx-tabs button[id^="tab-"]');
+      const sep = document.querySelector('#cx-tabs .w-px');
+      if (active === 'nimcore') {
+        ww.classList.add('hidden');
+        nc.classList.remove('hidden');
+        tabRow.forEach(b => b.classList.add('opacity-30', 'pointer-events-none'));
+        if (sep) sep.classList.add('opacity-30');
+      } else {
+        ww.classList.remove('hidden');
+        nc.classList.add('hidden');
+        tabRow.forEach(b => b.classList.remove('opacity-30', 'pointer-events-none'));
+        if (sep) sep.classList.remove('opacity-30');
+      }
     }
 
     function switchTab(active) {
