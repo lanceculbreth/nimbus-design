@@ -23,12 +23,23 @@ import Layout from '../layouts/Layout.astro';
     <section id="logos" class="mb-20">
       <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Logo</h2>
 
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Full Logo</h3>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div class="bg-dark rounded-3xl p-12 flex items-center justify-center min-h-[200px]">
-          <span class="font-fraunces text-cream text-3xl tracking-[-0.02em]">Nimbus</span>
+          <img src="/logos/logo-white.png" alt="Nimbus logo white" class="h-[36px]" />
         </div>
         <div class="bg-cream border border-dark/10 rounded-3xl p-12 flex items-center justify-center min-h-[200px]">
-          <span class="font-fraunces text-dark text-3xl tracking-[-0.02em]">Nimbus</span>
+          <img src="/logos/logo-black.png" alt="Nimbus logo black" class="h-[36px]" />
+        </div>
+      </div>
+
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Symbol Mark</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-dark rounded-3xl p-12 flex items-center justify-center min-h-[160px]">
+          <img src="/logos/symbol-white.png" alt="Nimbus symbol white" class="h-[48px]" />
+        </div>
+        <div class="bg-cream border border-dark/10 rounded-3xl p-12 flex items-center justify-center min-h-[160px]">
+          <img src="/logos/symbol-black.png" alt="Nimbus symbol black" class="h-[48px]" />
         </div>
       </div>
 
@@ -44,6 +55,18 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
+    <!-- Accreditation -->
+    <section id="accreditation" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Accreditation Badges</h2>
+      <div class="bg-dark rounded-3xl p-8">
+        <div class="flex items-center gap-8">
+          <img src="/images/6862a180b3f36e42a9c2a8bd_logo_f1.svg" alt="Accreditation badge" class="h-[52px]" />
+          <img src="/images/6862a180b3f36e42a9c2a8be_logo_f2.svg" alt="Accreditation logo" class="h-[32px]" />
+        </div>
+        <p class="font-inter text-cream/30 text-xs mt-4">Used in the footer and trust sections. Always on dark backgrounds.</p>
+      </div>
+    </section>
+
     <!-- Photography -->
     <section id="photography" class="mb-20">
       <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Photography Direction</h2>
@@ -55,35 +78,46 @@ import Layout from '../layouts/Layout.astro';
         </p>
       </div>
 
-      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Subject Matter by Context</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-        <div class="border border-dark/10 rounded-2xl p-6">
-          <p class="font-inter text-sm font-semibold mb-1">Hero / Brand</p>
-          <p class="font-inter text-dark/50 text-sm">Confident individuals in natural settings, warm light. Aspirational but authentic.</p>
-        </div>
-        <div class="border border-dark/10 rounded-2xl p-6">
-          <p class="font-inter text-sm font-semibold mb-1">Clinical / Care</p>
-          <p class="font-inter text-dark/50 text-sm">Provider-patient interactions, telehealth screens, personalized attention.</p>
-        </div>
-        <div class="border border-dark/10 rounded-2xl p-6">
-          <p class="font-inter text-sm font-semibold mb-1">Nutrition / Food</p>
-          <p class="font-inter text-dark/50 text-sm">Overhead flat-lay meal prep, fresh whole ingredients, vibrant and appetizing.</p>
-        </div>
-        <div class="border border-dark/10 rounded-2xl p-6">
-          <p class="font-inter text-sm font-semibold mb-1">Product / Platform</p>
-          <p class="font-inter text-dark/50 text-sm">Device mockups in lifestyle settings. Dashboards shown on screens in real environments.</p>
-        </div>
-        <div class="border border-dark/10 rounded-2xl p-6">
-          <p class="font-inter text-sm font-semibold mb-1">Workplace / Teams</p>
-          <p class="font-inter text-dark/50 text-sm">Modern offices, diverse professionals, HR and benefits context, natural light.</p>
-        </div>
-        <div class="border border-dark/10 rounded-2xl p-6">
-          <p class="font-inter text-sm font-semibold mb-1">Outcomes / Results</p>
-          <p class="font-inter text-dark/50 text-sm">Active lifestyle moments, people feeling good. Not posed gym shots.</p>
-        </div>
+      <!-- Hero / Brand Photos -->
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Hero / Brand</h3>
+      <p class="font-inter text-dark/50 text-sm mb-4">Confident individuals in natural settings, warm light. Aspirational but authentic.</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+        <img src="/images/Beyond the Scale.jpg" alt="Hero photo" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+        <img src="/images/Focus.jpg" alt="Focus" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+        <img src="/images/Starting Fresh.jpg" alt="Starting Fresh" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+        <img src="/images/Your Body Your Pace.jpg" alt="Your Body Your Pace" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+        <img src="/images/Optimized.jpg" alt="Optimized" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+        <img src="/images/The Reset 2.jpg" alt="The Reset" class="w-full aspect-[4/3] object-cover rounded-2xl" />
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Clinical / Care Photos -->
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Clinical / Care</h3>
+      <p class="font-inter text-dark/50 text-sm mb-4">Provider-patient interactions, telehealth screens, personalized attention.</p>
+      <div class="grid grid-cols-2 gap-4 mb-10">
+        <img src="/images/Start Treatment.jpg" alt="Start Treatment" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+        <img src="/images/Integrated Pharmacy and Protocols.jpg" alt="Pharmacy" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+      </div>
+
+      <!-- Nutrition / Food -->
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Nutrition / Food</h3>
+      <p class="font-inter text-dark/50 text-sm mb-4">Overhead flat-lay meal prep, fresh whole ingredients, vibrant and appetizing.</p>
+      <div class="grid grid-cols-2 gap-4 mb-10">
+        <img src="/images/snap food hero.png" alt="Snap Kitchen food" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+        <img src="/images/food-hero.jpg" alt="Food hero" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+      </div>
+
+      <!-- Product / Platform -->
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Product / Platform</h3>
+      <p class="font-inter text-dark/50 text-sm mb-4">Device mockups in lifestyle settings. Dashboards shown on screens in real environments.</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        <img src="/images/platform-1.png" alt="Platform 1" class="w-full aspect-[3/4] object-cover rounded-2xl bg-dark" />
+        <img src="/images/platform-2.png" alt="Platform 2" class="w-full aspect-[3/4] object-cover rounded-2xl bg-dark" />
+        <img src="/images/platform-3.png" alt="Platform 3" class="w-full aspect-[3/4] object-cover rounded-2xl bg-dark" />
+        <img src="/images/platform-4.png" alt="Platform 4" class="w-full aspect-[3/4] object-cover rounded-2xl bg-dark" />
+      </div>
+
+      <!-- Do / Don't -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
         <div class="bg-teal/10 rounded-3xl p-8">
           <h3 class="font-inter text-sm font-semibold text-teal mb-4">Do</h3>
           <ul class="space-y-2 font-inter text-sm text-dark/60">
@@ -105,21 +139,91 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
 
-    <!-- Color in Photography -->
-    <section id="photo-color" class="mb-20">
-      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Color in Photography</h2>
+    <!-- Headshots -->
+    <section id="headshots" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Team Headshots</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+        <div>
+          <img src="/headshots/Dr. Jobby John.png" alt="Dr. Jobby John" class="w-full aspect-square object-cover rounded-2xl mb-3" />
+          <p class="font-inter text-sm font-medium">Dr. Jobby John</p>
+          <p class="font-inter text-dark/40 text-xs">Founder & CEO</p>
+        </div>
+        <div>
+          <img src="/headshots/Dr. Richard Harris.png" alt="Dr. Richard Harris" class="w-full aspect-square object-cover rounded-2xl mb-3" />
+          <p class="font-inter text-sm font-medium">Dr. Richard Harris</p>
+          <p class="font-inter text-dark/40 text-xs">Chief Medical Officer</p>
+        </div>
+        <div>
+          <img src="/headshots/Dr. Tracy Neal.png" alt="Dr. Tracy Neal" class="w-full aspect-square object-cover rounded-2xl mb-3" />
+          <p class="font-inter text-sm font-medium">Dr. Tracy Neal</p>
+          <p class="font-inter text-dark/40 text-xs">Director, Women's Health</p>
+        </div>
+        <div>
+          <img src="/headshots/Dr. John Thoppil.png" alt="Dr. John Thoppil" class="w-full aspect-square object-cover rounded-2xl mb-3" />
+          <p class="font-inter text-sm font-medium">Dr. John Thoppil</p>
+          <p class="font-inter text-dark/40 text-xs">Board-Certified OB-GYN</p>
+        </div>
+      </div>
       <div class="bg-warm-gray rounded-3xl p-8">
+        <h3 class="font-inter text-sm font-semibold mb-4">Headshot Rules</h3>
         <ul class="space-y-2 font-inter text-sm text-dark/60">
-          <li>Warm natural lighting preferred</li>
-          <li>Earth tones that complement the cream and terracotta palette</li>
-          <li>Avoid harsh whites, cool blues, or sterile medical aesthetics</li>
+          <li>Consistent warm lighting across all team photos</li>
+          <li>Neutral or dark background preferred</li>
+          <li>Professional but approachable expression</li>
+          <li>Square crop, 16px border-radius (rounded-2xl)</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- Product Vials -->
+    <section id="product" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Product Photography</h2>
+      <div class="bg-dark rounded-3xl p-8 mb-6">
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
+          <img src="/vials/vial1.png" alt="Vial 1" class="w-full aspect-[2/3] object-contain" />
+          <img src="/vials/NB_vial2.png" alt="Vial 2" class="w-full aspect-[2/3] object-contain" />
+          <img src="/vials/NB_Vial4.png" alt="Vial 4" class="w-full aspect-[2/3] object-contain" />
+          <img src="/vials/NB_Vial6.png" alt="Vial 6" class="w-full aspect-[2/3] object-contain" />
+          <img src="/vials/Nimbus_GLP1_Vile.png" alt="GLP-1 Vial" class="w-full aspect-[2/3] object-contain" />
+          <img src="/vials/NB_Vial9.jpg" alt="Vial 9" class="w-full aspect-[2/3] object-contain" />
+        </div>
+      </div>
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <h3 class="font-inter text-sm font-semibold mb-4">Product Photo Rules</h3>
+        <ul class="space-y-2 font-inter text-sm text-dark/60">
+          <li>Always shown on dark backgrounds for contrast</li>
+          <li>Clean, isolated product shots — no busy backgrounds</li>
+          <li>Consistent lighting and angle across product line</li>
+          <li>Transparent PNG format preferred for flexibility</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Partner Logos -->
+    <section id="partners" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Partner Logos</h2>
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <div class="flex items-center gap-8 mb-4">
+          <img src="/images/snap-kitchen-logo.png" alt="Snap Kitchen" class="h-[32px]" />
+        </div>
+        <p class="font-inter text-dark/50 text-sm">Partner logos used in integration sections. Maintain original proportions and minimum clear space.</p>
       </div>
     </section>
 
     <!-- Video Direction -->
     <section id="video">
       <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Video</h2>
+
+      <div class="bg-dark rounded-3xl overflow-hidden mb-6">
+        <div class="relative">
+          <video autoplay muted loop playsinline class="w-full aspect-video object-cover">
+            <source src="/videos/weight-hero.mp4" type="video/mp4" />
+          </video>
+          <div class="absolute inset-0 bg-dark/50"></div>
+          <div class="absolute bottom-4 left-4 font-inter text-cream/50 text-xs">Hero background video — 50% dark overlay</div>
+        </div>
+      </div>
+
       <div class="space-y-6">
         <div class="bg-warm-gray rounded-3xl p-8">
           <h3 class="font-inter text-sm font-semibold mb-4">Hero Background Videos</h3>
