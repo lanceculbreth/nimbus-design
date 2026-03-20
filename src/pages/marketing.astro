@@ -2,16 +2,376 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Marketing" active="marketing">
+<Layout title="Marketing" active="marketing" sections={[
+  { label: 'Overview', id: 'overview' },
+  { label: 'What We Offer', id: 'offer' },
+  { label: 'Who We Serve', id: 'serve' },
+  { label: 'What\'s Different', id: 'different' },
+  { label: 'Brand Evolution', id: 'evolution' },
+  { label: 'Brand Promise', id: 'promise' },
+  { label: 'Brand Anthem', id: 'anthem' },
+  { label: 'The Flywheel', id: 'flywheel' },
+]}>
   <div class="max-w-[900px] mx-auto px-10 py-16">
+
     <!-- Page Header -->
     <div class="mb-16">
       <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
         Marketing
       </h1>
       <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
-        Marketing guidelines, campaign assets, messaging frameworks, and channel-specific rules for Nimbus Healthcare.
+        Brand guidelines, messaging frameworks, and channel-specific rules for Nimbus Healthcare.
       </p>
     </div>
+
+    <!-- What is Nimbus -->
+    <section id="overview" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">What is Nimbus Healthcare?</h2>
+      <div class="bg-dark rounded-3xl p-8 mb-6">
+        <p class="font-inter text-cream text-lg leading-[1.7]">
+          Nimbus Healthcare is a metabolic health platform that provides physician-led, personalized treatment for weight management and hormone health.
+        </p>
+      </div>
+    </section>
+
+    <!-- What We Offer -->
+    <section id="offer" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">What We Offer</h2>
+
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Core Treatments</h3>
+      <div class="space-y-4 mb-10">
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <p class="font-inter text-sm font-semibold text-dark mb-1">WeightWise</p>
+          <p class="font-inter text-sm text-dark/60 leading-[1.6]">Our weight management program featuring GLP-1 medications, including our proprietary compounded formulations CarniSema® (semaglutide) and CarniTide® (tirzepatide).</p>
+        </div>
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <p class="font-inter text-sm font-semibold text-dark mb-1">Hormone Optimization</p>
+          <p class="font-inter text-sm text-dark/60 leading-[1.6]">Addressing metabolic health holistically.</p>
+        </div>
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <p class="font-inter text-sm font-semibold text-dark mb-1">Combination Therapy</p>
+          <p class="font-inter text-sm text-dark/60 leading-[1.6]">Weight loss and hormone care together when clinically appropriate.</p>
+        </div>
+      </div>
+
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">How We Deliver Care</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <p class="font-inter text-sm font-semibold text-teal mb-1">Telemedicine-first</p>
+          <p class="font-inter text-sm text-dark/60 leading-[1.6]">Patients connect with licensed physicians through our platform.</p>
+        </div>
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <p class="font-inter text-sm font-semibold text-teal mb-1">IntelliHealth™</p>
+          <p class="font-inter text-sm text-dark/60 leading-[1.6]">Clinical intelligence that powers personalized treatment decisions based on individual health data.</p>
+        </div>
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <p class="font-inter text-sm font-semibold text-teal mb-1">Aura™ AI Coach</p>
+          <p class="font-inter text-sm text-dark/60 leading-[1.6]">AI-guided support providing ongoing guidance between clinical touchpoints.</p>
+        </div>
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <p class="font-inter text-sm font-semibold text-teal mb-1">Direct Fulfillment</p>
+          <p class="font-inter text-sm text-dark/60 leading-[1.6]">Medications ship directly to patients through our 503A NABP-accredited partner pharmacy, Lake Hills Pharmacy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who We Serve -->
+    <section id="serve" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-4">Who We Serve</h2>
+      <p class="font-inter text-dark/50 text-sm mb-8">We make metabolic health care accessible through three distinct channels.</p>
+
+      <div class="space-y-4">
+        <div class="bg-dark rounded-2xl p-6 flex gap-5">
+          <div class="w-8 h-8 rounded-full bg-teal/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span class="font-inter text-teal text-sm font-semibold">1</span>
+          </div>
+          <div>
+            <p class="font-inter text-cream text-sm font-semibold mb-1">Nimbus Healthcare <span class="text-cream/40 font-normal">(DTC)</span></p>
+            <p class="font-inter text-cream/60 text-sm leading-[1.6]">Direct access for individuals seeking to take control of their metabolic health.</p>
+          </div>
+        </div>
+        <div class="bg-dark rounded-2xl p-6 flex gap-5">
+          <div class="w-8 h-8 rounded-full bg-teal/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span class="font-inter text-teal text-sm font-semibold">2</span>
+          </div>
+          <div>
+            <p class="font-inter text-cream text-sm font-semibold mb-1">Nimbus Providers <span class="text-cream/40 font-normal">(B2B)</span></p>
+            <p class="font-inter text-cream/60 text-sm leading-[1.6]">Solutions that clinicians can prescribe and recommend to their patients.</p>
+          </div>
+        </div>
+        <div class="bg-dark rounded-2xl p-6 flex gap-5">
+          <div class="w-8 h-8 rounded-full bg-teal/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span class="font-inter text-teal text-sm font-semibold">3</span>
+          </div>
+          <div>
+            <p class="font-inter text-cream text-sm font-semibold mb-1">Nimbus Teams <span class="text-cream/40 font-normal">(B2B2C)</span></p>
+            <p class="font-inter text-cream/60 text-sm leading-[1.6]">Flat-rate, clinician-guided programs designed for employer health benefits.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What Makes Us Different -->
+    <section id="different" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">What Makes Us Different</h2>
+      <div class="space-y-3">
+        {[
+          { label: 'Medically supervised, not vanity prescriptions', body: 'Every treatment plan is physician-led and clinically appropriate.' },
+          { label: 'Proprietary compounded formulations', body: 'Access to medications that may be more affordable or flexible than branded alternatives.' },
+          { label: 'Technology-enabled, human-centered', body: 'Clinical intelligence and AI support that enhances—not replaces—physician care.' },
+          { label: 'One integrated platform', body: 'Clinical, pharmacy, and fulfillment infrastructure that works seamlessly across all three channels.' },
+        ].map(item => (
+          <div class="bg-warm-gray rounded-2xl p-6">
+            <p class="font-inter text-sm font-semibold text-dark mb-1">{item.label}</p>
+            <p class="font-inter text-sm text-dark/60 leading-[1.6]">{item.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="bg-dark rounded-3xl p-8 mt-8">
+        <p class="font-inter text-cream/70 text-sm leading-[1.7]"><span class="text-cream font-semibold">In short:</span> Nimbus is the metabolic health platform that combines clinical rigor, technology, and accessibility—helping people feel aligned in body and mind through physician-led, personalized care.</p>
+      </div>
+    </section>
+
+    <!-- Brand Evolution -->
+    <section id="evolution" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Where We Were → Where We're Going</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold text-dark/40 uppercase tracking-[0.1em] mb-5">Where We Were</h3>
+          <ul class="space-y-3 font-inter text-sm text-dark/60 leading-[1.6]">
+            <li>Empowerment, Integrity, Trailblazing as core values</li>
+            <li>"Personalized medicine through advanced compounding and AI" as our primary message</li>
+            <li>A clinical, capability-focused tone that spoke to innovation but not how people feel</li>
+            <li>Three separate brand identities (DTC, NovaMed, Lake Hills Pharmacy) competing for mindshare</li>
+          </ul>
+          <div class="mt-6 pt-6 border-t border-dark/10">
+            <p class="font-inter text-xs text-dark/40 leading-[1.6]">The gap: We were positioning ourselves as a healthcare technology company first, and a human experience second.</p>
+          </div>
+        </div>
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold text-cream/40 uppercase tracking-[0.1em] mb-5">Where We're Going</h3>
+          <ul class="space-y-3 font-inter text-sm text-cream/70 leading-[1.6]">
+            <li>Health isn't about optimization. It's about rhythm.</li>
+            <li>We reject hyper-optimization, biohacking, and endless self-improvement</li>
+            <li>We stand for confidence, joy, and momentum</li>
+            <li>One brand (Nimbus Healthcare) with three distinct doors</li>
+          </ul>
+          <div class="mt-6 pt-6 border-t border-cream/10">
+            <p class="font-inter text-xs text-cream/40 leading-[1.6]">Every marketing dollar builds Nimbus across all three doors simultaneously.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <h3 class="font-inter text-sm font-semibold mb-6">The Shift</h3>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <span class="font-inter text-xs text-dark/40 font-semibold uppercase tracking-[0.1em] w-14 flex-shrink-0 pt-0.5">From</span>
+            <span class="font-inter text-sm text-dark/60">"Personalized medicine powered by AI"</span>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="font-inter text-xs text-teal font-semibold uppercase tracking-[0.1em] w-14 flex-shrink-0 pt-0.5">To</span>
+            <span class="font-inter text-sm text-dark font-medium">"Feel aligned in body and mind"</span>
+          </div>
+          <div class="h-px bg-dark/8 my-2"></div>
+          <div class="flex items-start gap-4">
+            <span class="font-inter text-xs text-dark/40 font-semibold uppercase tracking-[0.1em] w-14 flex-shrink-0 pt-0.5">From</span>
+            <span class="font-inter text-sm text-dark/60">Three brands competing for attention</span>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="font-inter text-xs text-teal font-semibold uppercase tracking-[0.1em] w-14 flex-shrink-0 pt-0.5">To</span>
+            <span class="font-inter text-sm text-dark font-medium">One brand creating a compounding halo effect</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Promise -->
+    <section id="promise" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">What Nimbus Stands For</h2>
+
+      <!-- The Promise -->
+      <div class="bg-dark rounded-3xl p-10 mb-6 text-center">
+        <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-[0.15em] mb-4">The Promise</p>
+        <h3 class="font-fraunces text-cream text-[clamp(28px,4vw,48px)] leading-[1.1] tracking-[-0.02em] mb-4">Find Your Groove</h3>
+        <p class="font-inter text-cream/60 text-base leading-[1.7] max-w-[520px] mx-auto">Nimbus helps people feel aligned in body and mind—not to become someone else, but to feel like themselves again, only steadier, lighter, and more confident.</p>
+      </div>
+
+      <!-- Philosophy -->
+      <div class="bg-warm-gray rounded-3xl p-8 mb-6">
+        <p class="font-inter text-dark/40 text-xs font-semibold uppercase tracking-[0.15em] mb-4">The Philosophy</p>
+        <p class="font-fraunces text-dark text-xl leading-[1.3] tracking-[-0.01em] mb-4">Health isn't about optimization. It's about rhythm.</p>
+        <div class="space-y-3 font-inter text-sm text-dark/60 leading-[1.7]">
+          <p>We reject the narrative of hyper-optimization, biohacking, and endless self-improvement. Instead, we believe in something simpler—and more human.</p>
+          <p>Finding your groove is the feeling when your body and mind are aligned, supported, and moving forward together. You feel steady. Confident. Light.</p>
+          <p>We don't stand for hustle or transformation. <strong class="text-dark">We stand for confidence, joy, and momentum.</strong></p>
+        </div>
+      </div>
+
+      <!-- How We Show Up -->
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">How We Show Up</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        {[
+          { role: 'Ally', desc: "We're on your side.", detail: "Non-judgmental, empathetic, advocating for the member — especially when life gets busy, messy, or loud. Shows up when people feel behind, unsure, or out of sync — without shame or comparison." },
+          { role: 'Guide', desc: 'We help you navigate.', detail: "Doctor-led clarity, steady direction, no overwhelm — so care fits into real schedules, real energy, real life. Not a drill sergeant. More like someone who knows the city and helps you find your way." },
+          { role: 'Optimizer', desc: 'We make things work better over time.', detail: "Metabolic care as a system — progress without obsession, sustainability over spikes. Built for people who want to keep living fully — not pause life to fix themselves." },
+          { role: 'Curator', desc: 'We thoughtfully shape what surrounds you.', detail: "Care, tools, experiences, and moments are intentionally chosen — not overwhelming, not random. Taste without trend-chasing. Choice without pressure. Quality over quantity. This is where Austin Grooves really lives." },
+          { role: 'Host', desc: 'We create the conditions for you to live well.', detail: "Nimbus sets the environment; members live their life fully — no performance required. You feel welcome. You feel at ease. You don't feel watched." },
+        ].map(item => (
+          <div class="bg-warm-gray rounded-2xl p-6">
+            <p class="font-inter text-sm font-semibold text-teal mb-1">{item.role}</p>
+            <p class="font-inter text-sm font-medium text-dark mb-2">{item.desc}</p>
+            <p class="font-inter text-xs text-dark/50 leading-[1.6]">{item.detail}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- What This Isn't -->
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">What This Isn't</h3>
+      <div class="space-y-3 mb-8">
+        {[
+          { label: 'Not Ozempic as a lifestyle drug', body: 'We provide medically supervised metabolic health care, not aesthetic quick fixes or vanity prescriptions.' },
+          { label: 'Not wellness aesthetics or thinness as virtue', body: "We don't equate health with appearance, size, or culturally defined ideal bodies. Groove is about how you feel, not how you look." },
+          { label: 'Not a quick fix or transformation promise', body: "We don't sell 30-day challenges, dramatic before/afters, or new you narratives. We help people feel steady and aligned—which is a process, not an event." },
+          { label: 'Not optimization or biohacking culture', body: 'We reject the language and mindset of self-improvement as endless performance enhancement. Finding your groove is about alignment, not achievement.' },
+        ].map(item => (
+          <div class="bg-terracotta/8 border border-terracotta/15 rounded-2xl p-6">
+            <p class="font-inter text-sm font-semibold text-terracotta mb-1">{item.label}</p>
+            <p class="font-inter text-sm text-dark/60 leading-[1.6]">{item.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Brand Language Hierarchy -->
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Brand Language Hierarchy</h3>
+      <div class="bg-dark rounded-3xl overflow-hidden mb-6">
+        <div class="grid grid-cols-3 border-b border-cream/10 px-6 py-3">
+          <span class="font-inter text-cream/30 text-xs font-semibold uppercase tracking-[0.1em]">Level</span>
+          <span class="font-inter text-cream/30 text-xs font-semibold uppercase tracking-[0.1em]">Expression</span>
+          <span class="font-inter text-cream/30 text-xs font-semibold uppercase tracking-[0.1em]">Usage</span>
+        </div>
+        {[
+          { level: 'Brand Promise', expr: 'Find Your Groove', usage: 'Core positioning, brand identity, master messaging' },
+          { level: 'Campaign Expression', expr: 'Less Noise. More Rhythm.', usage: 'Paid media, brand campaigns, manifesto content' },
+          { level: 'Cultural Anthem', expr: 'Austin Grooves', usage: 'Cultural entry point, audio branding, local-to-national strategy' },
+        ].map((row, i) => (
+          <div class={`grid grid-cols-3 px-6 py-4 gap-4 ${i < 2 ? 'border-b border-cream/8' : ''}`}>
+            <span class="font-inter text-cream/50 text-xs leading-[1.5]">{row.level}</span>
+            <span class="font-inter text-cream text-xs font-medium leading-[1.5]">{row.expr}</span>
+            <span class="font-inter text-cream/50 text-xs leading-[1.5]">{row.usage}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Brand Anthem -->
+    <section id="anthem" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Our Brand Anthem: Austin Grooves</h2>
+
+      <div class="bg-dark rounded-3xl p-10 mb-6">
+        <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-[0.15em] mb-4">What It Is</p>
+        <p class="font-inter text-cream text-base leading-[1.7] mb-4">Austin Grooves is Nimbus Healthcare's original brand anthem—a song created to express the Find Your Groove promise through music and movement.</p>
+        <p class="font-inter text-cream/60 text-sm leading-[1.7]">It reflects the rhythm, confidence, and joy Nimbus stands for. While inspired by Austin, it is intentionally universal, designed to resonate wherever people are trying to feel at home in their bodies again.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <p class="font-inter text-dark/40 text-xs font-semibold uppercase tracking-[0.1em] mb-4">Why a Song</p>
+          <p class="font-inter text-sm font-semibold text-dark mb-3">Music moves culture faster than ads.</p>
+          <ul class="space-y-2 font-inter text-sm text-dark/60 leading-[1.6]">
+            <li>Creates emotional connection before rational consideration</li>
+            <li>Travels through earned and organic channels (UGC, playlists, creators)</li>
+            <li>Becomes a cultural signal, not a brand interruption</li>
+            <li>Allows people to discover Nimbus through feeling, not messaging</li>
+          </ul>
+        </div>
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <p class="font-inter text-dark/40 text-xs font-semibold uppercase tracking-[0.1em] mb-4">Why Austin First</p>
+          <p class="font-inter text-sm text-dark/60 leading-[1.7] mb-3">Austin is where Nimbus was born. It's our hometown, testing ground, and cultural launch pad. Movement is core to Austin's identity.</p>
+          <p class="font-inter text-sm text-dark/60 leading-[1.7]">"Keep Austin Weird" captured a moment. <strong class="text-dark">Austin Grooves reflects who the city is now.</strong></p>
+        </div>
+      </div>
+
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <p class="font-inter text-dark/40 text-xs font-semibold uppercase tracking-[0.1em] mb-4">The Strategy</p>
+        <p class="font-inter text-sm font-medium text-dark mb-4">This is not a song-as-an-ad. It's a brand anthem used to express a broader promise.</p>
+        <p class="font-inter text-sm text-dark/60 mb-4">Austin Grooves will show up through:</p>
+        <ul class="space-y-2 font-inter text-sm text-dark/60 leading-[1.6] mb-6">
+          <li>Local creators and influencers</li>
+          <li>Restaurants, gyms, and everyday spaces</li>
+          <li>Social platforms through paid and earned media (TikTok, Instagram, YouTube)</li>
+          <li>Streaming platforms (Spotify, Apple Music)</li>
+        </ul>
+        <div class="bg-dark rounded-2xl p-6">
+          <p class="font-inter text-cream/70 text-sm leading-[1.7]">The goal: When people hear the song, we want them to feel something first. And then ask: <strong class="text-cream">"Who made this?"</strong> The answer is always: Nimbus.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Flywheel -->
+    <section id="flywheel" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-4">The Nimbus Flywheel: Three Doors, One Brand</h2>
+      <p class="font-inter text-dark/50 text-sm leading-[1.6] mb-10 max-w-[560px]">Before this change, our distribution efforts were split. Now, everything we do builds Nimbus as the brand people trust for metabolic health.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+        <div class="bg-dark rounded-3xl p-8">
+          <p class="font-inter text-teal text-xs font-semibold uppercase tracking-[0.1em] mb-3">Door 1</p>
+          <p class="font-inter text-cream font-semibold mb-2">Nimbus Healthcare</p>
+          <p class="font-inter text-cream/40 text-xs mb-4">Direct-to-Consumer</p>
+          <p class="font-inter text-cream/60 text-sm leading-[1.6]">Direct access for individuals who want to take control of their metabolic health on their terms.</p>
+        </div>
+        <div class="bg-dark rounded-3xl p-8">
+          <p class="font-inter text-teal text-xs font-semibold uppercase tracking-[0.1em] mb-3">Door 2</p>
+          <p class="font-inter text-cream font-semibold mb-2">Nimbus Providers</p>
+          <p class="font-inter text-cream/40 text-xs mb-4">Clinician / B2B</p>
+          <p class="font-inter text-cream/60 text-sm leading-[1.6]">Metabolic health solutions that clinicians can prescribe and recommend to their patients.</p>
+        </div>
+        <div class="bg-dark rounded-3xl p-8">
+          <p class="font-inter text-teal text-xs font-semibold uppercase tracking-[0.1em] mb-3">Door 3</p>
+          <p class="font-inter text-cream font-semibold mb-2">Nimbus Teams</p>
+          <p class="font-inter text-cream/40 text-xs mb-4">Employer / B2B2C</p>
+          <p class="font-inter text-cream/60 text-sm leading-[1.6]">Flat-rate, clinician-guided metabolic health programs designed for employer health benefits.</p>
+        </div>
+      </div>
+
+      <div class="bg-warm-gray rounded-3xl p-8 mb-6">
+        <p class="font-inter text-sm font-semibold text-dark mb-6">How the Flywheel Works</p>
+        <div class="bg-dark rounded-2xl p-6 mb-6">
+          <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-[0.1em] mb-3">Example: Billboard on Lamar</p>
+          <p class="font-fraunces text-cream text-lg leading-[1.3] mb-1">"Find Your Groove with Nimbus Healthcare"</p>
+          <p class="font-inter text-cream/50 text-sm">Less Noise. More Rhythm.</p>
+        </div>
+        <div class="space-y-4">
+          <div class="flex gap-4">
+            <span class="font-inter text-xs font-semibold text-teal uppercase tracking-[0.08em] w-24 flex-shrink-0 pt-0.5">Consumers</span>
+            <p class="font-inter text-sm text-dark/60 leading-[1.6]">Speaks to taking control of their health directly, finding confidence and momentum in their bodies again.</p>
+          </div>
+          <div class="flex gap-4">
+            <span class="font-inter text-xs font-semibold text-teal uppercase tracking-[0.08em] w-24 flex-shrink-0 pt-0.5">Providers</span>
+            <p class="font-inter text-sm text-dark/60 leading-[1.6]">Positions metabolic health as part of a holistic rhythm — not just weight loss, but systemic wellness their patients are looking for.</p>
+          </div>
+          <div class="flex gap-4">
+            <span class="font-inter text-xs font-semibold text-teal uppercase tracking-[0.08em] w-24 flex-shrink-0 pt-0.5">Employers</span>
+            <p class="font-inter text-sm text-dark/60 leading-[1.6]">Signals a modern, human-centered approach to benefits that employees actually want to use.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {[
+          { label: 'Lowers CAC', body: 'Cultural presence creates familiarity before patients enter the funnel' },
+          { label: 'Increases Trust', body: 'Brand warmth replaces transactional healthcare messaging' },
+          { label: 'Improves Retention', body: 'Patients who connect to the brand promise stay longer' },
+          { label: 'Compounds Efficiency', body: 'Every marketing dollar builds Nimbus across all three doors' },
+        ].map(item => (
+          <div class="bg-teal/10 rounded-2xl p-5">
+            <p class="font-inter text-xs font-semibold text-teal mb-2">{item.label}</p>
+            <p class="font-inter text-xs text-dark/60 leading-[1.5]">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
   </div>
 </Layout>
