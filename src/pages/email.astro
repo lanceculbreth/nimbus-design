@@ -169,9 +169,282 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
 
     <!-- Tab: CX Journey -->
     <div id="panel-journey" class="hidden">
-      <div class="flex flex-col items-center justify-center py-24 text-center">
-        <p class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-3">CX Journey</p>
-        <p class="font-inter text-dark/40 text-base max-w-[400px]">End-to-end patient journey map and touchpoint sequencing coming soon.</p>
+
+      <p class="font-inter text-dark/40 text-sm mb-10">Every touchpoint a WeightWise patient encounters — from first click to long-term care. Click any card to preview.</p>
+
+      <!-- Journey phases -->
+      <div class="space-y-2">
+
+        <!-- Phase: Pre-signup -->
+        <div class="journey-phase">
+          <div class="flex gap-3 mb-4 items-center">
+            <div class="w-2 h-2 rounded-full bg-dark/20 mt-0.5 flex-shrink-0"></div>
+            <div>
+              <p class="font-inter text-xs font-semibold text-dark/40 uppercase tracking-[0.12em]">Pre-Signup</p>
+              <p class="font-inter text-xs text-dark/30 mt-0.5">Prospect hasn't completed registration or payment</p>
+            </div>
+          </div>
+          <div class="ml-5 flex flex-wrap gap-2">
+            {[
+              { name: 'Incomplete Registration 1', slug: 'incomplete-registration-1' },
+              { name: 'Incomplete Registration 2', slug: 'incomplete-registration-2' },
+              { name: 'Incomplete Payment 1', slug: 'incomplete-payment-1' },
+              { name: 'Incomplete Payment 2', slug: 'incomplete-payment-2' },
+              { name: 'Incomplete Payment 3', slug: 'incomplete-payment-3' },
+              { name: 'Recommendation Reminder 1', slug: 'recommendation-reminder-1' },
+              { name: 'Recommendation Reminder 2', slug: 'recommendation-reminder-2' },
+              { name: 'Recommendation Reminder 3', slug: 'recommendation-reminder-3' },
+            ].map((t, i) => (
+              <div class="flex items-center gap-1.5">
+                <button
+                  onclick={`openPreview('/emails/${t.slug}.html', '${t.name}')`}
+                  class="group flex items-center gap-2.5 bg-white border border-dark/8 rounded-xl px-3.5 py-2.5 hover:border-teal/30 hover:shadow-sm transition-all text-left"
+                >
+                  <div class="w-8 h-10 rounded-md overflow-hidden bg-warm-gray/40 flex-shrink-0 pointer-events-none">
+                    <iframe src={`/emails/${t.slug}.html`} class="w-[600px] h-[800px] border-0 origin-top-left pointer-events-none" style="transform:scale(0.053);transform-origin:top left;" tabindex="-1" loading="lazy"></iframe>
+                  </div>
+                  <div>
+                    <p class="font-inter text-dark text-xs font-semibold leading-snug group-hover:text-teal transition-colors">{t.name}</p>
+                    <span class="inline-block mt-0.5 text-[10px] font-medium text-dark/30 bg-dark/5 px-1.5 py-0.5 rounded-full">Email</span>
+                  </div>
+                </button>
+                {i < 7 && <span class="text-dark/20 text-xs">→</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="ml-5 pl-px border-l-2 border-dashed border-dark/10 h-6"></div>
+
+        <!-- Phase: Onboarding -->
+        <div class="journey-phase">
+          <div class="flex gap-3 mb-4 items-center">
+            <div class="w-2 h-2 rounded-full bg-teal flex-shrink-0"></div>
+            <div>
+              <p class="font-inter text-xs font-semibold text-teal uppercase tracking-[0.12em]">Onboarding</p>
+              <p class="font-inter text-xs text-dark/30 mt-0.5">Patient signs up, gets approved, and receives first shipment</p>
+            </div>
+          </div>
+          <div class="ml-5 flex flex-wrap gap-2">
+            {[
+              { name: 'Email Verification', slug: 'email-verification' },
+              { name: 'Welcome', slug: 'welcome' },
+              { name: 'Payment Confirmed', slug: 'payment-confirmed' },
+              { name: 'Prescription Confirmed', slug: 'prescription-confirmed' },
+              { name: 'Treatment Shipped', slug: 'treatment-shipped' },
+              { name: 'Treatment Delivered', slug: 'treatment-delivered' },
+            ].map((t, i) => (
+              <div class="flex items-center gap-1.5">
+                <button
+                  onclick={`openPreview('/emails/${t.slug}.html', '${t.name}')`}
+                  class="group flex items-center gap-2.5 bg-white border border-dark/8 rounded-xl px-3.5 py-2.5 hover:border-teal/30 hover:shadow-sm transition-all text-left"
+                >
+                  <div class="w-8 h-10 rounded-md overflow-hidden bg-warm-gray/40 flex-shrink-0 pointer-events-none">
+                    <iframe src={`/emails/${t.slug}.html`} class="w-[600px] h-[800px] border-0 origin-top-left pointer-events-none" style="transform:scale(0.053);transform-origin:top left;" tabindex="-1" loading="lazy"></iframe>
+                  </div>
+                  <div>
+                    <p class="font-inter text-dark text-xs font-semibold leading-snug group-hover:text-teal transition-colors">{t.name}</p>
+                    <span class="inline-block mt-0.5 text-[10px] font-medium text-dark/30 bg-dark/5 px-1.5 py-0.5 rounded-full">Email</span>
+                  </div>
+                </button>
+                {i < 5 && <span class="text-dark/20 text-xs">→</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="ml-5 pl-px border-l-2 border-dashed border-dark/10 h-6"></div>
+
+        <!-- Phase: Monthly Cycle -->
+        <div class="journey-phase">
+          <div class="flex gap-3 mb-4 items-center">
+            <div class="w-2 h-2 rounded-full bg-dark flex-shrink-0"></div>
+            <div class="flex items-center gap-2">
+              <p class="font-inter text-xs font-semibold text-dark uppercase tracking-[0.12em]">Monthly Cycle</p>
+              <span class="text-[10px] font-medium text-dark/40 bg-dark/8 px-2 py-0.5 rounded-full">Repeats each month</span>
+            </div>
+          </div>
+          <p class="font-inter text-xs text-dark/30 mb-4 ml-5">Refill loop from heads-up through confirmation</p>
+          <div class="ml-5 flex flex-wrap gap-2">
+            {[
+              { name: 'Refill Heads Up', slug: 'refill-heads-up' },
+              { name: 'Check-in Trigger', slug: 'check-in-trigger' },
+              { name: 'Reminder 1 (Gentle)', slug: 'reminder-1' },
+              { name: 'Reminder 2 (Direct)', slug: 'reminder-2' },
+              { name: 'Reminder 3 (Final)', slug: 'reminder-3' },
+              { name: 'Refill Confirmation', slug: 'refill-confirmation' },
+            ].map((t, i) => (
+              <div class="flex items-center gap-1.5">
+                <button
+                  onclick={`openPreview('/emails/${t.slug}.html', '${t.name}')`}
+                  class="group flex items-center gap-2.5 bg-white border border-dark/8 rounded-xl px-3.5 py-2.5 hover:border-teal/30 hover:shadow-sm transition-all text-left"
+                >
+                  <div class="w-8 h-10 rounded-md overflow-hidden bg-warm-gray/40 flex-shrink-0 pointer-events-none">
+                    <iframe src={`/emails/${t.slug}.html`} class="w-[600px] h-[800px] border-0 origin-top-left pointer-events-none" style="transform:scale(0.053);transform-origin:top left;" tabindex="-1" loading="lazy"></iframe>
+                  </div>
+                  <div>
+                    <p class="font-inter text-dark text-xs font-semibold leading-snug group-hover:text-teal transition-colors">{t.name}</p>
+                    <span class="inline-block mt-0.5 text-[10px] font-medium text-dark/30 bg-dark/5 px-1.5 py-0.5 rounded-full">Email</span>
+                  </div>
+                </button>
+                {i < 5 && <span class="text-dark/20 text-xs">→</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="ml-5 pl-px border-l-2 border-dashed border-dark/10 h-6"></div>
+
+        <!-- Phase: Milestones -->
+        <div class="journey-phase">
+          <div class="flex gap-3 mb-4 items-center">
+            <div class="w-2 h-2 rounded-full bg-teal flex-shrink-0"></div>
+            <div>
+              <p class="font-inter text-xs font-semibold text-teal uppercase tracking-[0.12em]">Milestones & Feedback</p>
+              <p class="font-inter text-xs text-dark/30 mt-0.5">Progress recognition at key intervals</p>
+            </div>
+          </div>
+          <div class="ml-5 flex flex-wrap gap-2">
+            {[
+              { name: 'Milestone — 1 Month', slug: 'milestone-1-month' },
+              { name: 'Milestone — 3 Months', slug: 'milestone-3-months' },
+              { name: 'Milestone — 6 Months', slug: 'milestone-6-months' },
+              { name: 'NPS Survey', slug: 'nps-survey' },
+            ].map((t, i) => (
+              <div class="flex items-center gap-1.5">
+                <button
+                  onclick={`openPreview('/emails/${t.slug}.html', '${t.name}')`}
+                  class="group flex items-center gap-2.5 bg-white border border-dark/8 rounded-xl px-3.5 py-2.5 hover:border-teal/30 hover:shadow-sm transition-all text-left"
+                >
+                  <div class="w-8 h-10 rounded-md overflow-hidden bg-warm-gray/40 flex-shrink-0 pointer-events-none">
+                    <iframe src={`/emails/${t.slug}.html`} class="w-[600px] h-[800px] border-0 origin-top-left pointer-events-none" style="transform:scale(0.053);transform-origin:top left;" tabindex="-1" loading="lazy"></iframe>
+                  </div>
+                  <div>
+                    <p class="font-inter text-dark text-xs font-semibold leading-snug group-hover:text-teal transition-colors">{t.name}</p>
+                    <span class="inline-block mt-0.5 text-[10px] font-medium text-dark/30 bg-dark/5 px-1.5 py-0.5 rounded-full">Email</span>
+                  </div>
+                </button>
+                {i < 3 && <span class="text-dark/20 text-xs">→</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="ml-5 pl-px border-l-2 border-dashed border-dark/10 h-6"></div>
+
+        <!-- Phase: Billing & Account -->
+        <div class="journey-phase">
+          <div class="flex gap-3 mb-4 items-center">
+            <div class="w-2 h-2 rounded-full bg-dark/30 flex-shrink-0"></div>
+            <div>
+              <p class="font-inter text-xs font-semibold text-dark/50 uppercase tracking-[0.12em]">Billing & Account</p>
+              <p class="font-inter text-xs text-dark/30 mt-0.5">Triggered by payment events and plan changes</p>
+            </div>
+          </div>
+          <div class="ml-5 flex flex-wrap gap-2">
+            {[
+              { name: 'Payment Received', slug: 'payment-received' },
+              { name: 'Payment Failed', slug: 'payment-failed' },
+              { name: 'Renewal Reminder', slug: 'renewal-reminder' },
+              { name: 'Plan Change', slug: 'plan-change' },
+              { name: 'Subscription Paused', slug: 'subscription-paused' },
+              { name: 'Subscription Resumed', slug: 'subscription-resumed' },
+              { name: 'Referral Invitation', slug: 'referral-invitation' },
+              { name: 'Referral Coupon Earned', slug: 'referral-coupon-earned' },
+            ].map((t, i) => (
+              <div class="flex items-center gap-1.5">
+                <button
+                  onclick={`openPreview('/emails/${t.slug}.html', '${t.name}')`}
+                  class="group flex items-center gap-2.5 bg-white border border-dark/8 rounded-xl px-3.5 py-2.5 hover:border-teal/30 hover:shadow-sm transition-all text-left"
+                >
+                  <div class="w-8 h-10 rounded-md overflow-hidden bg-warm-gray/40 flex-shrink-0 pointer-events-none">
+                    <iframe src={`/emails/${t.slug}.html`} class="w-[600px] h-[800px] border-0 origin-top-left pointer-events-none" style="transform:scale(0.053);transform-origin:top left;" tabindex="-1" loading="lazy"></iframe>
+                  </div>
+                  <div>
+                    <p class="font-inter text-dark text-xs font-semibold leading-snug group-hover:text-teal transition-colors">{t.name}</p>
+                    <span class="inline-block mt-0.5 text-[10px] font-medium text-dark/30 bg-dark/5 px-1.5 py-0.5 rounded-full">Email</span>
+                  </div>
+                </button>
+                {i < 7 && <span class="text-dark/20 text-xs">→</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="ml-5 pl-px border-l-2 border-dashed border-dark/10 h-6"></div>
+
+        <!-- Phase: Clinical -->
+        <div class="journey-phase">
+          <div class="flex gap-3 mb-4 items-center">
+            <div class="w-2 h-2 rounded-full bg-dark/30 flex-shrink-0"></div>
+            <div>
+              <p class="font-inter text-xs font-semibold text-dark/50 uppercase tracking-[0.12em]">Clinical Events</p>
+              <p class="font-inter text-xs text-dark/30 mt-0.5">Triggered by provider decisions and health flags</p>
+            </div>
+          </div>
+          <div class="ml-5 flex flex-wrap gap-2">
+            {[
+              { name: 'Prescription Denied', slug: 'prescription-denied' },
+              { name: 'Medication Switch Result', slug: 'medication-switch-result' },
+              { name: 'Dose Change Confirmation', slug: 'dose-change-confirmation' },
+              { name: 'Red Flag Escalation', slug: 'red-flag-escalation' },
+            ].map((t, i) => (
+              <div class="flex items-center gap-1.5">
+                <button
+                  onclick={`openPreview('/emails/${t.slug}.html', '${t.name}')`}
+                  class="group flex items-center gap-2.5 bg-white border border-dark/8 rounded-xl px-3.5 py-2.5 hover:border-teal/30 hover:shadow-sm transition-all text-left"
+                >
+                  <div class="w-8 h-10 rounded-md overflow-hidden bg-warm-gray/40 flex-shrink-0 pointer-events-none">
+                    <iframe src={`/emails/${t.slug}.html`} class="w-[600px] h-[800px] border-0 origin-top-left pointer-events-none" style="transform:scale(0.053);transform-origin:top left;" tabindex="-1" loading="lazy"></iframe>
+                  </div>
+                  <div>
+                    <p class="font-inter text-dark text-xs font-semibold leading-snug group-hover:text-teal transition-colors">{t.name}</p>
+                    <span class="inline-block mt-0.5 text-[10px] font-medium text-dark/30 bg-dark/5 px-1.5 py-0.5 rounded-full">Email</span>
+                  </div>
+                </button>
+                {i < 3 && <span class="text-dark/20 text-xs">→</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="ml-5 pl-px border-l-2 border-dashed border-dark/10 h-6"></div>
+
+        <!-- Phase: Winback -->
+        <div class="journey-phase">
+          <div class="flex gap-3 mb-4 items-center">
+            <div class="w-2 h-2 rounded-full bg-terracotta flex-shrink-0"></div>
+            <div>
+              <p class="font-inter text-xs font-semibold text-terracotta uppercase tracking-[0.12em]">Winback</p>
+              <p class="font-inter text-xs text-dark/30 mt-0.5">Post-cancellation re-engagement sequence</p>
+            </div>
+          </div>
+          <div class="ml-5 flex flex-wrap gap-2">
+            {[
+              { name: 'Cancellation Confirmation', slug: 'cancellation-confirmation' },
+              { name: 'Winback — Day 14', slug: 'winback-day-14' },
+              { name: 'Winback — Day 30', slug: 'winback-day-30' },
+              { name: 'Winback — Day 60', slug: 'winback-day-60' },
+            ].map((t, i) => (
+              <div class="flex items-center gap-1.5">
+                <button
+                  onclick={`openPreview('/emails/${t.slug}.html', '${t.name}')`}
+                  class="group flex items-center gap-2.5 bg-white border border-dark/8 rounded-xl px-3.5 py-2.5 hover:border-teal/30 hover:shadow-sm transition-all text-left"
+                >
+                  <div class="w-8 h-10 rounded-md overflow-hidden bg-warm-gray/40 flex-shrink-0 pointer-events-none">
+                    <iframe src={`/emails/${t.slug}.html`} class="w-[600px] h-[800px] border-0 origin-top-left pointer-events-none" style="transform:scale(0.053);transform-origin:top left;" tabindex="-1" loading="lazy"></iframe>
+                  </div>
+                  <div>
+                    <p class="font-inter text-dark text-xs font-semibold leading-snug group-hover:text-teal transition-colors">{t.name}</p>
+                    <span class="inline-block mt-0.5 text-[10px] font-medium text-terracotta/60 bg-terracotta/8 px-1.5 py-0.5 rounded-full">Email</span>
+                  </div>
+                </button>
+                {i < 3 && <span class="text-dark/20 text-xs">→</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </div>
 
