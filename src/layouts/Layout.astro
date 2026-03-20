@@ -1,0 +1,78 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title: string;
+  active: string;
+}
+
+const { title, active } = Astro.props;
+
+const navItems = [
+  { label: 'Overview', href: '/', id: 'overview' },
+  { label: 'Assets', href: '/assets', id: 'assets' },
+  { label: 'Intakes', href: '/intakes', id: 'intakes' },
+  { label: 'Web', href: '/web', id: 'web' },
+  { label: 'Portal', href: '/portal', id: 'portal' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Nimbus Healthcare Design System" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+    <title>{title} — Nimbus Design</title>
+  </head>
+  <body class="bg-cream text-dark font-inter antialiased">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="fixed top-0 left-0 h-screen w-[240px] bg-dark flex flex-col z-50">
+        <!-- Logo area -->
+        <div class="px-7 pt-8 pb-10">
+          <a href="/" class="block">
+            <span class="font-fraunces text-cream text-xl tracking-[-0.02em]">Nimbus</span>
+            <span class="font-inter text-cream/40 text-xs block mt-0.5">Design System</span>
+          </a>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 px-4">
+          <ul class="space-y-1">
+            {navItems.map(item => (
+              <li>
+                <a
+                  href={item.href}
+                  class={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                    active === item.id
+                      ? 'bg-cream/10 text-cream'
+                      : 'text-cream/40 hover:text-cream/70 hover:bg-cream/5'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <!-- Footer -->
+        <div class="px-7 py-6 border-t border-cream/10">
+          <a href="https://nimbus-26.vercel.app" target="_blank" rel="noopener noreferrer" class="text-cream/30 text-xs hover:text-cream/50 transition-colors">
+            View Live Site &rarr;
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="ml-[240px] flex-1 min-h-screen">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

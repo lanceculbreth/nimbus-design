@@ -1,0 +1,302 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Overview" active="overview">
+  <div class="max-w-[900px] mx-auto px-10 py-16">
+    <!-- Page Header -->
+    <div class="mb-16">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-[2px] bg-teal"></div>
+        <span class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase">Design System</span>
+        <div class="w-10 h-[2px] bg-teal"></div>
+      </div>
+      <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
+        Nimbus Design
+      </h1>
+      <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
+        The design language, component patterns, and brand rules for Nimbus Healthcare's digital products.
+      </p>
+    </div>
+
+    <!-- Color Palette -->
+    <section id="colors" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Color Palette</h2>
+
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Primary Colors</h3>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+        <div>
+          <div class="w-full aspect-square rounded-2xl bg-cream border border-dark/10 mb-3"></div>
+          <p class="font-inter text-sm font-medium">Cream</p>
+          <p class="font-mono text-xs text-dark/40">#F5F0EA</p>
+        </div>
+        <div>
+          <div class="w-full aspect-square rounded-2xl bg-dark mb-3"></div>
+          <p class="font-inter text-sm font-medium">Dark</p>
+          <p class="font-mono text-xs text-dark/40">#1A1816</p>
+        </div>
+        <div>
+          <div class="w-full aspect-square rounded-2xl bg-teal mb-3"></div>
+          <p class="font-inter text-sm font-medium">Teal</p>
+          <p class="font-mono text-xs text-dark/40">#2A9D8F</p>
+        </div>
+        <div>
+          <div class="w-full aspect-square rounded-2xl bg-terracotta mb-3"></div>
+          <p class="font-inter text-sm font-medium">Terracotta</p>
+          <p class="font-mono text-xs text-dark/40">#B87A5D</p>
+        </div>
+        <div>
+          <div class="w-full aspect-square rounded-2xl bg-terracotta-hover mb-3"></div>
+          <p class="font-inter text-sm font-medium">Terracotta Hover</p>
+          <p class="font-mono text-xs text-dark/40">#A56A4D</p>
+        </div>
+      </div>
+
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Surface Colors</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+        <div>
+          <div class="w-full aspect-[2/1] rounded-2xl bg-warm-gray mb-3"></div>
+          <p class="font-inter text-sm font-medium">Warm Gray</p>
+          <p class="font-mono text-xs text-dark/40">#EAE4DD</p>
+        </div>
+        <div>
+          <div class="w-full aspect-[2/1] rounded-2xl bg-light-cream border border-dark/5 mb-3"></div>
+          <p class="font-inter text-sm font-medium">Light Cream</p>
+          <p class="font-mono text-xs text-dark/40">#F0EBE4</p>
+        </div>
+        <div>
+          <div class="w-full aspect-[2/1] rounded-2xl bg-charcoal mb-3"></div>
+          <p class="font-inter text-sm font-medium">Charcoal</p>
+          <p class="font-mono text-xs text-dark/40">#22201E</p>
+        </div>
+      </div>
+
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Opacity System</h3>
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <div class="space-y-4 font-inter text-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-dark font-medium">100% — Primary text & key UI</span>
+            <div class="w-32 h-6 rounded bg-dark"></div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-dark/60 font-medium">50–60% — Secondary text</span>
+            <div class="w-32 h-6 rounded bg-dark/50"></div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-dark/40 font-medium">30–40% — Tertiary text</span>
+            <div class="w-32 h-6 rounded bg-dark/30"></div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-dark/40 font-medium">10–20% — Borders & dividers</span>
+            <div class="w-32 h-6 rounded bg-dark/10"></div>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-dark/40 font-medium">5–10% — Hover backgrounds</span>
+            <div class="w-32 h-6 rounded bg-dark/5"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section id="typography" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Typography</h2>
+
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-6">Font Families</h3>
+      <div class="space-y-8 mb-12">
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <p class="font-montserrat text-xs text-dark/40 font-semibold tracking-[0.15em] uppercase mb-3">Fraunces — Serif, Variable 100–900</p>
+          <p class="font-fraunces text-[clamp(32px,4vw,56px)] leading-[1.1] tracking-[-0.02em] text-dark mb-3">
+            Find your <em class="italic text-teal">groove.</em>
+          </p>
+          <p class="font-inter text-dark/40 text-sm">Headlines, hero copy, testimonial quotes. The brand's signature voice.</p>
+        </div>
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <p class="font-montserrat text-xs text-dark/40 font-semibold tracking-[0.15em] uppercase mb-3">Inter — Sans-Serif, 400 / 500 / 600</p>
+          <p class="font-inter text-lg leading-[1.6] text-dark mb-3">
+            Medication initiates the signal. Food makes it sustainable. Personalized to your body, your rhythm, your real life.
+          </p>
+          <p class="font-inter text-dark/40 text-sm">Body text, descriptions, feature copy. Clean and readable at all sizes.</p>
+        </div>
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <p class="font-montserrat text-xs text-dark/40 font-semibold tracking-[0.15em] uppercase mb-3">Montserrat — Sans-Serif, 400 / 500 / 600</p>
+          <p class="font-montserrat text-sm font-semibold tracking-[0.15em] uppercase text-teal mb-3">
+            Section Label &bull; Button Text &bull; Navigation
+          </p>
+          <p class="font-inter text-dark/40 text-sm">Section labels, button text, UI elements. Used sparingly for structure.</p>
+        </div>
+      </div>
+
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-6">Type Scale</h3>
+      <div class="space-y-6">
+        <div class="border-b border-dark/10 pb-6">
+          <p class="font-fraunces text-[clamp(48px,5vw,96px)] leading-[1] tracking-[-0.02em]">Hero H1</p>
+          <p class="font-inter text-dark/40 text-sm mt-2">48–96px · line-height 1.0–1.05 · letter-spacing -0.02em</p>
+        </div>
+        <div class="border-b border-dark/10 pb-6">
+          <p class="font-fraunces text-[clamp(36px,4vw,72px)] leading-[1.05] tracking-[-0.02em]">Section H2</p>
+          <p class="font-inter text-dark/40 text-sm mt-2">36–72px · line-height 1.05–1.1 · letter-spacing -0.02em</p>
+        </div>
+        <div class="border-b border-dark/10 pb-6">
+          <p class="font-fraunces text-[clamp(28px,3vw,44px)] leading-[1.15] tracking-[-0.02em]">Subheading H3</p>
+          <p class="font-inter text-dark/40 text-sm mt-2">28–44px · line-height 1.15 · letter-spacing -0.02em</p>
+        </div>
+        <div class="border-b border-dark/10 pb-4">
+          <p class="font-inter text-lg leading-[1.6]">Large body text — 18px</p>
+          <p class="font-inter text-base leading-[1.6] text-dark/60 mt-1">Standard body text — 16px</p>
+          <p class="font-inter text-sm leading-[1.6] text-dark/40 mt-1">Small body text — 14px</p>
+          <p class="font-inter text-xs text-dark/30 mt-1">Caption — 12px</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography Patterns -->
+    <section id="type-patterns" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Typography Patterns</h2>
+      <div class="space-y-6">
+        <div class="bg-dark rounded-3xl p-8">
+          <p class="font-inter text-cream/40 text-xs mb-3">Italic emphasis on key words</p>
+          <p class="font-fraunces text-cream text-[clamp(28px,3vw,48px)] leading-[1.1] tracking-[-0.02em]">
+            From sick care to <em class="italic text-teal">real care.</em>
+          </p>
+        </div>
+        <div class="bg-dark rounded-3xl p-8">
+          <p class="font-inter text-cream/40 text-xs mb-3">Teal highlights for key phrases</p>
+          <p class="font-fraunces text-cream text-[clamp(28px,3vw,48px)] leading-[1.1] tracking-[-0.02em]">
+            One program. One provider. <span class="text-teal">One predictable cost.</span>
+          </p>
+        </div>
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <p class="font-inter text-dark/40 text-xs mb-3">Terracotta for brand-specific terms</p>
+          <p class="font-inter text-dark text-lg leading-[1.6]">
+            Our <span class="text-terracotta font-medium">GLP-1 program</span> pairs clinician-guided medication with personalized nutrition.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Voice -->
+    <section id="voice" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Brand Voice</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold mb-4">Headline Voice</h3>
+          <p class="font-inter text-dark/50 text-sm mb-4">Direct, benefit-led. Short, punchy. Line breaks for rhythm, italics for emotion.</p>
+          <div class="space-y-3">
+            <p class="font-fraunces text-xl tracking-[-0.02em]">"Find your <em class="italic">groove</em>"</p>
+            <p class="font-fraunces text-xl tracking-[-0.02em]">"From sick care to <em class="italic">real care</em>"</p>
+          </div>
+        </div>
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold mb-4">Body Voice</h3>
+          <p class="font-inter text-dark/50 text-sm mb-4">Clear, evidence-based. Clinical credibility balanced with warmth. No jargon.</p>
+          <div class="space-y-3 font-inter text-sm text-dark/70 leading-[1.6]">
+            <p>"Medication initiates the signal. Food makes it sustainable."</p>
+            <p>"Personalized to your body, your rhythm, your real life."</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Tone Principles</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="border border-dark/10 rounded-2xl p-6">
+          <p class="font-inter text-sm font-semibold mb-1">Clinical but human</p>
+          <p class="font-inter text-dark/50 text-sm">We know the science, but we speak to people.</p>
+        </div>
+        <div class="border border-dark/10 rounded-2xl p-6">
+          <p class="font-inter text-sm font-semibold mb-1">Confident, not salesy</p>
+          <p class="font-inter text-dark/50 text-sm">State facts and outcomes, don't oversell.</p>
+        </div>
+        <div class="border border-dark/10 rounded-2xl p-6">
+          <p class="font-inter text-sm font-semibold mb-1">Personal</p>
+          <p class="font-inter text-dark/50 text-sm">Use "your" frequently. Make it about the individual.</p>
+        </div>
+        <div class="border border-dark/10 rounded-2xl p-6">
+          <p class="font-inter text-sm font-semibold mb-1">Outcome-focused</p>
+          <p class="font-inter text-dark/50 text-sm">Lead with what patients and employers gain.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spacing & Layout -->
+    <section id="spacing" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Spacing & Layout</h2>
+      <div class="space-y-6">
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold mb-4">Grid System</h3>
+          <div class="space-y-2 font-inter text-sm text-dark/60">
+            <p><span class="text-dark font-medium">Max content width:</span> 1200px (standard) / 1340px (wide)</p>
+            <p><span class="text-dark font-medium">Page padding:</span> 10px on mobile, scales up on desktop</p>
+            <p><span class="text-dark font-medium">Alignment:</span> Content sections centered with auto margins</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-warm-gray rounded-3xl p-8">
+            <h3 class="font-inter text-sm font-semibold mb-4">Spacing Scale</h3>
+            <div class="space-y-2 font-inter text-sm text-dark/60">
+              <p><span class="text-dark font-medium">Section padding:</span> 96–160px vertical</p>
+              <p><span class="text-dark font-medium">Major elements:</span> 48–56px</p>
+              <p><span class="text-dark font-medium">Related elements:</span> 20–40px</p>
+              <p><span class="text-dark font-medium">Tight spacing:</span> 12–16px</p>
+            </div>
+          </div>
+          <div class="bg-warm-gray rounded-3xl p-8">
+            <h3 class="font-inter text-sm font-semibold mb-4">Border Radius</h3>
+            <div class="space-y-3">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-8 bg-terracotta rounded-full shrink-0"></div>
+                <p class="font-inter text-sm text-dark/60"><span class="text-dark font-medium">Buttons:</span> Fully rounded</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-8 bg-charcoal rounded-2xl shrink-0"></div>
+                <p class="font-inter text-sm text-dark/60"><span class="text-dark font-medium">Cards & images:</span> 16px</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-8 bg-dark rounded-3xl shrink-0"></div>
+                <p class="font-inter text-sm text-dark/60"><span class="text-dark font-medium">Containers:</span> 24px</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-8 bg-teal rounded-[14px] shrink-0"></div>
+                <p class="font-inter text-sm text-dark/60"><span class="text-dark font-medium">Inner elements:</span> 14px</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animation & Motion -->
+    <section id="motion">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Animation & Motion</h2>
+      <div class="space-y-6">
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold mb-4">Entrance Animations</h3>
+          <div class="space-y-2 font-inter text-sm text-dark/60">
+            <p>Elements fade in from <span class="text-dark font-medium">24px below</span> with scale-up (0.97 → 1.0)</p>
+            <p>Duration: <span class="text-dark font-medium">600–700ms</span></p>
+            <p>Easing: <span class="text-dark font-medium">cubic-bezier(0.16, 1, 0.3, 1)</span></p>
+            <p>Stagger siblings at <span class="text-dark font-medium">120ms</span> intervals</p>
+          </div>
+        </div>
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold mb-4">Hover Interactions</h3>
+          <div class="space-y-2 font-inter text-sm text-dark/60">
+            <p>Cards lift <span class="text-dark font-medium">4px</span> with soft shadow</p>
+            <p>Images scale to <span class="text-dark font-medium">1.03x</span></p>
+            <p>Buttons transition background color</p>
+            <p>All transitions: <span class="text-dark font-medium">350ms ease</span></p>
+          </div>
+        </div>
+        <div class="border border-dark/10 rounded-2xl p-6">
+          <h3 class="font-inter text-sm font-semibold mb-2">Principles</h3>
+          <ul class="space-y-1 font-inter text-sm text-dark/50">
+            <li>Motion should feel gentle and purposeful</li>
+            <li>No bouncing or aggressive entrances</li>
+            <li>Stagger creates visual rhythm, not chaos</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

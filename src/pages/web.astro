@@ -1,0 +1,248 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Web" active="web">
+  <div class="max-w-[900px] mx-auto px-10 py-16">
+    <!-- Page Header -->
+    <div class="mb-16">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-[2px] bg-teal"></div>
+        <span class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase">Components</span>
+        <div class="w-10 h-[2px] bg-teal"></div>
+      </div>
+      <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
+        Web
+      </h1>
+      <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
+        Component patterns, navigation, heroes, cards, CTAs, and layout rules for nimbus-26.vercel.app.
+      </p>
+    </div>
+
+    <!-- Navbar -->
+    <section id="navbar" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Navigation Bar</h2>
+
+      <!-- Navbar Preview -->
+      <div class="bg-dark rounded-3xl p-8 mb-6">
+        <div class="bg-dark/80 backdrop-blur-xl rounded-full h-[56px] px-3 flex items-center justify-between border border-cream/5">
+          <span class="font-fraunces text-cream text-base pl-3">Nimbus</span>
+          <div class="hidden md:flex items-center gap-6">
+            <span class="font-inter text-cream/70 text-sm">Weight</span>
+            <span class="font-inter text-cream/70 text-sm">Hormone</span>
+            <span class="font-inter text-cream/70 text-sm">Hair</span>
+            <span class="font-inter text-cream text-sm font-semibold">Meals</span>
+            <span class="font-inter text-cream/70 text-sm">Teams</span>
+            <span class="font-inter text-cream/70 text-sm">Providers</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-inter text-cream/70 text-sm mr-2">Login</span>
+            <div class="bg-terracotta text-cream text-sm font-medium rounded-full h-[40px] px-5 flex items-center">Get Started</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <h3 class="font-inter text-sm font-semibold mb-4">Navbar Rules</h3>
+        <ul class="space-y-2 font-inter text-sm text-dark/60">
+          <li><span class="text-dark font-medium">Position:</span> Fixed, top 20px, centered, max-width 1340px</li>
+          <li><span class="text-dark font-medium">Shape:</span> Pill (rounded-full), height 70px, backdrop-blur-xl</li>
+          <li><span class="text-dark font-medium">Dark pages:</span> bg-dark/80 always</li>
+          <li><span class="text-dark font-medium">Light pages:</span> bg-white/20 &rarr; bg-dark/80 after 70vh scroll</li>
+          <li><span class="text-dark font-medium">CTA button:</span> Terracotta, rounded-full, 50px height</li>
+          <li><span class="text-dark font-medium">Mobile:</span> Hamburger (2 lines, 20px wide) &rarr; X rotation on open</li>
+          <li><span class="text-dark font-medium">Links:</span> Weight, Hormone, Hair, Meals (external), Teams, Providers</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section id="buttons" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Buttons & CTAs</h2>
+
+      <div class="space-y-6">
+        <!-- Primary -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-4">Primary Button</h3>
+          <div class="flex flex-wrap gap-4 mb-4">
+            <a class="bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-base rounded-full px-10 py-4.5 transition-colors cursor-pointer">Get Started</a>
+            <a class="bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-base rounded-full px-10 py-4.5 transition-colors cursor-pointer">Contact Us</a>
+          </div>
+          <div class="font-inter text-cream/30 text-xs space-y-1">
+            <p>Terracotta #B87A5D &rarr; hover #A56A4D</p>
+            <p>Text: Cream, Montserrat medium, 16px</p>
+            <p>Padding: 18px vertical, 40–64px horizontal &middot; Rounded full</p>
+          </div>
+        </div>
+
+        <!-- Secondary (Ghost) -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-4">Secondary Button (Ghost)</h3>
+          <div class="flex flex-wrap gap-4 mb-4">
+            <a class="border border-cream/30 hover:bg-cream/10 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4.5 transition-colors cursor-pointer">Login</a>
+            <a class="border border-cream/30 hover:bg-cream/10 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4.5 transition-colors cursor-pointer">Learn More</a>
+          </div>
+          <div class="font-inter text-cream/30 text-xs space-y-1">
+            <p>Transparent bg &rarr; hover cream/10</p>
+            <p>Border: 1px cream/30 &middot; Text: Cream, Montserrat medium</p>
+          </div>
+        </div>
+
+        <!-- Tertiary (Glass) -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-4">Tertiary Button (Glass)</h3>
+          <div class="flex flex-wrap gap-4 mb-4">
+            <a class="bg-white/30 backdrop-blur-sm hover:bg-white/40 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4.5 transition-colors cursor-pointer">Explore</a>
+          </div>
+          <div class="font-inter text-cream/30 text-xs space-y-1">
+            <p>white/30 + backdrop-blur &rarr; hover white/40</p>
+            <p>Hero overlays on dark backgrounds only</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Labels -->
+    <section id="labels" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Section Labels</h2>
+
+      <div class="space-y-6">
+        <div class="bg-cream border border-dark/10 rounded-3xl p-8">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-12 h-[2px] bg-teal"></div>
+            <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Section Name</span>
+            <div class="w-12 h-[2px] bg-teal"></div>
+          </div>
+        </div>
+
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold mb-4">Rules</h3>
+          <ul class="space-y-2 font-inter text-sm text-dark/60">
+            <li>Teal divider line: <span class="text-dark font-medium">48px wide (w-12), 2px tall</span>, flanks text on both sides</li>
+            <li>Text: <span class="text-dark font-medium">Montserrat, uppercase, semibold, tracking 0.15em</span></li>
+            <li>Color: <span class="text-dark font-medium">Teal (#2A9D8F)</span> for both dividers and text</li>
+            <li>Gap: <span class="text-dark font-medium">12px</span> between dividers and text (gap-3)</li>
+            <li>Always placed above section headline with 16px margin-bottom</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero Sections -->
+    <section id="heroes" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Hero Sections</h2>
+
+      <div class="bg-warm-gray rounded-3xl p-8 mb-6">
+        <h3 class="font-inter text-sm font-semibold mb-4">Hero Pattern</h3>
+        <ul class="space-y-2 font-inter text-sm text-dark/60">
+          <li>Full viewport height (<code class="bg-dark/5 px-1.5 py-0.5 rounded text-xs">min-h-screen</code>)</li>
+          <li>Background video or image with <span class="text-dark font-medium">50% dark overlay</span></li>
+          <li>Container: <span class="text-dark font-medium">10px inset</span> on desktop with <span class="text-dark font-medium">24px border-radius</span> (rounded-3xl)</li>
+          <li>Full-bleed on mobile (no inset, no border-radius)</li>
+          <li>Centered headline + CTA stack</li>
+          <li>Trust bar with 5 stats at bottom on desktop, stacked below on mobile</li>
+        </ul>
+      </div>
+
+      <!-- Trust Bar -->
+      <div class="bg-dark rounded-3xl p-8">
+        <h3 class="font-inter text-cream text-sm font-semibold mb-4">Trust Bar — 5 Stats</h3>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-cream/70 font-inter text-sm">
+          <span>94% success rate</span>
+          <span class="text-cream/20">|</span>
+          <span>Licensed physicians</span>
+          <span class="text-cream/20">|</span>
+          <span>Flat-rate pricing</span>
+          <span class="text-cream/20">|</span>
+          <span>Ongoing clinical support</span>
+          <span class="text-cream/20">|</span>
+          <span>Our own pharmacy</span>
+        </div>
+        <p class="font-inter text-cream/30 text-xs mt-4 text-center">Icon + label pairs, separated by vertical dividers on desktop. Stacked on mobile.</p>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section id="cards" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Cards</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <!-- Dark card -->
+        <div class="bg-charcoal border-t-2 border-teal/30 rounded-2xl p-6">
+          <h4 class="font-fraunces text-cream text-lg mb-2">Dark Section Card</h4>
+          <p class="font-inter text-cream/50 text-sm leading-[1.6]">Used on dark backgrounds. Charcoal bg with teal top border.</p>
+        </div>
+        <!-- Light card -->
+        <div class="bg-warm-gray rounded-2xl p-6 hover:translate-y-[-4px] hover:shadow-lg transition-all duration-350">
+          <h4 class="font-fraunces text-dark text-lg mb-2">Light Section Card</h4>
+          <p class="font-inter text-dark/50 text-sm leading-[1.6]">Used on cream backgrounds. Warm gray bg with hover lift.</p>
+        </div>
+      </div>
+
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <h3 class="font-inter text-sm font-semibold mb-4">Card Rules</h3>
+        <ul class="space-y-2 font-inter text-sm text-dark/60">
+          <li><span class="text-dark font-medium">Dark cards:</span> bg #22201E, teal top border at 30% opacity</li>
+          <li><span class="text-dark font-medium">Light cards:</span> bg Warm Gray #EAE4DD</li>
+          <li><span class="text-dark font-medium">Border radius:</span> 16px (rounded-2xl)</li>
+          <li><span class="text-dark font-medium">Internal padding:</span> 24px</li>
+          <li><span class="text-dark font-medium">Hover:</span> Lift 4px with soft shadow (0 12px 40px rgba(0,0,0,0.08))</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Carousels -->
+    <section id="carousels" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Carousels</h2>
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <h3 class="font-inter text-sm font-semibold mb-4">Carousel Rules</h3>
+        <ul class="space-y-2 font-inter text-sm text-dark/60">
+          <li>Horizontal scroll with <span class="text-dark font-medium">snap points</span></li>
+          <li>Arrow buttons: <span class="text-dark font-medium">40x40px round</span>, dark/10 background</li>
+          <li>Touch-swipe enabled with <span class="text-dark font-medium">50px threshold</span></li>
+          <li>Card gap: <span class="text-dark font-medium">20px</span></li>
+          <li>Transition: <span class="text-dark font-medium">0.5s ease-in-out</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Feature Pills -->
+    <section id="pills" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Feature Pills</h2>
+
+      <div class="bg-dark rounded-3xl p-8 mb-6">
+        <div class="flex flex-wrap gap-3">
+          <div class="border border-cream/10 rounded-full px-8 py-5 font-inter text-cream text-sm text-center">Clinical consultation</div>
+          <div class="border border-cream/10 rounded-full px-8 py-5 font-inter text-cream text-sm text-center">NABP-accredited pharmacy</div>
+          <div class="border border-cream/10 rounded-full px-8 py-5 font-inter text-cream text-sm text-center">Batch-tested medications</div>
+        </div>
+      </div>
+
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <ul class="space-y-2 font-inter text-sm text-dark/60">
+          <li>Border: <span class="text-dark font-medium">1px cream/10</span></li>
+          <li>Desktop: <span class="text-dark font-medium">fully rounded</span> &middot; Mobile: <span class="text-dark font-medium">16px radius</span></li>
+          <li>Padding: <span class="text-dark font-medium">20px vertical, 32px horizontal</span></li>
+          <li>Text: <span class="text-dark font-medium">Inter, centered</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <section id="footer">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Footer</h2>
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <h3 class="font-inter text-sm font-semibold mb-4">Footer Structure</h3>
+        <ul class="space-y-2 font-inter text-sm text-dark/60">
+          <li><span class="text-dark font-medium">Background:</span> Dark (#1A1816), 24px border-radius, 10px page inset</li>
+          <li><span class="text-dark font-medium">Layout:</span> 5-column grid (Logo + 4 link columns)</li>
+          <li><span class="text-dark font-medium">Column headers:</span> cream/40, 12px, Montserrat uppercase, semibold, 0.15em tracking</li>
+          <li><span class="text-dark font-medium">Links:</span> cream/70, 14px Inter, hover &rarr; cream</li>
+          <li><span class="text-dark font-medium">Columns:</span> Programs, Company, Support, Legal</li>
+          <li><span class="text-dark font-medium">Accreditation:</span> Two badge images above the divider</li>
+          <li><span class="text-dark font-medium">Bottom bar:</span> cream/40 copyright + cream/30 disclaimer, separated by cream/10 border-top</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</Layout>
