@@ -2,7 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Intakes" active="intakes">
+<Layout title="Intakes" active="intakes" sections={[
+  { label: 'Intakes', id: 'live' },
+  { label: 'Flow', id: 'flow' },
+  { label: 'Progress Bar', id: 'progress' },
+  { label: 'Form Elements', id: 'forms' },
+  { label: 'Checkout', id: 'checkout' },
+  { label: 'Layout', id: 'layout' },
+]}>
   <div class="max-w-[900px] mx-auto px-10 py-16">
     <!-- Page Header -->
     <div class="mb-16">

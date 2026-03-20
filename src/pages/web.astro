@@ -2,7 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Web" active="web">
+<Layout title="Web" active="web" sections={[
+  { label: 'Navigation', id: 'navbar' },
+  { label: 'Buttons', id: 'buttons' },
+  { label: 'Labels', id: 'labels' },
+  { label: 'Heroes', id: 'heroes' },
+  { label: 'Cards', id: 'cards' },
+  { label: 'Carousels', id: 'carousels' },
+  { label: 'Feature Pills', id: 'pills' },
+  { label: 'Footer', id: 'footer' },
+]}>
   <div class="max-w-[900px] mx-auto px-10 py-16">
     <!-- Page Header -->
     <div class="mb-16">

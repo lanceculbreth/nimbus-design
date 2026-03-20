@@ -2,7 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Assets" active="assets">
+<Layout title="Assets" active="assets" sections={[
+  { label: 'Logo', id: 'logos' },
+  { label: 'Accreditation', id: 'accreditation' },
+  { label: 'Photography', id: 'photography' },
+  { label: 'Headshots', id: 'headshots' },
+  { label: 'Product', id: 'product' },
+  { label: 'Partners', id: 'partners' },
+  { label: 'Video', id: 'video' },
+]}>
   <div class="max-w-[900px] mx-auto px-10 py-16">
     <!-- Page Header -->
     <div class="mb-16">

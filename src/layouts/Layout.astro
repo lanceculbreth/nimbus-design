@@ -4,9 +4,10 @@ import '../styles/global.css'
 interface Props {
   title: string;
   active: string;
+  sections?: Array<{ label: string; id: string }>;
 }
 
-const { title, active } = Astro.props;
+const { title, active, sections = [] } = Astro.props;
 
 const navItems = [
   { label: 'Overview', href: '/', id: 'overview' },
@@ -72,9 +73,85 @@ const navItems = [
       </aside>
 
       <!-- Main Content -->
-      <main class="ml-[240px] flex-1 min-h-screen">
-        <slot />
+      <main class="ml-[240px] flex-1 min-h-screen flex">
+        <div class="flex-1 min-w-0">
+          <slot />
+        </div>
+
+        <!-- Secondary Section Nav -->
+        {sections.length > 0 && (
+          <aside class="hidden xl:block w-[160px] flex-shrink-0 py-16 pr-6">
+            <nav class="sticky top-16" id="section-nav">
+              <ul class="space-y-1">
+                {sections.map((s, i) => (
+                  <li>
+                    <a
+                      href={`#${s.id}`}
+                      data-section={s.id}
+                      class={`section-nav-link block text-xs py-1.5 px-2 rounded-lg transition-all duration-200 text-dark/30 hover:text-dark/70`}
+                    >
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </aside>
+        )}
       </main>
     </div>
+
+    {sections.length > 0 && (
+      <script is:inline>
+        (function () {
+          const links = document.querySelectorAll('.section-nav-link');
+          if (!links.length) return;
+
+          const ids = Array.from(links).map(l => l.dataset.section);
+
+          function setActive(id) {
+            links.forEach(l => {
+              const isActive = l.dataset.section === id;
+              l.classList.toggle('text-dark', isActive);
+              l.classList.toggle('font-medium', isActive);
+              l.classList.toggle('text-dark/30', !isActive);
+            });
+          }
+
+          // Intersection Observer — track which section is in view
+          const observer = new IntersectionObserver(
+            entries => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  setActive(entry.target.id);
+                }
+              });
+            },
+            { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+          );
+
+          ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+          });
+
+          // Smooth scroll on click
+          links.forEach(link => {
+            link.addEventListener('click', e => {
+              e.preventDefault();
+              const id = link.dataset.section;
+              const el = document.getElementById(id);
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setActive(id);
+              }
+            });
+          });
+
+          // Set first active on load
+          if (ids[0]) setActive(ids[0]);
+        })();
+      </script>
+    )}
   </body>
 </html>

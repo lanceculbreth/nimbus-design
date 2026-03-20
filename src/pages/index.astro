@@ -2,7 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Overview" active="overview">
+<Layout title="Overview" active="overview" sections={[
+  { label: 'Colors', id: 'colors' },
+  { label: 'Typography', id: 'typography' },
+  { label: 'Type Patterns', id: 'type-patterns' },
+  { label: 'Brand Voice', id: 'voice' },
+  { label: 'Spacing', id: 'spacing' },
+  { label: 'Motion', id: 'motion' },
+]}>
   <div class="max-w-[900px] mx-auto px-10 py-16">
     <!-- Page Header -->
     <div class="mb-16">
