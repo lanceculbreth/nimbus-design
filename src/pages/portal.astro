@@ -6,44 +6,41 @@ import Layout from '../layouts/Layout.astro';
   <div class="max-w-[900px] mx-auto px-10 py-16">
 
     <!-- Page Header -->
-    <div class="mb-12 flex items-end justify-between gap-6 flex-wrap">
-      <div>
-        <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
-          Portal
-        </h1>
-        <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[520px]">
-          The Nimbus patient-facing app — web dashboard and mobile experience for WeightWise and NimCore.
-        </p>
-      </div>
-      <div class="flex-shrink-0 flex flex-col items-end gap-3">
-        <!-- Demo credentials -->
-        <div class="bg-dark/5 border border-dark/8 rounded-2xl px-5 py-4 text-sm font-inter">
-          <p class="text-dark/40 text-xs font-semibold uppercase tracking-[0.1em] mb-3">Demo Login</p>
-          <div class="space-y-2 mb-4">
-            <div class="flex items-center justify-between gap-8">
-              <span class="text-dark/40">Email</span>
-              <button onclick="copyText('testlance@test.io', this)" class="flex items-center gap-1.5 font-medium text-dark hover:text-teal transition-colors group">
-                <span>testlance@test.io</span>
-                <svg class="w-3.5 h-3.5 text-dark/30 group-hover:text-teal transition-colors flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </button>
-            </div>
-            <div class="flex items-center justify-between gap-8">
-              <span class="text-dark/40">Password</span>
-              <button onclick="copyText('November@4', this)" class="flex items-center gap-1.5 font-medium text-dark hover:text-teal transition-colors group">
-                <span>November@4</span>
-                <svg class="w-3.5 h-3.5 text-dark/30 group-hover:text-teal transition-colors flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </button>
-            </div>
+    <div class="mb-12">
+      <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
+        Portal
+      </h1>
+      <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[520px] mb-8">
+        The Nimbus patient-facing app — web dashboard and mobile experience for WeightWise and NimCore.
+      </p>
+
+      <!-- Demo credentials -->
+      <div class="bg-dark/5 border border-dark/8 rounded-2xl px-5 py-4 text-sm font-inter inline-block">
+        <p class="text-dark/40 text-xs font-semibold uppercase tracking-[0.1em] mb-3">Demo Login</p>
+        <div class="space-y-2 mb-4">
+          <div class="flex items-center justify-between gap-8">
+            <span class="text-dark/40">Email</span>
+            <button onclick="copyText('testlance@test.io', this)" class="flex items-center gap-1.5 font-medium text-dark hover:text-teal transition-colors group">
+              <span>testlance@test.io</span>
+              <svg class="w-3.5 h-3.5 text-dark/30 group-hover:text-teal transition-colors flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </button>
           </div>
-          <a
-            href="https://app-dev.nimbushealthcaretest.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center justify-center gap-2 w-full px-5 py-2.5 rounded-full bg-dark text-cream text-sm font-medium hover:bg-dark/80 transition-colors"
-          >
-            Open Portal
-          </a>
+          <div class="flex items-center justify-between gap-8">
+            <span class="text-dark/40">Password</span>
+            <button onclick="copyText('November@4', this)" class="flex items-center gap-1.5 font-medium text-dark hover:text-teal transition-colors group">
+              <span>November@4</span>
+              <svg class="w-3.5 h-3.5 text-dark/30 group-hover:text-teal transition-colors flex-shrink-0" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M3 11V3.5A1.5 1.5 0 0 1 4.5 2H11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </button>
+          </div>
         </div>
+        <a
+          href="https://app-dev.nimbushealthcaretest.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center gap-2 w-full px-5 py-2.5 rounded-full bg-dark text-cream text-sm font-medium hover:bg-dark/80 transition-colors"
+        >
+          Open Portal
+        </a>
       </div>
     </div>
 
