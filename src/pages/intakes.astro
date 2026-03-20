@@ -19,6 +19,56 @@ import Layout from '../layouts/Layout.astro';
       </p>
     </div>
 
+    <!-- Live Pages -->
+    <section id="live" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Live Intakes</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Patient Intake -->
+        <a href="https://nimbus-26.vercel.app/intake" target="_blank" rel="noopener noreferrer" class="group block bg-dark rounded-3xl overflow-hidden hover:translate-y-[-4px] hover:shadow-xl transition-all duration-350">
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <img src="/images/intake-hand.png" alt="Patient Intake" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-2 h-2 rounded-full bg-teal"></div>
+                <span class="font-inter text-cream/50 text-xs">Live</span>
+              </div>
+              <h3 class="font-fraunces text-cream text-xl tracking-[-0.02em] mb-1">Patient Intake</h3>
+              <p class="font-inter text-cream/50 text-sm">Multi-step onboarding wizard with health assessment, lab selection, and checkout.</p>
+            </div>
+          </div>
+          <div class="px-6 py-4 flex items-center justify-between border-t border-cream/5">
+            <span class="font-mono text-cream/30 text-xs">/intake</span>
+            <span class="font-inter text-teal text-sm group-hover:translate-x-1 transition-transform">View &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Price Change -->
+        <a href="https://nimbus-26.vercel.app/price-change" target="_blank" rel="noopener noreferrer" class="group block bg-dark rounded-3xl overflow-hidden hover:translate-y-[-4px] hover:shadow-xl transition-all duration-350">
+          <div class="relative aspect-[16/10] overflow-hidden bg-charcoal flex items-center justify-center">
+            <div class="text-center px-8">
+              <p class="font-fraunces text-cream text-[28px] leading-[1.1] tracking-[-0.02em] mb-2">Your plan is <em class="italic text-teal">evolving.</em></p>
+              <p class="font-inter text-cream/40 text-sm">A/B pricing toggle with prepaid savings</p>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-2 h-2 rounded-full bg-teal"></div>
+                <span class="font-inter text-cream/50 text-xs">Live</span>
+              </div>
+              <h3 class="font-fraunces text-cream text-xl tracking-[-0.02em] mb-1">Price Change</h3>
+              <p class="font-inter text-cream/50 text-sm">Plan comparison with monthly vs. prepaid toggle and acceptance flow.</p>
+            </div>
+          </div>
+          <div class="px-6 py-4 flex items-center justify-between border-t border-cream/5">
+            <span class="font-mono text-cream/30 text-xs">/price-change</span>
+            <span class="font-inter text-teal text-sm group-hover:translate-x-1 transition-transform">View &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <!-- Intake Flow Overview -->
     <section id="flow" class="mb-20">
       <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Intake Flow</h2>
