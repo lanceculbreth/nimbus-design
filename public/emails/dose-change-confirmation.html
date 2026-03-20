@@ -17,58 +17,58 @@
           <!-- Hero Image Area -->
           <tr>
             <td style="padding:0;">
-              <div style="background:linear-gradient(135deg,#22201E,#333);border-radius:12px 12px 0 0;padding:40px;text-align:center;">
+              <div style="background:linear-gradient(135deg,#22201E,#333);border-radius:12px 12px 0 0;padding:48px;text-align:center;">
                 <div style="display:inline-block;background-color:rgba(42,157,143,0.2);border-radius:50%;width:64px;height:64px;line-height:64px;font-size:28px;margin:0 0 16px;">&#128137;</div>
                 <h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:700;color:#ffffff;line-height:1.3;">Your dose has been adjusted</h1>
               </div>
             </td>
           </tr>
           <tr>
-            <td style="background-color:#ffffff;border-radius:0 0 12px 12px;padding:40px;">
+            <td style="background-color:#ffffff;border-radius:0 0 12px 12px;padding:48px;">
               <p style="margin:0 0 24px;font-size:16px;line-height:1.7;color:#1A1816;">
                 {{FIRST_NAME}}, based on your recent check-in and progress, your provider has adjusted your dosage. Here are the details:
               </p>
               <!-- Dosage Change -->
-              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F5F0EB;border-radius:8px;margin:0 0 24px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F5F0EB;border-radius:12px;margin:0 0 24px;">
                 <tr>
                   <td style="padding:24px;">
                     <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
                       <tr>
-                        <td style="padding:8px 0;font-size:14px;color:#666;border-bottom:1px solid #E8E3DE;">Medication</td>
+                        <td style="padding:8px 0;font-size:14px;color:#8C7A70;border-bottom:1px solid #E8E3DE;">Medication</td>
                         <td align="right" style="padding:8px 0;font-size:14px;font-weight:600;color:#1A1816;border-bottom:1px solid #E8E3DE;">{{MEDICATION_NAME}}</td>
                       </tr>
                       <tr>
-                        <td style="padding:8px 0;font-size:14px;color:#666;border-bottom:1px solid #E8E3DE;">Previous dose</td>
-                        <td align="right" style="padding:8px 0;font-size:14px;color:#999;text-decoration:line-through;border-bottom:1px solid #E8E3DE;">{{OLD_DOSAGE}}</td>
+                        <td style="padding:8px 0;font-size:14px;color:#8C7A70;border-bottom:1px solid #E8E3DE;">Previous dose</td>
+                        <td align="right" style="padding:8px 0;font-size:14px;color:#9E9590;text-decoration:line-through;border-bottom:1px solid #E8E3DE;">{{OLD_DOSAGE}}</td>
                       </tr>
                       <tr>
-                        <td style="padding:8px 0;font-size:14px;color:#666;border-bottom:1px solid #E8E3DE;">New dose</td>
+                        <td style="padding:8px 0;font-size:14px;color:#8C7A70;border-bottom:1px solid #E8E3DE;">New dose</td>
                         <td align="right" style="padding:8px 0;font-size:16px;font-weight:700;color:#2A9D8F;border-bottom:1px solid #E8E3DE;">{{NEW_DOSAGE}}</td>
                       </tr>
                       <tr>
-                        <td style="padding:8px 0;font-size:14px;color:#666;">Effective</td>
+                        <td style="padding:8px 0;font-size:14px;color:#8C7A70;">Effective</td>
                         <td align="right" style="padding:8px 0;font-size:14px;font-weight:600;color:#1A1816;">{{EFFECTIVE_DATE}}</td>
                       </tr>
                     </table>
                   </td>
                 </tr>
               </table>
-              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#E8F5F2;border-radius:8px;margin:0 0 24px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#E8F5F2;border-radius:12px;margin:0 0 24px;">
                 <tr>
                   <td style="padding:16px 20px;">
-                    <p style="margin:0;font-size:13px;line-height:1.6;color:#1A1816;">
+                    <p style="margin:0;font-size:13px;line-height:1.7;color:#1A1816;">
                       <strong>Note from your provider:</strong> {{PROVIDER_NOTES}}
                     </p>
                   </td>
                 </tr>
               </table>
-              <p style="margin:0 0 32px;font-size:15px;line-height:1.7;color:#666;">
+              <p style="margin:0 0 32px;font-size:16px;line-height:1.7;color:#8C7A70;">
                 Your updated dosage will be reflected in your next shipment. Continue with your current supply until your next refill arrives.
               </p>
               <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                   <td align="center">
-                    <a href="{{DASHBOARD_URL}}" style="display:inline-block;background-color:#C96A4A;color:#ffffff;font-family:'Inter',Arial,sans-serif;font-size:16px;font-weight:600;text-decoration:none;padding:16px 40px;border-radius:8px;">View Treatment Details</a>
+                    <a href="{{DASHBOARD_URL}}" style="display:inline-block;background-color:#C96A4A;color:#ffffff;font-family:'Inter',Arial,sans-serif;font-size:16px;font-weight:600;text-decoration:none;padding:16px 40px;border-radius:999px;">View Treatment Details</a>
                   </td>
                 </tr>
               </table>
@@ -77,9 +77,9 @@
           <tr>
             <td style="padding:32px 40px;text-align:center;">
               <p style="margin:0 0 8px;font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:600;color:#2A9D8F;">NIMBUS</p>
-              <p style="margin:0 0 16px;font-size:12px;color:#999;line-height:1.6;">Nimbus Healthcare, Inc.<br>123 Wellness Way, Suite 200, Austin, TX 78701</p>
-              <p style="margin:0;font-size:12px;color:#999;"><a href="{{UNSUBSCRIBE_URL}}" style="color:#999;text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;<a href="{{PREFERENCES_URL}}" style="color:#999;text-decoration:underline;">Email Preferences</a> &nbsp;|&nbsp;<a href="{{PRIVACY_URL}}" style="color:#999;text-decoration:underline;">Privacy Policy</a></p>
-              <p style="margin:16px 0 0;font-size:11px;color:#bbb;">&copy; 2026 Nimbus Healthcare. All rights reserved.</p>
+              <p style="margin:0 0 16px;font-size:12px;color:#9E9590;line-height:1.7;">Nimbus Healthcare, Inc.<br>123 Wellness Way, Suite 200, Austin, TX 78701</p>
+              <p style="margin:0;font-size:12px;color:#9E9590;"><a href="{{UNSUBSCRIBE_URL}}" style="color:#9E9590;text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;<a href="{{PREFERENCES_URL}}" style="color:#9E9590;text-decoration:underline;">Email Preferences</a> &nbsp;|&nbsp;<a href="{{PRIVACY_URL}}" style="color:#9E9590;text-decoration:underline;">Privacy Policy</a></p>
+              <p style="margin:16px 0 0;font-size:11px;color:#B9B2A9;">&copy; 2026 Nimbus Healthcare. All rights reserved.</p>
             </td>
           </tr>
         </table>
