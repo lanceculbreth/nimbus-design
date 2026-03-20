@@ -4,13 +4,13 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Assets" active="assets" sections={[
   { label: 'Logo', id: 'logos' },
-  { label: 'Accreditation', id: 'accreditation' },
   { label: 'Photography', id: 'photography' },
   { label: 'Headshots', id: 'headshots' },
   { label: 'Vials', id: 'vials' },
   { label: 'Product', id: 'product' },
   { label: 'Partners', id: 'partners' },
   { label: 'Video', id: 'video' },
+  { label: 'Accreditation', id: 'accreditation' },
 ]}>
   <div class="max-w-[900px] mx-auto px-10 py-16">
     <!-- Page Header -->
@@ -56,18 +56,6 @@ import Layout from '../layouts/Layout.astro';
           <li>Never place the logo on busy or low-contrast backgrounds</li>
           <li>Never stretch, rotate, or alter the logo proportions</li>
         </ul>
-      </div>
-    </section>
-
-    <!-- Accreditation -->
-    <section id="accreditation" class="mb-20">
-      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Accreditation Badges</h2>
-      <div class="bg-dark rounded-3xl p-8">
-        <div class="flex items-center gap-8">
-          <img src="/images/6862a180b3f36e42a9c2a8bd_logo_f1.svg" alt="Accreditation badge" class="h-[52px]" />
-          <img src="/images/6862a180b3f36e42a9c2a8be_logo_f2.svg" alt="Accreditation logo" class="h-[32px]" />
-        </div>
-        <p class="font-inter text-cream/30 text-xs mt-4">Used in the footer and trust sections. Always on dark backgrounds.</p>
       </div>
     </section>
 
@@ -266,6 +254,18 @@ import Layout from '../layouts/Layout.astro';
             <p>Poster frame should be visually compelling</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Accreditation -->
+    <section id="accreditation" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Accreditation Badges</h2>
+      <div class="bg-dark rounded-3xl p-8">
+        <div class="flex items-center gap-8">
+          <img src="/images/6862a180b3f36e42a9c2a8bd_logo_f1.svg" alt="Accreditation badge" class="h-[52px]" />
+          <img src="/images/6862a180b3f36e42a9c2a8be_logo_f2.svg" alt="Accreditation logo" class="h-[32px]" />
+        </div>
+        <p class="font-inter text-cream/30 text-xs mt-4">Used in the footer and trust sections. Always on dark backgrounds.</p>
       </div>
     </section>
 
