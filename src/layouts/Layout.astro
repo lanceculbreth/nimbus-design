@@ -78,8 +78,8 @@ const navItems = [
           <slot />
         </div>
 
-        <!-- Secondary Section Nav -->
-        {sections.length > 0 && (
+        <!-- Secondary Section Nav (or spacer to keep centering consistent) -->
+        {sections.length > 0 ? (
           <aside class="hidden xl:block w-[160px] flex-shrink-0 py-16 pr-6">
             <nav class="sticky top-16" id="section-nav">
               <ul class="space-y-1">
@@ -97,6 +97,8 @@ const navItems = [
               </ul>
             </nav>
           </aside>
+        ) : (
+          <div class="hidden xl:block w-[160px] flex-shrink-0"></div>
         )}
       </main>
     </div>
