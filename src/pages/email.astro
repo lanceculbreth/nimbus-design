@@ -86,39 +86,25 @@ const categories = [
   },
 ];
 
-const tagStyles: Record<string, string> = {
-  'Hero': 'bg-teal/10 text-teal',
-  'Inline img': 'bg-purple-100 text-purple-600',
-  'Trust': 'bg-warm-gray text-dark/50',
-  'Gap': 'bg-terracotta/10 text-terracotta',
-};
-
 const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
-const newEmails = categories.reduce((sum, cat) => sum + cat.emails.filter(e => e.isNew).length, 0);
 ---
 
 <Layout title="Email" active="email">
   <div class="max-w-[1200px] mx-auto px-8 py-10">
 
-    <!-- Header -->
-    <div class="bg-white rounded-2xl border border-dark/8 px-8 py-6 mb-10">
-      <div class="flex items-start justify-between flex-wrap gap-4">
-        <div>
-          <h1 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-1">
-            WeightWise V3 — Email Template Preview
-          </h1>
-          <p class="font-inter text-dark/40 text-sm">
-            Nimbus Healthcare &middot; "Find Your Groove" &middot; February 2026
-          </p>
-        </div>
+    <!-- Page Header -->
+    <div class="mb-16">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-[2px] bg-teal"></div>
+        <span class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase">Lifecycle Emails</span>
+        <div class="w-10 h-[2px] bg-teal"></div>
       </div>
-      <div class="flex flex-wrap gap-2 mt-4">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-teal/8 text-teal text-xs font-medium">{totalEmails} email templates</span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-50 text-purple-500 text-xs font-medium">5 shared partials</span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-terracotta/8 text-terracotta text-xs font-medium">{newEmails} gap fills</span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-dark/5 text-dark/50 text-xs font-medium">7 categories</span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 text-amber-600 text-xs font-medium">14 lifestyle images</span>
-      </div>
+      <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
+        Emails
+      </h1>
+      <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
+        {totalEmails} email templates across 7 categories — from onboarding through winback.
+      </p>
     </div>
 
     <!-- Categories -->
@@ -149,12 +135,7 @@ const newEmails = categories.reduce((sum, cat) => sum + cat.emails.filter(e => e
                     <span class="flex-shrink-0 inline-block px-2 py-0.5 rounded-full bg-terracotta/10 text-terracotta text-[10px] font-bold uppercase tracking-wider">NEW</span>
                   )}
                 </div>
-                <p class="font-inter text-dark/40 text-xs leading-relaxed mb-3 line-clamp-2">{email.subject}</p>
-                <div class="flex flex-wrap gap-1.5">
-                  {email.tags.map((tag) => (
-                    <span class={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold ${tagStyles[tag] || 'bg-dark/5 text-dark/40'}`}>{tag}</span>
-                  ))}
-                </div>
+                <p class="font-inter text-dark/40 text-xs leading-relaxed line-clamp-2">{email.subject}</p>
               </div>
             </div>
           ))}
