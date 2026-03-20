@@ -818,9 +818,9 @@ import Layout from '../layouts/Layout.astro';
             {[
               { title: 'One simple price, every month', desc: 'No more varying charges. Your rate is locked in for the duration of your plan.' },
               { title: 'Automatic payment processing', desc: 'Payment is now processed on the same date each month.' },
-              { title: 'Pay As You Engage', desc: 'You're charged only after your monthly check-in is complete.' },
+              { title: 'Pay As You Engage', desc: "You're charged only after your monthly check-in is complete." },
               { title: 'Prepaid balance honored', desc: 'If you have time remaining on your old plan, it carries over to your new plan.' },
-              { title: 'Auto-pause protection', desc: 'If you don't engage for 30 days, your plan pauses automatically.' },
+              { title: 'Auto-pause protection', desc: "If you don't engage for 30 days, your plan pauses automatically." },
             ].map(item => (
               <div class="flex gap-3 bg-cream/5 rounded-2xl px-5 py-4">
                 <div class="w-1.5 h-1.5 rounded-full bg-teal mt-1.5 flex-shrink-0"></div>
@@ -985,7 +985,7 @@ import Layout from '../layouts/Layout.astro';
               </p>
               <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-widest mb-2">Who it's for</p>
               <ul class="space-y-1.5 mb-5">
-                {['Patients who haven't seen desired results with semaglutide', 'Those looking for stronger appetite control', 'People with Type 2 Diabetes or higher BMI'].map(item => (
+                {["Patients who haven't seen desired results with semaglutide", 'Those looking for stronger appetite control', 'People with Type 2 Diabetes or higher BMI'].map(item => (
                   <li class="flex items-start gap-2">
                     <span class="text-teal mt-0.5 text-xs">✓</span>
                     <span class="font-inter text-cream/60 text-xs leading-[1.5]">{item}</span>
