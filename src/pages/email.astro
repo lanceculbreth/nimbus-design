@@ -103,8 +103,14 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
     </div>
 
     <!-- Tabs -->
-    <div class="flex gap-2 mb-12" id="cx-tabs">
-      <button onclick="switchTab('emails')" id="tab-emails" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark text-cream">Emails</button>
+    <div class="flex items-center gap-2 mb-12" id="cx-tabs">
+      <!-- Product selectors -->
+      <button onclick="switchProduct('weightwise')" id="prod-weightwise" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark text-cream">WeightWise</button>
+      <button onclick="switchProduct('nimcore')" id="prod-nimcore" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark">NimCore</button>
+      <!-- Separator -->
+      <div class="w-px h-5 bg-dark/15 mx-1"></div>
+      <!-- Channel tabs -->
+      <button onclick="switchTab('emails')" id="tab-emails" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark">Emails</button>
       <button onclick="switchTab('sms')" id="tab-sms" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark">SMS</button>
       <button onclick="switchTab('notifications')" id="tab-notifications" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark">Notifications</button>
       <button onclick="switchTab('journey')" id="tab-journey" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark">CX Journey</button>
@@ -477,6 +483,16 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
 
   <script is:inline>
     const tabs = ['emails', 'sms', 'notifications', 'journey'];
+    const products = ['weightwise', 'nimcore'];
+
+    function switchProduct(active) {
+      products.forEach(p => {
+        const btn = document.getElementById('prod-' + p);
+        btn.className = p === active
+          ? 'px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark text-cream'
+          : 'px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark';
+      });
+    }
 
     function switchTab(active) {
       tabs.forEach(t => {
@@ -491,6 +507,9 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
         }
       });
     }
+
+    // Set defaults on load
+    switchTab('emails');
 
     let isMobile = false;
 
