@@ -93,14 +93,25 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
   <div class="max-w-[900px] mx-auto px-10 py-16">
 
     <!-- Page Header -->
-    <div class="mb-16">
+    <div class="mb-10">
       <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
         Customer Touchpoints
       </h1>
       <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
-The full communications journey — email, SMS, and in-app notifications designed to guide patients from first touchpoint through long-term retention.
+        The full communications journey — email, SMS, and in-app notifications designed to guide patients from first touchpoint through long-term retention.
       </p>
     </div>
+
+    <!-- Tabs -->
+    <div class="flex gap-2 mb-12" id="cx-tabs">
+      <button onclick="switchTab('emails')" id="tab-emails" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark text-cream">Emails</button>
+      <button onclick="switchTab('sms')" id="tab-sms" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark">SMS</button>
+      <button onclick="switchTab('notifications')" id="tab-notifications" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark">Notifications</button>
+      <button onclick="switchTab('journey')" id="tab-journey" class="px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark">CX Journey</button>
+    </div>
+
+    <!-- Tab: Emails -->
+    <div id="panel-emails">
 
     <!-- Categories -->
     {categories.map((cat) => (
@@ -137,6 +148,33 @@ The full communications journey — email, SMS, and in-app notifications designe
         </div>
       </section>
     ))}
+
+    </div><!-- /panel-emails -->
+
+    <!-- Tab: SMS -->
+    <div id="panel-sms" class="hidden">
+      <div class="flex flex-col items-center justify-center py-24 text-center">
+        <p class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-3">SMS</p>
+        <p class="font-inter text-dark/40 text-base max-w-[400px]">Transactional and marketing SMS templates coming soon.</p>
+      </div>
+    </div>
+
+    <!-- Tab: Notifications -->
+    <div id="panel-notifications" class="hidden">
+      <div class="flex flex-col items-center justify-center py-24 text-center">
+        <p class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-3">Notifications</p>
+        <p class="font-inter text-dark/40 text-base max-w-[400px]">In-app and push notification patterns coming soon.</p>
+      </div>
+    </div>
+
+    <!-- Tab: CX Journey -->
+    <div id="panel-journey" class="hidden">
+      <div class="flex flex-col items-center justify-center py-24 text-center">
+        <p class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-3">CX Journey</p>
+        <p class="font-inter text-dark/40 text-base max-w-[400px]">End-to-end patient journey map and touchpoint sequencing coming soon.</p>
+      </div>
+    </div>
+
   </div>
 
   <!-- Fullscreen Preview Overlay -->
@@ -165,6 +203,22 @@ The full communications journey — email, SMS, and in-app notifications designe
   </button>
 
   <script is:inline>
+    const tabs = ['emails', 'sms', 'notifications', 'journey'];
+
+    function switchTab(active) {
+      tabs.forEach(t => {
+        const panel = document.getElementById('panel-' + t);
+        const btn = document.getElementById('tab-' + t);
+        if (t === active) {
+          panel.classList.remove('hidden');
+          btn.className = 'px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark text-cream';
+        } else {
+          panel.classList.add('hidden');
+          btn.className = 'px-5 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark';
+        }
+      });
+    }
+
     let isMobile = false;
 
     function openPreview(src, name) {
