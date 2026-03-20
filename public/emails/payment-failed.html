@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Payment Issue</title>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:wght@600;700&display=swap');</style>
+</head>
+<body style="margin:0;padding:0;background-color:#F5F0EB;font-family:'Inter',Arial,Helvetica,sans-serif;color:#1A1816;-webkit-font-smoothing:antialiased;">
+  <div style="display:none;font-size:1px;color:#F5F0EB;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">Your recent payment didn't go through. Update your payment method to avoid interruption.</div>
+  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F5F0EB;">
+    <tr>
+      <td align="center" style="padding:20px 16px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" width="600" style="max-width:600px;width:100%;">
+          <tr><td align="center" style="padding:32px 0 24px;"><span style="font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:700;color:#2A9D8F;letter-spacing:1px;">NIMBUS</span></td></tr>
+          <!-- Alert Banner -->
+          <tr>
+            <td style="padding:0;">
+              <div style="background-color:#C96A4A;border-radius:12px 12px 0 0;padding:12px 40px;text-align:center;">
+                <p style="margin:0;font-size:13px;font-weight:600;color:#ffffff;text-transform:uppercase;letter-spacing:1px;">Payment Action Required</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:#ffffff;border-radius:0 0 12px 12px;padding:40px;">
+              <h1 style="margin:0 0 20px;font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:700;color:#1A1816;line-height:1.3;">Heads up &mdash; your payment didn't go through</h1>
+              <p style="margin:0 0 20px;font-size:16px;line-height:1.7;color:#1A1816;">
+                Hi {{FIRST_NAME}}, we tried to process your payment of <strong>{{AMOUNT}}</strong> on {{PAYMENT_DATE}}, but it was declined. This can happen for a number of reasons &mdash; expired card, insufficient funds, or a bank hold.
+              </p>
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#FEF6F3;border-radius:8px;border-left:4px solid #C96A4A;margin:0 0 24px;">
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <p style="margin:0;font-size:14px;line-height:1.6;color:#1A1816;">
+                      <strong>Important:</strong> If we can't process your payment within {{RETRY_DAYS}} days, your subscription may be paused and your next refill could be delayed.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:0 0 32px;font-size:15px;line-height:1.7;color:#666;">
+                Please update your payment method to keep your treatment on track.
+              </p>
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td align="center">
+                    <a href="{{PAYMENT_URL}}" style="display:inline-block;background-color:#C96A4A;color:#ffffff;font-family:'Inter',Arial,sans-serif;font-size:16px;font-weight:600;text-decoration:none;padding:16px 40px;border-radius:8px;">Update Payment Method</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px 40px;text-align:center;">
+              <p style="margin:0 0 8px;font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:600;color:#2A9D8F;">NIMBUS</p>
+              <p style="margin:0 0 16px;font-size:12px;color:#999;line-height:1.6;">Nimbus Healthcare, Inc.<br>123 Wellness Way, Suite 200, Austin, TX 78701</p>
+              <p style="margin:0;font-size:12px;color:#999;">
+                <a href="{{UNSUBSCRIBE_URL}}" style="color:#999;text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+                <a href="{{PREFERENCES_URL}}" style="color:#999;text-decoration:underline;">Email Preferences</a> &nbsp;|&nbsp;
+                <a href="{{PRIVACY_URL}}" style="color:#999;text-decoration:underline;">Privacy Policy</a>
+              </p>
+              <p style="margin:16px 0 0;font-size:11px;color:#bbb;">&copy; 2026 Nimbus Healthcare. All rights reserved.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

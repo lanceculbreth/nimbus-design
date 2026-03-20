@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Plan Paused</title>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:wght@600;700&display=swap');</style>
+</head>
+<body style="margin:0;padding:0;background-color:#F5F0EB;font-family:'Inter',Arial,Helvetica,sans-serif;color:#1A1816;-webkit-font-smoothing:antialiased;">
+  <div style="display:none;font-size:1px;color:#F5F0EB;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">Your WeightWise plan is paused. You can resume anytime.</div>
+  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F5F0EB;">
+    <tr>
+      <td align="center" style="padding:20px 16px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" width="600" style="max-width:600px;width:100%;">
+          <tr><td align="center" style="padding:32px 0 24px;"><span style="font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:700;color:#2A9D8F;letter-spacing:1px;">NIMBUS</span></td></tr>
+          <tr>
+            <td style="background-color:#ffffff;border-radius:12px;padding:48px 40px;">
+              <div style="width:56px;height:56px;border-radius:50%;background-color:#F5F0EB;margin:0 0 24px;line-height:56px;font-size:28px;text-align:center;">&#9208;</div>
+              <h1 style="margin:0 0 20px;font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:700;color:#1A1816;line-height:1.3;">Your plan is paused &mdash; no worries</h1>
+              <p style="margin:0 0 20px;font-size:16px;line-height:1.7;color:#1A1816;">
+                Hi {{FIRST_NAME}}, your WeightWise subscription has been paused. We understand life happens, and we're here whenever you're ready to continue.
+              </p>
+              <p style="margin:0 0 8px;font-size:15px;font-weight:600;color:#1A1816;">What this means:</p>
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:0 0 24px;">
+                <tr><td style="padding:6px 0 6px 16px;font-size:14px;color:#666;">&#8226; You won't be charged during the pause</td></tr>
+                <tr><td style="padding:6px 0 6px 16px;font-size:14px;color:#666;">&#8226; No new refills will be shipped</td></tr>
+                <tr><td style="padding:6px 0 6px 16px;font-size:14px;color:#666;">&#8226; Your account and progress data are saved</td></tr>
+                <tr><td style="padding:6px 0 6px 16px;font-size:14px;color:#666;">&#8226; You can resume anytime with one click</td></tr>
+              </table>
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F5F0EB;border-radius:8px;margin:0 0 32px;">
+                <tr>
+                  <td style="padding:16px 20px;text-align:center;">
+                    <p style="margin:0;font-size:13px;color:#666;">Your plan will automatically cancel if not resumed within <strong>90 days</strong>.</p>
+                  </td>
+                </tr>
+              </table>
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td align="center">
+                    <a href="{{RESUME_URL}}" style="display:inline-block;background-color:#C96A4A;color:#ffffff;font-family:'Inter',Arial,sans-serif;font-size:16px;font-weight:600;text-decoration:none;padding:16px 40px;border-radius:8px;">Resume My Plan</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px 40px;text-align:center;">
+              <p style="margin:0 0 8px;font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:600;color:#2A9D8F;">NIMBUS</p>
+              <p style="margin:0 0 16px;font-size:12px;color:#999;line-height:1.6;">Nimbus Healthcare, Inc.<br>123 Wellness Way, Suite 200, Austin, TX 78701</p>
+              <p style="margin:0;font-size:12px;color:#999;"><a href="{{UNSUBSCRIBE_URL}}" style="color:#999;text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;<a href="{{PREFERENCES_URL}}" style="color:#999;text-decoration:underline;">Email Preferences</a> &nbsp;|&nbsp;<a href="{{PRIVACY_URL}}" style="color:#999;text-decoration:underline;">Privacy Policy</a></p>
+              <p style="margin:16px 0 0;font-size:11px;color:#bbb;">&copy; 2026 Nimbus Healthcare. All rights reserved.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

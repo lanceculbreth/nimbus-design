@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Check-In Ready</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:wght@600;700&display=swap');
+  </style>
+</head>
+<body style="margin:0;padding:0;background-color:#F5F0EB;font-family:'Inter',Arial,Helvetica,sans-serif;color:#1A1816;-webkit-font-smoothing:antialiased;">
+  <div style="display:none;font-size:1px;color:#F5F0EB;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+    Your 60-second monthly check-in is ready. Complete it now to keep your refill on track.
+  </div>
+  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F5F0EB;">
+    <tr>
+      <td align="center" style="padding:20px 16px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" width="600" style="max-width:600px;width:100%;">
+          <tr>
+            <td align="center" style="padding:32px 0 24px;">
+              <span style="font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:700;color:#2A9D8F;letter-spacing:1px;">NIMBUS</span>
+            </td>
+          </tr>
+          <!-- Hero -->
+          <tr>
+            <td style="padding:0;">
+              <div style="background:linear-gradient(135deg,#2A9D8F,#1E7A6E);border-radius:12px 12px 0 0;padding:48px 40px;text-align:center;">
+                <div style="display:inline-block;background-color:rgba(255,255,255,0.15);border-radius:50%;width:72px;height:72px;line-height:72px;font-size:32px;margin:0 0 16px;">&#9201;</div>
+                <h1 style="margin:0 0 8px;font-family:'Fraunces',Georgia,serif;font-size:28px;font-weight:700;color:#ffffff;line-height:1.3;">Your 60-second check-in is ready</h1>
+                <p style="margin:0;font-size:15px;color:rgba(255,255,255,0.8);">Quick questions to keep your treatment on track</p>
+              </div>
+            </td>
+          </tr>
+          <!-- Body -->
+          <tr>
+            <td style="background-color:#ffffff;padding:40px;border-radius:0 0 12px 12px;">
+              <p style="margin:0 0 24px;font-size:16px;line-height:1.7;color:#1A1816;">
+                Hi {{FIRST_NAME}}, it's that time again. Your monthly check-in is how your provider monitors your progress and approves your next refill.
+              </p>
+              <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#666;">
+                It only takes about 60 seconds &mdash; a few quick questions about how you're feeling, any side effects, and your current weight. Easy.
+              </p>
+              <!-- Big CTA -->
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td align="center" style="padding:8px 0 32px;">
+                    <a href="{{CHECK_IN_URL}}" style="display:inline-block;background-color:#C96A4A;color:#ffffff;font-family:'Inter',Arial,sans-serif;font-size:18px;font-weight:600;text-decoration:none;padding:20px 56px;border-radius:8px;">Start Check-In</a>
+                  </td>
+                </tr>
+              </table>
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F5F0EB;border-radius:8px;">
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <p style="margin:0;font-size:13px;line-height:1.6;color:#666;text-align:center;">
+                      Complete your check-in by <strong>{{DEADLINE_DATE}}</strong> to avoid a gap in your treatment.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <!-- Footer -->
+          <tr>
+            <td style="padding:32px 40px;text-align:center;">
+              <p style="margin:0 0 8px;font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:600;color:#2A9D8F;">NIMBUS</p>
+              <p style="margin:0 0 16px;font-size:12px;color:#999;line-height:1.6;">Nimbus Healthcare, Inc.<br>123 Wellness Way, Suite 200, Austin, TX 78701</p>
+              <p style="margin:0;font-size:12px;color:#999;">
+                <a href="{{UNSUBSCRIBE_URL}}" style="color:#999;text-decoration:underline;">Unsubscribe</a> &nbsp;|&nbsp;
+                <a href="{{PREFERENCES_URL}}" style="color:#999;text-decoration:underline;">Email Preferences</a> &nbsp;|&nbsp;
+                <a href="{{PRIVACY_URL}}" style="color:#999;text-decoration:underline;">Privacy Policy</a>
+              </p>
+              <p style="margin:16px 0 0;font-size:11px;color:#bbb;">&copy; 2026 Nimbus Healthcare. All rights reserved.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
