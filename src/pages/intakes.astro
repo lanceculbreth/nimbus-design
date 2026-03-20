@@ -12,6 +12,7 @@ import Layout from '../layouts/Layout.astro';
   { label: 'Health Screening', id: 'screening' },
   { label: 'Photo Upload', id: 'photos' },
   { label: 'Checkout', id: 'checkout' },
+  { label: 'Price Change', id: 'price-change' },
   { label: 'Layout', id: 'layout' },
 ]}>
   <div class="max-w-[900px] mx-auto px-10 py-16">
@@ -694,6 +695,319 @@ import Layout from '../layouts/Layout.astro';
             ))}
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Price Change -->
+    <section id="price-change" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-3">Price Change</h2>
+      <p class="font-inter text-dark/50 text-sm leading-[1.6] max-w-[580px] mb-8">
+        The <code class="bg-dark/5 px-1.5 py-0.5 rounded text-xs">/price-change</code> page is shown to existing subscribers when their plan is being updated. It presents their old plan, offers new commitment options, and captures consent before processing the change.
+      </p>
+
+      <div class="space-y-6">
+
+        <!-- Page Header -->
+        <div class="bg-warm-gray rounded-3xl p-8">
+          <h3 class="font-inter text-sm font-semibold mb-4">Page Header</h3>
+          <div class="mb-4">
+            <p class="font-fraunces text-dark text-2xl tracking-tight mb-1">Review your new plan</p>
+            <p class="font-inter text-dark/50 text-sm">We've updated our pricing model. Choose the plan that works best for you.</p>
+          </div>
+          <p class="font-inter text-dark/40 text-xs">Fraunces 24px heading · Inter 14px subtitle dark/50 · Back nav link top-left · Nimbus logo top-left</p>
+        </div>
+
+        <!-- Plan Comparison -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Plan Comparison Cards</h3>
+          <div class="grid grid-cols-2 gap-4 max-w-[560px]">
+            <!-- Old Plan -->
+            <div class="bg-cream/5 border border-cream/10 rounded-2xl p-5">
+              <p class="font-inter text-cream/40 text-xs uppercase tracking-widest mb-3">Your Old Plan</p>
+              <p class="font-fraunces text-cream text-3xl mb-1">$297<span class="text-lg font-inter font-normal text-cream/50">/mo</span></p>
+              <p class="font-inter text-cream/40 text-xs mb-4">Charged regardless of engagement</p>
+              <div class="border-t border-cream/10 pt-3 space-y-1.5">
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/50 text-xs">Medication</span>
+                  <span class="font-inter text-cream/70 text-xs">Semaglutide</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/50 text-xs">Billing</span>
+                  <span class="font-inter text-cream/70 text-xs">Monthly</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/50 text-xs">Remaining</span>
+                  <span class="font-inter text-cream/70 text-xs">3 months</span>
+                </div>
+              </div>
+            </div>
+            <!-- New Plan -->
+            <div class="bg-teal/5 border-2 border-teal/20 rounded-2xl p-5">
+              <p class="font-inter text-teal text-xs uppercase tracking-widest mb-3">Your New Plan</p>
+              <p class="font-fraunces text-cream text-3xl mb-1">$179<span class="text-lg font-inter font-normal text-cream/50">/mo</span></p>
+              <p class="font-inter text-cream/40 text-xs mb-4">Pay as you engage</p>
+              <div class="border-t border-teal/10 pt-3 space-y-1.5">
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/50 text-xs">Medication</span>
+                  <span class="font-inter text-cream/70 text-xs">CarniSema®</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/50 text-xs">Effective</span>
+                  <span class="font-inter text-cream/70 text-xs">April 1, 2026</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/50 text-xs">Savings</span>
+                  <span class="font-inter text-teal text-xs font-medium">Save 40%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">Old plan: cream/5 bg, cream/10 border · New plan: teal/5 bg, teal/20 border-2 · Price in Fraunces 30px · Labels Inter 11px uppercase tracking-widest</p>
+        </div>
+
+        <!-- Radio Plan Options -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Plan Selection — Radio Options</h3>
+          <div class="max-w-[480px] space-y-3">
+            <!-- Semaglutide Options -->
+            <p class="font-inter text-cream/40 text-xs uppercase tracking-widest mb-2">Semaglutide (CarniSema®)</p>
+            {[
+              { label: 'Month-to-Month', sub: 'Billed monthly', price: '$179/mo', savings: null, selected: true },
+              { label: '3-Month Journey', sub: 'Billed every 3 months', price: '$149/mo', savings: 'Save 17%', selected: false },
+              { label: '6-Month Transformation', sub: 'Billed every 6 months', price: '$129/mo', savings: 'Save 28%', selected: false },
+            ].map(opt => (
+              <div class={`flex items-center justify-between px-5 py-4 rounded-2xl border cursor-pointer transition-colors ${opt.selected ? 'border-2 border-teal/30 bg-teal/5' : 'border-cream/10 hover:border-cream/20'}`}>
+                <div class="flex items-center gap-3">
+                  <div class={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${opt.selected ? 'border-teal' : 'border-cream/30'}`}>
+                    {opt.selected && <div class="w-2 h-2 rounded-full bg-teal"></div>}
+                  </div>
+                  <div>
+                    <p class={`font-inter text-sm font-medium ${opt.selected ? 'text-cream' : 'text-cream/70'}`}>{opt.label}</p>
+                    <p class="font-inter text-xs text-cream/40">{opt.sub}</p>
+                  </div>
+                </div>
+                <div class="text-right flex items-center gap-2">
+                  {opt.savings && (
+                    <span class="bg-teal/10 text-teal font-inter text-[10px] font-semibold px-2 py-0.5 rounded-full">{opt.savings}</span>
+                  )}
+                  <span class={`font-inter text-sm font-semibold ${opt.selected ? 'text-cream' : 'text-cream/60'}`}>{opt.price}</span>
+                </div>
+              </div>
+            ))}
+
+            <!-- Tirzepatide toggle -->
+            <div class="pt-2">
+              <button class="flex items-center gap-2 font-inter text-sm text-cream/50 hover:text-cream/70 transition-colors">
+                <span class="w-4 h-4 rounded border border-cream/20 flex items-center justify-center text-xs">+</span>
+                Interested in Tirzepatide (CarniTide®)?
+                <span class="text-cream/30 text-xs ml-1">ⓘ</span>
+              </button>
+            </div>
+          </div>
+          <div class="mt-5 font-inter text-cream/30 text-xs space-y-1">
+            <p>Radio rows: selected = border-2 teal/30, bg teal/5 · radio dot fills teal</p>
+            <p>Savings badge: bg teal/10, text teal, 10px semibold, rounded-full</p>
+            <p>Tirzepatide toggle collapses/expands additional options · ⓘ opens info modal</p>
+          </div>
+        </div>
+
+        <!-- What's New Callouts -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">What's New — Feature Callouts</h3>
+          <div class="space-y-3 max-w-[500px] mb-5">
+            {[
+              { title: 'One simple price, every month', desc: 'No more varying charges. Your rate is locked in for the duration of your plan.' },
+              { title: 'Automatic payment processing', desc: 'Payment is now processed on the same date each month.' },
+              { title: 'Pay As You Engage', desc: 'You're charged only after your monthly check-in is complete.' },
+              { title: 'Prepaid balance honored', desc: 'If you have time remaining on your old plan, it carries over to your new plan.' },
+              { title: 'Auto-pause protection', desc: 'If you don't engage for 30 days, your plan pauses automatically.' },
+            ].map(item => (
+              <div class="flex gap-3 bg-cream/5 rounded-2xl px-5 py-4">
+                <div class="w-1.5 h-1.5 rounded-full bg-teal mt-1.5 flex-shrink-0"></div>
+                <div>
+                  <p class="font-inter text-cream text-sm font-medium">{item.title}</p>
+                  <p class="font-inter text-cream/50 text-xs mt-0.5 leading-[1.5]">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {['No surprise charges', 'You\'re in control', 'Pause anytime'].map(badge => (
+              <span class="bg-teal/10 text-teal font-inter text-xs font-medium px-3 py-1.5 rounded-full">{badge}</span>
+            ))}
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">Feature rows: cream/5 bg, teal bullet dot · Summary badges: teal/10 bg, teal text</p>
+        </div>
+
+        <!-- Plan Summary Card -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Updated Plan Summary</h3>
+          <div class="max-w-[440px] space-y-4">
+            <!-- Summary card -->
+            <div class="bg-cream/5 border border-cream/10 rounded-2xl p-5">
+              <p class="font-inter text-cream/40 text-xs uppercase tracking-widest mb-4">Your Plan</p>
+              <div class="space-y-2.5">
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/60 text-sm">Plan type</span>
+                  <span class="font-inter text-cream text-sm font-medium">Pay as you engage</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/60 text-sm">Medication</span>
+                  <span class="font-inter text-cream text-sm font-medium">CarniSema® (Semaglutide)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/60 text-sm">Monthly rate</span>
+                  <span class="font-inter text-cream text-sm font-medium">$179/month</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/60 text-sm">Billing</span>
+                  <span class="font-inter text-cream text-sm font-medium">Billed monthly</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/60 text-sm">Effective date</span>
+                  <span class="font-inter text-cream text-sm font-medium">April 1, 2026</span>
+                </div>
+              </div>
+            </div>
+            <!-- Balance transition -->
+            <div class="bg-teal/5 border border-teal/15 rounded-2xl p-5">
+              <p class="font-inter text-teal text-xs font-semibold mb-3">Prepaid Balance Honored</p>
+              <div class="space-y-2">
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/60 text-xs">Current rate</span>
+                  <span class="font-inter text-cream/80 text-xs">$175/mo (prepaid)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-cream/60 text-xs">Remaining period</span>
+                  <span class="font-inter text-cream/80 text-xs">3 months (through Jun 30)</span>
+                </div>
+                <div class="flex justify-between border-t border-teal/10 pt-2 mt-1">
+                  <span class="font-inter text-cream/60 text-xs">New plan starts</span>
+                  <span class="font-inter text-teal text-xs font-medium">July 1, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">Summary: cream/5 bg · Balance callout: teal/5 bg, teal/15 border, teal label · Fraunces not used here — all Inter</p>
+        </div>
+
+        <!-- Saved Card -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Saved Payment Method</h3>
+          <div class="max-w-[380px]">
+            <div class="flex items-center justify-between bg-cream/5 border border-cream/10 rounded-2xl px-5 py-4">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-7 bg-cream/10 rounded flex items-center justify-center">
+                  <span class="font-inter text-cream/60 text-[10px] font-bold">VISA</span>
+                </div>
+                <div>
+                  <p class="font-inter text-cream text-sm">Visa ending in 4821</p>
+                  <p class="font-inter text-cream/40 text-xs">Expires 09/2027</p>
+                </div>
+              </div>
+              <button class="font-inter text-teal text-xs hover:text-teal/70 transition-colors">Update</button>
+            </div>
+          </div>
+          <p class="font-inter text-cream/30 text-xs mt-5">Displays masked card number and expiry · "Update" link in teal opens payment update flow · Card logo displayed in cream/10 chip</p>
+        </div>
+
+        <!-- Consent Checkboxes -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Consent Checkboxes</h3>
+          <div class="max-w-[500px] space-y-4">
+            {[
+              { text: 'I understand my plan is changing from $297/month to $179/month effective April 1, 2026', checked: true },
+              { text: 'I understand my new monthly rate is $179/month (previously $297/month)', checked: true },
+              { text: 'I have read and agree to the updated Terms of Service and Subscription Agreement', checked: false },
+            ].map(item => (
+              <div class="flex gap-4">
+                <div class={`w-[22px] h-[22px] rounded-md border-2 flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors ${item.checked ? 'bg-teal border-teal' : 'border-cream/20 bg-transparent'}`}>
+                  {item.checked && <span class="text-dark text-xs font-bold leading-none">✓</span>}
+                </div>
+                <p class="font-inter text-cream/70 text-sm leading-[1.5]">{item.text}</p>
+              </div>
+            ))}
+          </div>
+          <div class="mt-5 font-inter text-cream/30 text-xs space-y-1">
+            <p>Custom 22×22px checkbox · Checked: teal bg + border, dark ✓ · Unchecked: cream/20 border</p>
+            <p>All 3 must be checked to enable "Accept & Continue" · Terms of Service and Subscription Agreement are linked</p>
+          </div>
+        </div>
+
+        <!-- Support Callout + CTA -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Support Callout & Action Buttons</h3>
+          <div class="max-w-[500px] space-y-4">
+            <!-- Support callout -->
+            <div class="bg-teal/5 border border-teal/15 rounded-2xl px-5 py-4">
+              <p class="font-inter text-cream/70 text-sm">
+                Questions? Chat with Nimy or contact support at{' '}
+                <span class="text-teal underline">support@nimbushealthcare.com</span>
+              </p>
+            </div>
+            <!-- Action buttons -->
+            <div class="flex gap-3">
+              <button class="flex-1 border border-cream/20 text-cream/60 font-inter text-sm rounded-full py-3 hover:border-cream/40 transition-colors">
+                Back
+              </button>
+              <button class="flex-1 bg-terracotta text-cream font-montserrat font-medium text-sm rounded-full py-3 hover:bg-terracotta-hover transition-colors">
+                Accept & Continue
+              </button>
+            </div>
+            <!-- Disabled state -->
+            <div class="flex gap-3">
+              <button class="flex-1 border border-cream/10 text-cream/30 font-inter text-sm rounded-full py-3 cursor-not-allowed">
+                Back
+              </button>
+              <button class="flex-1 bg-terracotta/40 text-cream/40 font-montserrat font-medium text-sm rounded-full py-3 cursor-not-allowed" disabled>
+                Accept & Continue
+              </button>
+            </div>
+          </div>
+          <div class="mt-5 font-inter text-cream/30 text-xs space-y-1">
+            <p>Support callout: teal/5 bg, teal/15 border · email linked in teal</p>
+            <p>"Back": ghost button, cream/20 border · "Accept & Continue": terracotta CTA, Montserrat medium</p>
+            <p>Disabled until all 3 consent boxes checked: terracotta/40, text cream/40, cursor-not-allowed</p>
+          </div>
+        </div>
+
+        <!-- Tirzepatide Info Modal -->
+        <div class="bg-dark rounded-3xl p-8">
+          <h3 class="font-inter text-cream text-sm font-semibold mb-5">Tirzepatide Info Modal</h3>
+          <div class="max-w-[400px]">
+            <div class="bg-charcoal border border-cream/10 rounded-3xl p-6">
+              <div class="flex items-start justify-between mb-4">
+                <p class="font-fraunces text-cream text-lg leading-tight">A dual-action<br/>GLP-1 + GIP medication</p>
+                <button class="w-7 h-7 rounded-full bg-cream/10 flex items-center justify-center text-cream/60 text-sm hover:bg-cream/20 transition-colors flex-shrink-0 ml-3">✕</button>
+              </div>
+              <p class="font-inter text-cream/60 text-sm leading-[1.6] mb-4">
+                Tirzepatide activates both GLP-1 and GIP receptors, offering enhanced appetite suppression and metabolic improvements compared to semaglutide alone.
+              </p>
+              <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-widest mb-2">Who it's for</p>
+              <ul class="space-y-1.5 mb-5">
+                {['Patients who haven't seen desired results with semaglutide', 'Those looking for stronger appetite control', 'People with Type 2 Diabetes or higher BMI'].map(item => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-teal mt-0.5 text-xs">✓</span>
+                    <span class="font-inter text-cream/60 text-xs leading-[1.5]">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="flex flex-wrap gap-2 mb-5">
+                <span class="bg-cream/5 text-cream/50 font-inter text-xs px-3 py-1 rounded-full">Clinician-guided</span>
+                <span class="bg-cream/5 text-cream/50 font-inter text-xs px-3 py-1 rounded-full">Same Pay As You Engage model</span>
+              </div>
+              <button class="w-full bg-terracotta text-cream font-montserrat font-medium text-sm rounded-full py-3 hover:bg-terracotta-hover transition-colors">
+                Got it
+              </button>
+            </div>
+          </div>
+          <div class="mt-5 font-inter text-cream/30 text-xs space-y-1">
+            <p>Triggered by ⓘ icon next to Tirzepatide option · Overlay backdrop closes modal</p>
+            <p>Fraunces heading · Inter body · Teal checkmarks for "Who it's for" list</p>
+            <p>Info tags: cream/5 bg pills · "Got it" = terracotta CTA</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
