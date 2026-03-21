@@ -60,7 +60,12 @@ const visualAssets = [
 ];
 ---
 
-<Layout title="Sales Resources" active="sales-resource">
+<Layout title="Sales Resources" active="sales-resource" sections={[
+  { label: 'Core Assets', id: 'core-assets' },
+  { label: 'Messaging', id: 'messaging' },
+  { label: 'Visual Tools', id: 'visual-tools' },
+  { label: 'Licensed States', id: 'states' },
+]}>
   <div class="max-w-[900px] mx-auto px-10 py-16">
 
     <!-- Page Header -->
@@ -75,7 +80,7 @@ const visualAssets = [
     </div>
 
     <!-- Core Sales Assets -->
-    <section class="mb-16">
+    <section id="core-assets" class="mb-16">
       <p class="font-inter text-xs font-semibold text-dark/30 uppercase tracking-[0.12em] mb-6">Core Sales Assets</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {coreSalesAssets.map((item) => (
@@ -91,7 +96,7 @@ const visualAssets = [
     </section>
 
     <!-- Messaging & Positioning -->
-    <section class="mb-16">
+    <section id="messaging" class="mb-16">
       <p class="font-inter text-xs font-semibold text-dark/30 uppercase tracking-[0.12em] mb-6">Messaging & Positioning</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
@@ -168,7 +173,7 @@ const visualAssets = [
     </section>
 
     <!-- Visual Sales Tools -->
-    <section class="mb-16">
+    <section id="visual-tools" class="mb-16">
       <p class="font-inter text-xs font-semibold text-dark/30 uppercase tracking-[0.12em] mb-6">Visual Sales Tools</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {visualAssets.map((item) => (
@@ -184,7 +189,7 @@ const visualAssets = [
     </section>
 
     <!-- Licensed States -->
-    <section class="mb-16">
+    <section id="states" class="mb-16">
       <p class="font-inter text-xs font-semibold text-dark/30 uppercase tracking-[0.12em] mb-6">Licensed States</p>
       <ul style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem 1.5rem;">
         {states.map((state) => (
