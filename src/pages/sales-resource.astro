@@ -27,29 +27,15 @@ const states = [
 
     <!-- Licensed States -->
     <section class="mb-16">
-      <div class="flex items-center justify-between mb-6">
-        <p class="font-inter text-xs font-semibold text-dark/30 uppercase tracking-[0.12em]">Licensed States</p>
-        <span class="font-inter text-xs font-semibold text-teal bg-teal/10 px-2.5 py-1 rounded-full">{states.length} States</span>
-      </div>
-
-      <div class="rounded-2xl border border-dark/8 overflow-hidden">
-        <div class="bg-dark/3 px-6 py-4 border-b border-dark/8">
-          <p class="font-inter text-sm text-dark/60">
-            Nimbus is currently licensed to sell in the following states. Always verify current licensing status before engaging with prospective patients in a new state.
-          </p>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-0">
-          {states.map((state, i) => (
-            <div class={`px-5 py-3 font-inter text-sm text-dark font-medium border-dark/6 ${
-              i % 4 !== 3 ? 'border-r' : ''
-            } ${
-              i < states.length - (states.length % 4 || 4) ? 'border-b' : ''
-            }`}>
-              {state}
-            </div>
-          ))}
-        </div>
-      </div>
+      <p class="font-inter text-xs font-semibold text-dark/30 uppercase tracking-[0.12em] mb-6">Licensed States</p>
+      <ul class="space-y-3">
+        {states.map((state, i) => (
+          <li class="font-inter text-sm text-dark flex items-baseline gap-3">
+            <span class="text-dark/30 w-5 text-right flex-shrink-0">{i + 1}.</span>
+            <span>{state}</span>
+          </li>
+        ))}
+      </ul>
     </section>
 
   </div>
