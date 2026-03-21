@@ -94,15 +94,76 @@ const visualAssets = [
     <section class="mb-16">
       <p class="font-inter text-xs font-semibold text-dark/30 uppercase tracking-[0.12em] mb-6">Messaging & Positioning</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {messagingAssets.map((item) => (
-          <div class="bg-warm-gray rounded-2xl p-6">
-            <div class="flex items-start justify-between gap-4 mb-3">
-              <h3 class="font-fraunces text-dark text-lg leading-snug">{item.title}</h3>
-              <span class="flex-shrink-0 mt-0.5 text-xs font-inter font-semibold text-dark/25 bg-dark/8 px-2.5 py-1 rounded-full">Coming soon</span>
+
+        <!-- Value Propositions -->
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <h3 class="font-fraunces text-dark text-lg leading-snug mb-4">Value Propositions</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="font-inter text-xs font-semibold text-teal uppercase tracking-[0.1em] mb-1">DTC — Nimbus Healthcare</p>
+              <p class="font-inter text-sm text-dark/60 leading-[1.6]">Physician-led weight and hormone care that helps people feel aligned in body and mind — not a new you, but more like yourself. Medications delivered direct, with AI coaching in between.</p>
             </div>
-            <p class="font-inter text-dark/50 text-sm leading-[1.6]">{item.description}</p>
+            <div class="h-px bg-dark/8"></div>
+            <div>
+              <p class="font-inter text-xs font-semibold text-teal uppercase tracking-[0.1em] mb-1">B2B — Nimbus Providers</p>
+              <p class="font-inter text-sm text-dark/60 leading-[1.6]">Metabolic health solutions clinicians can prescribe with confidence — backed by IntelliHealth™ clinical intelligence and a 503A NABP-accredited partner pharmacy.</p>
+            </div>
+            <div class="h-px bg-dark/8"></div>
+            <div>
+              <p class="font-inter text-xs font-semibold text-teal uppercase tracking-[0.1em] mb-1">B2B2C — Nimbus Teams</p>
+              <p class="font-inter text-sm text-dark/60 leading-[1.6]">Flat-rate, clinician-guided metabolic health programs for employers who want a benefit employees actually use.</p>
+            </div>
           </div>
-        ))}
+        </div>
+
+        <!-- Competitive Differentiation -->
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <h3 class="font-fraunces text-dark text-lg leading-snug mb-4">Competitive Differentiation</h3>
+          <ul class="space-y-3">
+            {[
+              { label: 'Medically supervised', body: 'Every treatment plan is physician-led — not a vanity prescription or algorithm-only decision.' },
+              { label: 'Proprietary compounds', body: 'CarniSema® (semaglutide) and CarniTide® (tirzepatide) — more affordable and flexible than branded alternatives.' },
+              { label: 'Tech-enabled, human-centered', body: 'IntelliHealth™ personalizes treatment decisions. Aura™ AI coach supports patients between clinical touchpoints.' },
+              { label: 'One integrated platform', body: 'Clinical, pharmacy, and fulfillment infrastructure that works across all three channels seamlessly.' },
+            ].map(item => (
+              <li class="flex gap-3">
+                <span class="w-1.5 h-1.5 rounded-full bg-teal flex-shrink-0 mt-[6px]"></span>
+                <span class="font-inter text-sm text-dark/60 leading-[1.6]"><span class="font-semibold text-dark">{item.label}</span> — {item.body}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-5 pt-5 border-t border-dark/8">
+            <p class="font-inter text-sm text-dark/70 leading-[1.6]"><span class="font-semibold">In short:</span> Clinical rigor, proprietary technology, and accessibility — in one platform, across three channels.</p>
+          </div>
+        </div>
+
+        <!-- Objection Handling -->
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <h3 class="font-fraunces text-dark text-lg leading-snug mb-4">Objection Handling</h3>
+          <div class="space-y-4">
+            {[
+              { q: "Isn't this just Ozempic?", a: "We provide medically supervised metabolic health care — not aesthetic prescriptions. Every plan is physician-led and clinically appropriate." },
+              { q: "Is this a quick fix?", a: "We don't sell 30-day challenges or transformation promises. Nimbus helps people feel steady and aligned — that's a process, not an event." },
+              { q: "How is this different from competitors?", a: "One integrated platform: physician care, proprietary compounds, AI coaching, and direct pharmacy fulfillment — no stitched-together vendors." },
+              { q: "Is this just weight loss?", a: "No. Hormone optimization and combination therapy address metabolic health holistically. WeightWise is one door of three." },
+            ].map(item => (
+              <div>
+                <p class="font-inter text-sm font-semibold text-dark mb-1">{item.q}</p>
+                <p class="font-inter text-sm text-dark/60 leading-[1.6]">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Use Cases & Case Studies -->
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <h3 class="font-fraunces text-dark text-lg leading-snug">Use Cases & Case Studies</h3>
+            <span class="flex-shrink-0 mt-0.5 text-xs font-inter font-semibold text-dark/25 bg-dark/8 px-2.5 py-1 rounded-full">Coming soon</span>
+          </div>
+          <p class="font-inter text-dark/50 text-sm leading-[1.6]">Real customer stories with measurable outcomes to build trust and demonstrate proven results across DTC, provider, and employer channels.</p>
+        </div>
+
       </div>
     </section>
 
