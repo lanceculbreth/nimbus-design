@@ -473,7 +473,7 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
 
   <!-- Fullscreen Preview Overlay -->
   <div id="overlay" class="fixed inset-0 bg-dark/70 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="fullscreen-frame bg-white rounded-2xl overflow-hidden w-[90vw] max-w-[700px] h-[85vh] flex flex-col shadow-2xl">
+    <div class="fullscreen-frame bg-white rounded-2xl overflow-hidden w-[96vw] max-w-[1200px] h-[94vh] flex flex-col shadow-2xl">
       <!-- Control bar -->
       <div class="flex items-center justify-between px-5 py-3 border-b border-dark/8 bg-warm-gray/30">
         <span id="preview-name" class="font-inter text-dark text-sm font-semibold"></span>
@@ -486,7 +486,7 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
       </div>
       <!-- Preview iframe -->
       <div class="flex-1 overflow-auto bg-warm-gray/20 flex justify-center p-4">
-        <iframe id="preview-iframe" class="w-full h-full border-0 bg-white rounded-lg shadow-sm" style="max-width:100%;"></iframe>
+        <iframe id="preview-iframe" class="w-full border-0 bg-white rounded-lg shadow-sm" style="max-width:100%;min-height:100%;"></iframe>
       </div>
     </div>
   </div>
@@ -576,7 +576,7 @@ const totalEmails = categories.reduce((sum, cat) => sum + cat.emails.length, 0);
         btn.textContent = 'Desktop view';
         if (fab) fab.textContent = 'Desktop view';
       } else {
-        frame.style.maxWidth = '700px';
+        frame.style.maxWidth = '1200px';
         btn.textContent = 'Mobile view';
         if (fab) fab.textContent = 'Mobile view';
       }
