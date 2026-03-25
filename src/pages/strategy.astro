@@ -1,0 +1,1028 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const BE = 'inline-flex items-center px-2 py-0.5 rounded-full bg-teal/10 text-teal text-xs font-semibold';
+const BS = 'inline-flex items-center px-2 py-0.5 rounded-full bg-terracotta/10 text-terracotta text-xs font-semibold';
+const BP = 'inline-flex items-center px-2 py-0.5 rounded-full bg-dark/8 text-dark/60 text-xs font-semibold';
+const GT = 'inline-flex items-center px-2.5 py-1 rounded-lg bg-warm-gray text-dark/40 text-xs font-medium whitespace-nowrap';
+
+const sections = [
+  { label: 'Overview', id: 'overview' },
+  { label: 'Onboarding', id: 'onboarding' },
+  { label: 'Encounter', id: 'encounter' },
+  { label: 'Fulfillment', id: 'fulfillment' },
+  { label: 'Refill Cycle', id: 'refill' },
+  { label: 'Edge Cases', id: 'edge-cases' },
+  { label: 'Engagement', id: 'engagement' },
+  { label: 'Channel Rules', id: 'channel-rules' },
+];
+---
+
+<Layout title="CX Strategy" active="strategy" sections={sections}>
+  <div class="max-w-[860px] mx-auto px-10 py-16">
+
+    <!-- Page Header -->
+    <div class="mb-14">
+      <p class="font-inter text-teal text-xs font-semibold tracking-widest uppercase mb-3">WeightWise</p>
+      <h1 class="font-fraunces text-4xl font-semibold text-dark leading-tight mb-4">Notification Strategy</h1>
+      <p class="font-inter text-dark/50 text-lg leading-relaxed max-w-[580px]">
+        The complete communication journey — every email, SMS, and push notification across the subscriber lifecycle, in the order a patient experiences them.
+      </p>
+    </div>
+
+    <!-- Overview / Stats -->
+    <section id="overview" class="mb-16 scroll-mt-8">
+      <div class="grid grid-cols-4 gap-4 mb-10">
+        <div class="bg-white rounded-2xl border border-dark/8 p-5">
+          <p class="font-inter text-dark/40 text-xs font-medium uppercase tracking-wider mb-2">Total Touchpoints</p>
+          <p class="font-fraunces text-3xl font-semibold text-dark">58</p>
+        </div>
+        <div class="bg-teal/8 rounded-2xl border border-teal/15 p-5">
+          <p class="font-inter text-teal/70 text-xs font-medium uppercase tracking-wider mb-2">Emails</p>
+          <p class="font-fraunces text-3xl font-semibold text-teal">49</p>
+        </div>
+        <div class="bg-terracotta/8 rounded-2xl border border-terracotta/15 p-5">
+          <p class="font-inter text-terracotta/70 text-xs font-medium uppercase tracking-wider mb-2">SMS</p>
+          <p class="font-fraunces text-3xl font-semibold text-terracotta">28</p>
+        </div>
+        <div class="bg-dark/5 rounded-2xl border border-dark/8 p-5">
+          <p class="font-inter text-dark/40 text-xs font-medium uppercase tracking-wider mb-2">Push</p>
+          <p class="font-fraunces text-3xl font-semibold text-dark/70">25</p>
+        </div>
+      </div>
+
+      <!-- Channel legend -->
+      <div class="flex items-center gap-6 mb-6">
+        <p class="font-inter text-dark/40 text-xs font-medium uppercase tracking-wider">Channels</p>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-teal/10 text-teal text-xs font-semibold">
+            <span class="w-1.5 h-1.5 rounded-full bg-teal inline-block"></span>Email
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-terracotta/10 text-terracotta text-xs font-semibold">
+            <span class="w-1.5 h-1.5 rounded-full bg-terracotta inline-block"></span>SMS
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-dark/8 text-dark/60 text-xs font-semibold">
+            <span class="w-1.5 h-1.5 rounded-full bg-dark/50 inline-block"></span>Push
+          </span>
+        </div>
+      </div>
+
+      <!-- Phase summary table -->
+      <div class="bg-white rounded-2xl border border-dark/8 overflow-hidden">
+        <div class="grid grid-cols-5 gap-0 bg-warm-gray/50 px-5 py-3 border-b border-dark/8">
+          <p class="font-inter text-dark/50 text-xs font-semibold col-span-2">Phase</p>
+          <p class="font-inter text-teal text-xs font-semibold text-center">Email</p>
+          <p class="font-inter text-terracotta text-xs font-semibold text-center">SMS</p>
+          <p class="font-inter text-dark/50 text-xs font-semibold text-center">Push</p>
+        </div>
+        {[
+          { phase: 'Onboarding', anchor: 'onboarding', email: 10, sms: 5, push: 4 },
+          { phase: 'Provider Encounter', anchor: 'encounter', email: 3, sms: 2, push: 3 },
+          { phase: 'Order & Fulfillment', anchor: 'fulfillment', email: 5, sms: 4, push: 3 },
+          { phase: 'Refill Cycle', anchor: 'refill', email: 3, sms: 3, push: 3 },
+          { phase: 'Awaiting Check-in (Monthly)', anchor: 'edge-cases', email: 4, sms: 3, push: 3 },
+          { phase: 'Shipment Held (3/6-mo)', anchor: 'edge-cases', email: 4, sms: 3, push: 3 },
+          { phase: 'Payment Failure', anchor: 'edge-cases', email: 7, sms: 6, push: 4 },
+          { phase: 'Cancellation', anchor: 'edge-cases', email: 4, sms: 0, push: 0 },
+          { phase: 'Medication Switch', anchor: 'edge-cases', email: 2, sms: 1, push: 1 },
+          { phase: 'Plan Changes', anchor: 'edge-cases', email: 3, sms: 0, push: 0 },
+          { phase: 'Subscription Restart', anchor: 'edge-cases', email: 1, sms: 1, push: 0 },
+          { phase: 'Proactive Engagement', anchor: 'engagement', email: 3, sms: 0, push: 1 },
+        ].map((row, i) => (
+          <a href={`#${row.anchor}`} class="grid grid-cols-5 gap-0 px-5 py-3 border-b border-dark/5 last:border-b-0 hover:bg-warm-gray/40 transition-colors cursor-pointer">
+            <p class="font-inter text-dark text-sm col-span-2">{row.phase}</p>
+            <p class="font-inter text-teal text-sm font-medium text-center">{row.email}</p>
+            <p class="font-inter text-terracotta text-sm font-medium text-center">{row.sms > 0 ? row.sms : '—'}</p>
+            <p class="font-inter text-dark/50 text-sm font-medium text-center">{row.push > 0 ? row.push : '—'}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ─── PHASE 1: ONBOARDING ─── -->
+    <section id="onboarding" class="mb-16 scroll-mt-8">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-7 h-7 rounded-full bg-teal flex items-center justify-center flex-shrink-0">
+          <span class="font-inter text-white text-xs font-bold">1</span>
+        </div>
+        <h2 class="font-fraunces text-2xl font-semibold text-dark">Onboarding</h2>
+      </div>
+      <p class="font-inter text-dark/50 text-sm leading-relaxed mb-8 ml-10">
+        From quiz completion to intake submitted. Highest-leverage conversion phase — every drop-off has a recovery sequence.
+      </p>
+
+      <div class="space-y-3 ml-4">
+
+        <div class="phase-divider font-inter text-dark/30 text-xs font-semibold uppercase tracking-widest py-2 border-b border-dark/8 mb-4">Quiz Abandonment</div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ONB_02 + 30min</span>
+                <span class={BP}>Push</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Quiz Abandonment Nudge</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Your personalized weight loss plan is ready — create your account to get started."</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Convert quiz → account</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-divider font-inter text-dark/30 text-xs font-semibold uppercase tracking-widest py-2 border-b border-dark/8 mb-4 mt-6">Email Verification</div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ONB_03 — Immediate</span>
+                <span class={BE}>Email</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Verify Your Email</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Verify your email to get started with Weightwise" — non-blocking; users can proceed to purchase without verifying.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Security / account ownership</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-divider font-inter text-dark/30 text-xs font-semibold uppercase tracking-widest py-2 border-b border-dark/8 mb-4 mt-6">Account Created → Subscription</div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ONB_03 + 1hr</span>
+                <span class={BE}>Email</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Welcome + Complete Signup</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Welcome to Weightwise — let's get you started." You're one step away from starting your personalized journey.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Account → paid subscription</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ONB_03 + 24hr</span>
+                <span class={BE}>Email</span>
+                <span class={BS}>SMS</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Subscription Reminder #1</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">Email: "Don't miss out on your Weightwise plan" · SMS: "Your plan is waiting. Complete your subscription today."</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Reduce account → purchase drop-off</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ONB_03 + 72hr</span>
+                <span class={BE}>Email</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Subscription Reminder #2</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Still thinking about Weightwise?" — Patients who start within the first week see the best results.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Final conversion push</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-divider font-inter text-dark/30 text-xs font-semibold uppercase tracking-widest py-2 border-b border-dark/8 mb-4 mt-6">Subscription Purchased → Intake</div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ONB_04 — Immediate</span>
+                <span class={BE}>Email</span>
+                <span class={BS}>SMS</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Subscription Confirmation</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">Plan is active. Monthly: no charge until provider prescribes. 3/6-mo: first payment processed. Complete intake to begin.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Confirm purchase, drive intake</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ONB_04 + 4hr</span>
+                <span class={BP}>Push</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Intake Reminder #1</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Your provider is waiting. Complete your intake to start your Weightwise treatment."</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Prompt same-day intake</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ONB_04 + 24hr</span>
+                <span class={BE}>Email</span>
+                <span class={BS}>SMS</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Intake Reminder #2</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Complete your intake to begin treatment" — your health information and ID verification is needed before provider assignment.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Drive intake for paying customers</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ONB_04 + 72hr</span>
+                <span class={BE}>Email</span>
+                <span class={BS}>SMS</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold border border-amber-200">3/6-mo only</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Intake Urgency (Commitment Plan)</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Your Weightwise shipment is pending your intake" — payment has been processed but treatment can't begin until intake is done.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Recover stalled paid users</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ONB_04 + 7 days</span>
+                <span class={BE}>Email</span>
+                <span class={BS}>SMS</span>
+                <span class={BP}>Push</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Intake Final Warning</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"We don't want you to miss out, [First Name]" — it's been a week. Complete intake or contact support. Last push before CS outreach.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Last chance before CS escalation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-divider font-inter text-dark/30 text-xs font-semibold uppercase tracking-widest py-2 border-b border-dark/8 mb-4 mt-6">Intake Complete</div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ONB_05 — Immediate</span>
+                <span class={BE}>Email</span>
+                <span class={BP}>Push</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Intake Complete Confirmation</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Intake received — your provider is being assigned." Push: "Intake submitted! A provider will review your case shortly."</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Confirm intake, set encounter expectation</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── PHASE 2: PROVIDER ENCOUNTER ─── -->
+    <section id="encounter" class="mb-16 scroll-mt-8">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-7 h-7 rounded-full bg-teal flex items-center justify-center flex-shrink-0">
+          <span class="font-inter text-white text-xs font-bold">2</span>
+        </div>
+        <h2 class="font-fraunces text-2xl font-semibold text-dark">Provider Encounter</h2>
+      </div>
+      <p class="font-inter text-dark/50 text-sm leading-relaxed mb-8 ml-10">
+        Asynchronous MDI encounter via provider chat. When ENC_03 completes, the system moves quickly through RX_01 → RX_02 → RX_03 — so a single push fires at encounter end and one consolidated email goes out at order placement.
+      </p>
+
+      <div class="space-y-3 ml-4">
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ENC_01 — Immediate</span>
+                <span class={BE}>Email</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Case Created</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Your provider consultation is being prepared" — bridges the wait between intake and encounter starting.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Bridge wait, set expectation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ENC_02 — Immediate</span>
+                <span class={BE}>Email</span>
+                <span class={BS}>SMS</span>
+                <span class={BP}>Push</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Encounter Started</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Your provider is ready — start your consultation." All three channels fire simultaneously when the provider begins the encounter.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Drive immediate portal engagement</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ENC_02 + 24hr</span>
+                <span class={BP}>Push</span>
+                <span class={BS}>SMS</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Encounter Response Reminder</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">Only fires if user has unread provider messages. Push + SMS to bring them back to the portal chat.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Prevent encounter stalling</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ENC_02 + 48hr</span>
+                <span class={BE}>Email</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Encounter Urgency Reminder</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Your provider is waiting for your response" — escalates to email if still unread at 48hr mark.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Prevent encounter timeout</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ENC_03 — Immediate</span>
+                <span class={BP}>Push</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Provider Consultation Complete</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Great news! Your provider has prescribed your treatment. Details coming via email." — immediate positive signal while consolidated email is prepared.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Immediate positive signal</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── PHASE 3: ORDER & FULFILLMENT ─── -->
+    <section id="fulfillment" class="mb-16 scroll-mt-8">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-7 h-7 rounded-full bg-teal flex items-center justify-center flex-shrink-0">
+          <span class="font-inter text-white text-xs font-bold">3</span>
+        </div>
+        <h2 class="font-fraunces text-2xl font-semibold text-dark">Order & Fulfillment</h2>
+      </div>
+      <p class="font-inter text-dark/50 text-sm leading-relaxed mb-8 ml-10">
+        Internal pharmacy states ORD_01–03 are not user-facing (surface in portal tracker only). First patient notification is the consolidated confirmation at RX_03, then shipped/delivered updates.
+      </p>
+
+      <div class="space-y-3 ml-4">
+
+        <div class="phase-divider font-inter text-dark/30 text-xs font-semibold uppercase tracking-widest py-2 border-b border-dark/8 mb-4">Consolidated Confirmation (replaces 3 separate emails)</div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">RX_03 — Monthly</span>
+                <span class={BE}>Email</span>
+                <span class={BS}>SMS</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Treatment Prescribed + Payment + Order Confirmed</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">Covers prescription, payment charge, order placed, and shipment schedule (if split order due to BUD requirements). Consolidates ENC_03 + RX_02 + RX_03.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Single clear confirmation (monthly)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">RX_03 — 3/6-month</span>
+                <span class={BE}>Email</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Treatment Prescribed + Order Confirmed</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">Same as monthly version but no payment line — commitment users were already charged on schedule. Includes split shipment schedule if applicable.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Single clear confirmation (commitment)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-divider font-inter text-dark/30 text-xs font-semibold uppercase tracking-widest py-2 border-b border-dark/8 mb-4 mt-6">Shipping & Delivery</div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ORD_04</span>
+                <span class={BE}>Email</span>
+                <span class={BS}>SMS</span>
+                <span class={BP}>Push</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Order Shipped</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Your medication has shipped!" — tracking link, expected delivery date. All three channels.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Tracking, build excitement</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ORD_04 — Split order</span>
+                <span class={BE}>Email</span>
+                <span class={BS}>SMS</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Split Shipment Notice</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">Order split due to BUD (medication freshness) requirements. "Shipment 1 of N is on its way. Your next shipment will arrive before your first supply runs out."</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Prevent split-order confusion</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ORD_05</span>
+                <span class={BE}>Email</span>
+                <span class={BP}>Push</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Order Delivered</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Your medication has been delivered." Link to dosing instructions in portal. Contact support if anything is unclear.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Confirm delivery, link to guidance</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ORD_05 + 3 days</span>
+                <span class={BP}>Push</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-teal/10 text-teal text-xs font-semibold border border-teal/20">First delivery only</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Getting Started Check-in</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"How is your first experience with [Medication]? We're here to help." — only fires on the very first delivery.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Early engagement, catch issues</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── PHASE 4: REFILL CYCLE ─── -->
+    <section id="refill" class="mb-16 scroll-mt-8">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-7 h-7 rounded-full bg-teal flex items-center justify-center flex-shrink-0">
+          <span class="font-inter text-white text-xs font-bold">4</span>
+        </div>
+        <h2 class="font-fraunces text-2xl font-semibold text-dark">Refill Cycle</h2>
+      </div>
+      <p class="font-inter text-dark/50 text-sm leading-relaxed mb-8 ml-10">
+        Timing is calculated using <code class="bg-warm-gray px-1.5 py-0.5 rounded text-dark/70 text-xs font-mono">refillDueDate = lastFillDate + min(BUD, days_supply, vial_duration)</code>. Three-touch sequence creates escalating urgency. If missed → enters edge case flow.
+      </p>
+
+      <div class="space-y-3 ml-4">
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">REF_01 — Day −10</span>
+                <span class={BE}>Email</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Refill Check-in Reminder #1</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Time for your Weightwise check-in" — messaging split by plan: monthly (no charge until prescribed) vs. 3/6-mo (next payment on [date]).</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Early refill start, adequate lead time</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">REF_01 — Day −5</span>
+                <span class={BE}>Email</span>
+                <span class={BS}>SMS</span>
+                <span class={BP}>Push</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Refill Check-in Reminder #2</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Your refill check-in is due in 5 days." All channels engaged. "Medication supply is running low — complete now to avoid treatment gaps."</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Create urgency, prevent treatment gap</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">REF_01 — Day 0</span>
+                <span class={BE}>Email</span>
+                <span class={BS}>SMS</span>
+                <span class={BP}>Push</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">Refill Due — Final Reminder</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">URGENT tone. Monthly: "No check-in = no prescription = no charge." 3/6-mo: "Payment processes on schedule — complete check-in so shipment isn't held." If missed → edge case flow begins.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Last chance before state change</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── EDGE CASES ─── -->
+    <section id="edge-cases" class="mb-16 scroll-mt-8">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-7 h-7 rounded-full bg-terracotta flex items-center justify-center flex-shrink-0">
+          <span class="font-inter text-white text-xs font-bold">!</span>
+        </div>
+        <h2 class="font-fraunces text-2xl font-semibold text-dark">Edge Case Flows</h2>
+      </div>
+      <p class="font-inter text-dark/50 text-sm leading-relaxed mb-8 ml-10">
+        These flows activate when something goes off the happy path. Each has its own escalation sequence.
+      </p>
+
+      <!-- Edge case tabs -->
+      <div class="ml-4">
+        <div class="flex flex-wrap gap-2 mb-6" id="edge-tabs">
+          {[
+            { id: 'awaiting', label: 'Awaiting Check-in', sub: 'Monthly' },
+            { id: 'held', label: 'Shipment Held', sub: '3/6-mo' },
+            { id: 'payment', label: 'Payment Failure', sub: '' },
+            { id: 'cancel', label: 'Cancellation', sub: '' },
+            { id: 'medswitch', label: 'Medication Switch', sub: '' },
+            { id: 'planchange', label: 'Plan Change', sub: '' },
+            { id: 'restart', label: 'Restart', sub: '' },
+          ].map((tab, i) => (
+            <button
+              data-edge={tab.id}
+              onclick={`switchEdge('${tab.id}')`}
+              class={`edge-tab px-4 py-2 rounded-full text-sm font-medium transition-all ${i === 0 ? 'bg-dark text-cream' : 'bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark'}`}
+            >
+              {tab.label}{tab.sub ? <span class="ml-1 opacity-50 text-xs">{tab.sub}</span> : ''}
+            </button>
+          ))}
+        </div>
+
+        <!-- Awaiting Check-in (Monthly) -->
+        <div id="panel-awaiting" class="space-y-3">
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+            <p class="font-inter text-amber-800 text-xs leading-relaxed"><strong>Trigger:</strong> Monthly user misses refill check-in on Day 0. No charges occur during this period. 30-day window before subscription deactivation.</p>
+          </div>
+          {[
+            { timing: 'Day 0', channels: ['Email','Push'], name: 'Status Change: Awaiting Check-in', msg: 'Treatment cycle paused. No charges will occur. Complete check-in anytime to resume.' },
+            { timing: '+ 3 days', channels: ['SMS','Push'], name: 'Grace Nudge #1', msg: 'Treatment is on hold. Complete check-in to get back on track.' },
+            { timing: '+ 7 days', channels: ['Email','SMS'], name: 'Grace Nudge #2', msg: '"We miss you" — escalating urgency, offer support.' },
+            { timing: '+ 12 days', channels: ['Email','SMS','Push'], name: 'Grace Nudge #3', msg: 'Subscription will be deactivated in 18 days if check-in not completed. Warn of impending inactivation.' },
+            { timing: '+ 25 days', channels: ['Email','SMS'], name: 'Final Inactivation Warning', msg: 'Subscription deactivates in 5 days. Last chance — full restart required after.' },
+            { timing: '+ 30 days', channels: ['Email'], name: 'Subscription Deactivated', msg: 'No charges were made. Medical history saved. Click "Restart Program" to return.' },
+          ].map(n => (
+            <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="font-inter text-dark/30 text-xs font-mono">{n.timing}</span>
+                    {n.channels.map(c => <span class={c === 'Email' ? BE : c === 'SMS' ? BS : BP}>{c}</span>)}
+                  </div>
+                  <p class="font-inter text-dark text-sm font-semibold mb-1">{n.name}</p>
+                  <p class="font-inter text-dark/50 text-xs leading-relaxed">{n.msg}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Shipment Held (3/6-mo) -->
+        <div id="panel-held" class="space-y-3 hidden">
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+            <p class="font-inter text-amber-800 text-xs leading-relaxed"><strong>Trigger:</strong> 3/6-month user's scheduled payment processes but check-in is not complete. They've paid but aren't receiving medication. 30-day window before deactivation.</p>
+          </div>
+          {[
+            { timing: 'Day 0', channels: ['Email','SMS','Push'], name: 'Shipment Held Notice', msg: 'Payment of $[amount] processed. Shipment on hold until check-in and provider review completed.' },
+            { timing: '+ 3 days', channels: ['SMS','Push'], name: 'Grace Nudge #1', msg: 'Medication ready to ship — waiting on your check-in.' },
+            { timing: '+ 7 days', channels: ['Email','SMS'], name: 'Grace Nudge #2', msg: '"You\'ve already paid — your medication is waiting." Emphasize financial skin in the game.' },
+            { timing: '+ 12 days', channels: ['Email','SMS','Push'], name: 'Grace Nudge #3', msg: 'URGENT — shipment held nearly 2 weeks. Subscription will deactivate if check-in not done within 30 days.' },
+            { timing: '+ 25 days', channels: ['Email','SMS'], name: 'Final Inactivation Warning', msg: 'FINAL NOTICE — 5 days left. You\'ve already paid for this cycle. Don\'t lose your medication.' },
+            { timing: '+ 30 days', channels: ['Email'], name: 'Subscription Deactivated', msg: 'Future payments stopped. Medical history saved. Restart via dashboard.' },
+          ].map(n => (
+            <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="font-inter text-dark/30 text-xs font-mono">{n.timing}</span>
+                    {n.channels.map(c => <span class={c === 'Email' ? BE : c === 'SMS' ? BS : BP}>{c}</span>)}
+                  </div>
+                  <p class="font-inter text-dark text-sm font-semibold mb-1">{n.name}</p>
+                  <p class="font-inter text-dark/50 text-xs leading-relaxed">{n.msg}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Payment Failure -->
+        <div id="panel-payment" class="space-y-3 hidden">
+          <div class="bg-red-50 border border-red-200 rounded-xl p-4 mb-4">
+            <p class="font-inter text-red-800 text-xs leading-relaxed"><strong>Trigger:</strong> Payment fails (monthly at RX_02; 3/6-mo on billing date). Grace period: 7 days → pause → 30 days → deactivation. Total window: ~37 days from initial failure.</p>
+          </div>
+          {[
+            { timing: 'Day 0', channels: ['Email','SMS','Push'], name: 'Payment Failed', msg: '"Action needed — your payment didn\'t go through." Services paused. Update payment method. Auto-retry in progress.' },
+            { timing: '+ 2 days', channels: ['Email','SMS'], name: 'Payment Retry Reminder #1', msg: 'Retry attempted but not resolved. Update payment method to avoid pause.' },
+            { timing: '+ 5 days', channels: ['Email','SMS','Push'], name: 'Payment Retry Reminder #2', msg: 'URGENT — subscription pausing in 2 days. Drop-dead urgency messaging.' },
+            { timing: '+ 7 days', channels: ['Email','SMS'], name: 'Subscription Paused', msg: 'Subscription paused after multiple failed attempts. No services available. Update payment to resume immediately.' },
+            { timing: '+ 14 days', channels: ['Email'], name: 'Paused Nudge #1', msg: '"We\'d love to have you back" — warm tone, everything resumes right where you left off.' },
+            { timing: '+ 22 days', channels: ['Email','SMS'], name: 'Paused Nudge #2', msg: 'Subscription will be deactivated if not resolved within ~30 days of pause.' },
+            { timing: '+ 32 days', channels: ['Email','SMS'], name: 'Final Deactivation Warning', msg: 'FINAL — deactivation in 5 days. Full restart required after.' },
+            { timing: '+ 37 days', channels: ['Email'], name: 'Subscription Deactivated', msg: 'No further charges. Medical history saved. "Restart Program" available on dashboard.' },
+            { timing: 'On resolution', channels: ['Email','SMS','Push'], name: 'Payment Successful — Services Resumed', msg: '"Great news! Your payment went through." Positive reinforcement, treatment back on track.' },
+          ].map(n => (
+            <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="font-inter text-dark/30 text-xs font-mono">{n.timing}</span>
+                    {n.channels.map(c => <span class={c === 'Email' ? BE : c === 'SMS' ? BS : BP}>{c}</span>)}
+                  </div>
+                  <p class="font-inter text-dark text-sm font-semibold mb-1">{n.name}</p>
+                  <p class="font-inter text-dark/50 text-xs leading-relaxed">{n.msg}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Cancellation -->
+        <div id="panel-cancel" class="space-y-3 hidden">
+          <div class="bg-dark/5 border border-dark/10 rounded-xl p-4 mb-4">
+            <p class="font-inter text-dark/60 text-xs leading-relaxed"><strong>Philosophy:</strong> Making cancellation easy builds trust. No guilt-tripping, no hidden fees, no blocked cancellations. Only soft re-engagement is the follow-up survey, which leads with feedback not retention pressure.</p>
+          </div>
+          {[
+            { timing: 'Immediate (Monthly)', channels: ['Email'], name: 'Cancellation Confirmed', msg: 'Subscription active until end of current billing cycle. No further charges after. Restart available anytime.' },
+            { timing: 'Immediate (3/6-mo)', channels: ['Email'], name: 'Cancellation Confirmed (Commitment)', msg: 'Current committed term plays out through [end date]. Treatment continues at discounted rate. No cancellation fees. No renewal after.' },
+            { timing: '+ 7 days', channels: ['Email'], name: 'Cancellation Follow-up', msg: '"We\'d love your feedback" — survey link. If you change your mind, restarting is easy.' },
+            { timing: 'End of term (commitment)', channels: ['Email'], name: 'Subscription Ended', msg: 'Your [3/6-month] plan has concluded. No further charges. Provider history saved. Restart any plan from dashboard.' },
+          ].map(n => (
+            <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="font-inter text-dark/30 text-xs font-mono">{n.timing}</span>
+                    {n.channels.map(c => <span class={c === 'Email' ? BE : c === 'SMS' ? BS : BP}>{c}</span>)}
+                  </div>
+                  <p class="font-inter text-dark text-sm font-semibold mb-1">{n.name}</p>
+                  <p class="font-inter text-dark/50 text-xs leading-relaxed">{n.msg}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Medication Switch -->
+        <div id="panel-medswitch" class="space-y-3 hidden">
+          <div class="bg-dark/5 border border-dark/10 rounded-xl p-4 mb-4">
+            <p class="font-inter text-dark/60 text-xs leading-relaxed"><strong>Note:</strong> Approach depends on implementation choice — Option A (immediate new refill intake) vs. Option B (apply at next refill cycle). Messaging adapts accordingly.</p>
+          </div>
+          {[
+            { timing: 'On request', channels: ['Email','Push'], name: 'Medication Switch Acknowledged', msg: 'Request received. Option A: new refill intake triggered shortly. Option B: preference recorded, applied at next refill ~[date].' },
+            { timing: 'On approval', channels: ['Email','SMS'], name: 'Medication Switch Confirmed', msg: 'Provider approved switch to [New Med]. Next order will contain new medication. Guidance available in portal.' },
+          ].map(n => (
+            <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="font-inter text-dark/30 text-xs font-mono">{n.timing}</span>
+                    {n.channels.map(c => <span class={c === 'Email' ? BE : c === 'SMS' ? BS : BP}>{c}</span>)}
+                  </div>
+                  <p class="font-inter text-dark text-sm font-semibold mb-1">{n.name}</p>
+                  <p class="font-inter text-dark/50 text-xs leading-relaxed">{n.msg}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Plan Change -->
+        <div id="panel-planchange" class="space-y-3 hidden">
+          <div class="bg-dark/5 border border-dark/10 rounded-xl p-4 mb-4">
+            <p class="font-inter text-dark/60 text-xs leading-relaxed"><strong>Key:</strong> Monthly → commitment users must understand billing now processes on schedule regardless of check-in status. This is the most critical expectation to set.</p>
+          </div>
+          {[
+            { timing: 'On upgrade', channels: ['Email'], name: 'Plan Upgrade Confirmation', msg: 'Upgraded to [3/6-month] plan. New rate from [next billing date]. IMPORTANT: billing now processes monthly regardless of check-in. Shipment held if check-in not complete.' },
+            { timing: 'On downgrade', channels: ['Email'], name: 'Plan Downgrade Confirmation', msg: 'Current commitment continues through [end date] at discounted rate. After that, switches to monthly (charge only when prescribed).' },
+            { timing: '7 days before renewal', channels: ['Email'], name: 'Commitment Renewal Notice', msg: 'Your [3/6-month] plan renews on [date] at $[rate]/month for another [3/6] months. Change or cancel before [date] to avoid renewal.' },
+          ].map(n => (
+            <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="font-inter text-dark/30 text-xs font-mono">{n.timing}</span>
+                    {n.channels.map(c => <span class={c === 'Email' ? BE : c === 'SMS' ? BS : BP}>{c}</span>)}
+                  </div>
+                  <p class="font-inter text-dark text-sm font-semibold mb-1">{n.name}</p>
+                  <p class="font-inter text-dark/50 text-xs leading-relaxed">{n.msg}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Restart -->
+        <div id="panel-restart" class="space-y-3 hidden">
+          <div class="bg-teal/8 border border-teal/15 rounded-xl p-4 mb-4">
+            <p class="font-inter text-teal/80 text-xs leading-relaxed"><strong>Tone:</strong> Warm and welcoming — these users are returning after a gap. Fresh intake required for clinical safety, but medical history is preserved.</p>
+          </div>
+          <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="font-inter text-dark/30 text-xs font-mono">On restart</span>
+                  <span class={BE}>Email</span>
+                  <span class={BS}>SMS</span>
+                </div>
+                <p class="font-inter text-dark text-sm font-semibold mb-1">Welcome Back</p>
+                <p class="font-inter text-dark/50 text-xs leading-relaxed">"We're glad you're back!" New health intake required for provider. Previous medical history saved and available to provider.</p>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <span class={GT}>Warm welcome, explain fresh intake</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── PHASE 5: PROACTIVE ENGAGEMENT ─── -->
+    <section id="engagement" class="mb-16 scroll-mt-8">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-7 h-7 rounded-full bg-teal flex items-center justify-center flex-shrink-0">
+          <span class="font-inter text-white text-xs font-bold">5</span>
+        </div>
+        <h2 class="font-fraunces text-2xl font-semibold text-dark">Proactive Engagement</h2>
+      </div>
+      <p class="font-inter text-dark/50 text-sm leading-relaxed mb-8 ml-10">
+        Time-based milestones — not triggered by state changes. Build relationship, celebrate progress, and create monthly-to-commitment conversion opportunities.
+      </p>
+
+      <div class="space-y-3 ml-4">
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">ORD_05 + 14 days</span>
+                <span class={BE}>Email</span>
+                <span class={BP}>Push</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">2-Week Progress Check-in</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"How is your Weightwise journey going?" — many patients start noticing changes around this time. Side effects? Provider available in portal. Preview upcoming refill date.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Build engagement, normalize experience</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">After 3 refill cycles</span>
+                <span class={BE}>Email</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">3-Month Milestone</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"Congratulations on 3 months!" — Patients on longer commitments save more. Upgrade prompt with link to commitment plan options.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Celebrate + drive monthly → commitment</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card bg-white rounded-xl border border-dark/8 p-4 hover:border-dark/15 transition-colors">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="font-inter text-dark/30 text-xs font-mono">After 6 refill cycles</span>
+                <span class={BE}>Email</span>
+              </div>
+              <p class="font-inter text-dark text-sm font-semibold mb-1">6-Month Milestone</p>
+              <p class="font-inter text-dark/50 text-xs leading-relaxed">"6 months strong, [First Name]!" — Half a year of consistency. Your care team is rooting for you. Reinforce retention.</p>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <span class={GT}>Celebrate, reinforce retention</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── CHANNEL RULES ─── -->
+    <section id="channel-rules" class="mb-16 scroll-mt-8">
+      <div class="flex items-center gap-3 mb-8">
+        <h2 class="font-fraunces text-2xl font-semibold text-dark">Channel Rules & Frequency Caps</h2>
+      </div>
+
+      <div class="ml-4 space-y-8">
+
+        <!-- Channel escalation pattern -->
+        <div>
+          <h3 class="font-inter text-dark text-sm font-semibold mb-4">Escalation Pattern</h3>
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 bg-dark/5 rounded-xl px-4 py-3 flex-1">
+              <span class={BP}>Push</span>
+              <span class="font-inter text-dark/60 text-xs">for immediacy</span>
+            </div>
+            <span class="font-inter text-dark/30 text-sm">→</span>
+            <div class="flex items-center gap-2 bg-teal/8 rounded-xl px-4 py-3 flex-1">
+              <span class={BE}>Email</span>
+              <span class="font-inter text-dark/60 text-xs">for detail</span>
+            </div>
+            <span class="font-inter text-dark/30 text-sm">→</span>
+            <div class="flex items-center gap-2 bg-terracotta/8 rounded-xl px-4 py-3 flex-1">
+              <span class={BS}>SMS</span>
+              <span class="font-inter text-dark/60 text-xs">for urgency</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Channel matrix -->
+        <div>
+          <h3 class="font-inter text-dark text-sm font-semibold mb-4">Channel Selection Matrix</h3>
+          <div class="bg-white rounded-2xl border border-dark/8 overflow-hidden">
+            <div class="grid grid-cols-4 gap-0 bg-warm-gray/50 px-5 py-3 border-b border-dark/8">
+              <p class="font-inter text-dark/50 text-xs font-semibold col-span-1">Notification Type</p>
+              <p class="font-inter text-teal text-xs font-semibold text-center">Email</p>
+              <p class="font-inter text-terracotta text-xs font-semibold text-center">SMS</p>
+              <p class="font-inter text-dark/50 text-xs font-semibold text-center">Push</p>
+            </div>
+            {[
+              { type: 'Confirmations (purchase, order, delivery)', email: 'Always', sms: 'Key events only', push: 'Always' },
+              { type: 'Action required (check-in, payment)', email: 'Always', sms: 'Day −5 onward', push: 'Always' },
+              { type: 'Status changes (paused, held, inactive)', email: 'Always', sms: 'Critical only', push: 'Yes' },
+              { type: 'Reminders / nudges', email: 'Yes', sms: 'Selectively', push: 'Yes' },
+              { type: 'Celebrations / milestones', email: 'Yes', sms: '—', push: 'Optional' },
+              { type: 'Feedback / surveys', email: 'Yes', sms: '—', push: '—' },
+            ].map(row => (
+              <div class="grid grid-cols-4 gap-0 px-5 py-3 border-b border-dark/5 last:border-b-0">
+                <p class="font-inter text-dark/70 text-xs col-span-1 pr-4">{row.type}</p>
+                <p class="font-inter text-teal/80 text-xs text-center">{row.email}</p>
+                <p class="font-inter text-terracotta/80 text-xs text-center">{row.sms}</p>
+                <p class="font-inter text-dark/50 text-xs text-center">{row.push}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Frequency caps & quiet hours -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white rounded-2xl border border-dark/8 p-5">
+            <h3 class="font-inter text-dark text-sm font-semibold mb-4">Frequency Caps</h3>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-inter text-dark/50 text-xs">SMS per day</span>
+                <span class="font-inter text-terracotta font-semibold text-sm">Max 2</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-inter text-dark/50 text-xs">Push per day</span>
+                <span class="font-inter text-dark/70 font-semibold text-sm">Max 3</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-inter text-dark/50 text-xs">Email per day</span>
+                <span class="font-inter text-teal font-semibold text-sm">No cap*</span>
+              </div>
+              <p class="font-inter text-dark/30 text-xs pt-2">*Avoid more than 2 non-transactional emails per day. Caps may be relaxed during active escalation sequences.</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl border border-dark/8 p-5">
+            <h3 class="font-inter text-dark text-sm font-semibold mb-4">Quiet Hours</h3>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full bg-terracotta flex-shrink-0"></div>
+                <div>
+                  <p class="font-inter text-dark/70 text-xs font-medium">SMS & Push</p>
+                  <p class="font-inter text-dark/40 text-xs">No sends 9:00 PM — 8:00 AM (user's local timezone). Queue for 8:00 AM if triggered during quiet hours.</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full bg-teal flex-shrink-0"></div>
+                <div>
+                  <p class="font-inter text-dark/70 text-xs font-medium">Email</p>
+                  <p class="font-inter text-dark/40 text-xs">No quiet hour restrictions — users control their own notification settings.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unsubscribe rules -->
+        <div class="bg-white rounded-2xl border border-dark/8 p-5">
+          <h3 class="font-inter text-dark text-sm font-semibold mb-4">Unsubscribe & Opt-out Rules</h3>
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <p class="font-inter text-dark/50 text-xs font-semibold uppercase tracking-wider mb-2">Cannot Unsubscribe</p>
+              <p class="font-inter text-dark/60 text-xs leading-relaxed">Payment confirmations, shipping updates, status changes — these are service-essential transactional notifications.</p>
+            </div>
+            <div>
+              <p class="font-inter text-dark/50 text-xs font-semibold uppercase tracking-wider mb-2">Requires Unsubscribe Option</p>
+              <p class="font-inter text-dark/60 text-xs leading-relaxed">Milestones, feedback surveys, plan upgrade suggestions. SMS opt-out must support STOP keyword (TCPA requirement).</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</Layout>
+
+
+<script is:inline>
+  function switchEdge(active) {
+    const tabs = ['awaiting','held','payment','cancel','medswitch','planchange','restart'];
+    tabs.forEach(id => {
+      const panel = document.getElementById('panel-' + id);
+      const btn = document.querySelector(`[data-edge="${id}"]`);
+      if (id === active) {
+        panel.classList.remove('hidden');
+        btn.className = 'edge-tab px-4 py-2 rounded-full text-sm font-medium transition-all bg-dark text-cream';
+      } else {
+        panel.classList.add('hidden');
+        btn.className = 'edge-tab px-4 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark';
+      }
+    });
+  }
+</script>
