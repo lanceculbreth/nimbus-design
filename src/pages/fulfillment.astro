@@ -3,13 +3,17 @@ import Layout from '../layouts/Layout.astro';
 
 const sections = [
   { label: 'How It Works', id: 'overview' },
+  { label: 'Subscription Statuses', id: 'statuses' },
+  { label: 'Plan Timelines', id: 'timelines' },
   { label: 'Billing', id: 'billing' },
   { label: 'Medication & Pricing', id: 'pricing' },
   { label: 'Refill Cycle', id: 'refill' },
   { label: 'Fulfillment', id: 'fulfillment' },
+  { label: 'Inactive & Win-back', id: 'inactive' },
   { label: 'Plan Changes', id: 'plan-changes' },
   { label: 'Cancellation', id: 'cancellation' },
   { label: 'Edge Cases', id: 'edge-cases' },
+  { label: 'Action Items', id: 'action-items' },
 ];
 
 const monthly = 'inline-flex items-center px-2 py-0.5 rounded-full bg-teal/10 text-teal text-xs font-semibold';
@@ -68,6 +72,220 @@ const pending = 'inline-flex items-center px-2 py-0.5 rounded-full bg-amber-100 
             <p class="font-inter text-dark/30 text-xs mt-1">{f.sub}</p>
           </div>
         ))}
+      </div>
+    </section>
+
+    <!-- ─── SUBSCRIPTION STATUSES ─── -->
+    <section id="statuses" class="mb-16 scroll-mt-8">
+      <h2 class="font-fraunces text-2xl font-semibold text-dark mb-2">Subscription Statuses</h2>
+      <p class="font-inter text-dark/40 text-sm mb-6">Every patient account is always in one of these states. Status drives portal UI, billing behavior, and which notifications fire.</p>
+
+      <div class="bg-white border border-dark/8 rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-12 bg-warm-gray/50 border-b border-dark/8 px-5 py-3">
+          <p class="font-inter text-dark/50 text-xs font-semibold col-span-4">Status</p>
+          <p class="font-inter text-dark/50 text-xs font-semibold col-span-8">What it means</p>
+        </div>
+        {[
+          { status: 'Active', color: 'bg-teal', desc: 'Payment confirmed, subscription running normally. Patient is in good standing.' },
+          { status: 'Active – Pending Fulfillment', color: 'bg-teal/60', desc: 'MDI (provider) has approved and sent prescription to pharmacy. Awaiting shipment.' },
+          { status: 'Active – In Treatment', color: 'bg-teal/40', desc: 'Medication received. Patient is actively on treatment. Next refill window approaching.' },
+          { status: 'Active – At Risk', color: 'bg-amber-400', desc: '1-month only. Intake not completed, approaching the Day 44 deadline. Nudge sequence in progress.' },
+          { status: 'Active – Past Due', color: 'bg-terracotta', desc: 'Payment failed on a 3/6-month renewal. Stripe Smart Retry dunning sequence in progress.' },
+          { status: 'Active – Renewed', color: 'bg-teal', desc: '3/6-month auto-renewal payment succeeded. New term has started.' },
+          { status: 'Inactive', color: 'bg-dark/40', desc: 'Intake deadline missed (Day 44), payment unresolved at end of billing period, or migration not completed at T+30. Resume path always available — no full re-enrollment required.' },
+        ].map(s => (
+          <div class="grid grid-cols-12 px-5 py-3.5 border-b border-dark/5 last:border-0 items-start">
+            <div class="col-span-4 flex items-center gap-2.5">
+              <div class={`w-2 h-2 rounded-full flex-shrink-0 ${s.color}`}></div>
+              <p class="font-inter text-dark text-sm font-semibold">{s.status}</p>
+            </div>
+            <p class="font-inter text-dark/55 text-sm leading-relaxed col-span-8">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-dark/4 border border-dark/8 rounded-xl p-4 mt-4">
+        <p class="font-inter text-dark/60 text-xs leading-relaxed"><strong class="text-dark/80">Portal behavior when Inactive:</strong> Full portal UI remains visible but greyed out. An overlay appears with context-specific messaging and a Resume CTA. Resuming requires payment + completing intake questionnaire → status returns to Active – Pending Fulfillment. Existing patient record and history retained.</p>
+      </div>
+    </section>
+
+    <!-- ─── PLAN TIMELINES ─── -->
+    <section id="timelines" class="mb-16 scroll-mt-8">
+      <h2 class="font-fraunces text-2xl font-semibold text-dark mb-2">Plan Timelines & State Machines</h2>
+      <p class="font-inter text-dark/40 text-sm mb-6">The day-by-day progression of each plan type — from purchase to renewal or inactivity.</p>
+
+      <!-- Plan tabs -->
+      <div class="flex gap-2 mb-5" id="timeline-tabs">
+        {[
+          { id: '1mo', label: '1-Month' },
+          { id: '3mo', label: '3-Month' },
+          { id: '6mo', label: '6-Month' },
+        ].map((t, i) => (
+          <button
+            data-tl={t.id}
+            onclick={`switchTimeline('${t.id}')`}
+            class={`tl-tab px-4 py-2 rounded-full text-sm font-medium transition-all ${i === 0 ? 'bg-dark text-cream' : 'bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark'}`}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      <!-- 1-Month Timeline -->
+      <div id="panel-tl-1mo">
+        <div class="bg-white border border-dark/8 rounded-2xl overflow-hidden mb-4">
+          <div class="grid grid-cols-12 bg-warm-gray/50 border-b border-dark/8 px-5 py-3">
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-2">Day</p>
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-4">Event</p>
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-3">Status</p>
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-3">Trigger</p>
+          </div>
+          {[
+            { day: 'Day 1', event: 'Purchase', status: 'Active', trigger: 'Payment success', hi: false },
+            { day: 'Day 2', event: 'MDI approved, sent to pharmacy', status: 'Active – Pending Fulfillment', trigger: 'Clinical approval', hi: false },
+            { day: 'Day 7', event: 'Medication received', status: 'Active – In Treatment', trigger: 'Shipment delivered', hi: false },
+            { day: 'Day 20', event: 'Renewal nudge email #1', status: 'Active', trigger: 'Scheduled', hi: false },
+            { day: 'Day 27', event: 'Urgency nudge email #2', status: 'Active', trigger: 'Scheduled', hi: false },
+            { day: 'Day 28', event: '"Do it today" email — 5 business day guarantee', status: 'Active', trigger: 'Scheduled', hi: false },
+            { day: 'Day 31', event: 'Missed intake warning', status: 'Active – At Risk', trigger: 'Intake not completed', hi: true },
+            { day: 'Day 37', event: 'Cancellation warning', status: 'Active – At Risk', trigger: 'Intake still incomplete', hi: true },
+            { day: 'Day 43', event: 'Final nudge + $25 COMMIT offer (expires Day 44)', status: 'Active – At Risk', trigger: 'Scheduled', hi: true },
+            { day: 'Day 44 @ 5pm CT', event: 'Hard deadline — intake not completed', status: 'Inactive', trigger: 'System trigger', hi: true },
+          ].map(r => (
+            <div class={`grid grid-cols-12 px-5 py-3 border-b border-dark/5 last:border-0 ${r.hi ? 'bg-red-50/40' : ''}`}>
+              <p class="font-inter text-dark/50 text-xs font-mono col-span-2 self-center">{r.day}</p>
+              <p class="font-inter text-dark/70 text-xs col-span-4 self-center">{r.event}</p>
+              <p class={`font-inter text-xs font-semibold col-span-3 self-center ${r.status === 'Inactive' ? 'text-dark/40' : r.status.includes('At Risk') ? 'text-amber-600' : 'text-teal'}`}>{r.status}</p>
+              <p class="font-inter text-dark/30 text-xs col-span-3 self-center">{r.trigger}</p>
+            </div>
+          ))}
+        </div>
+        <div class="bg-teal/5 border border-teal/15 rounded-xl p-4">
+          <p class="font-inter text-dark/60 text-xs font-semibold mb-2">1-Month Email Sequence</p>
+          <div class="space-y-1.5">
+            {[
+              { day: 'Day 20', subject: '"Hope you\'re well — don\'t forget to complete your renewal by Day 28 to receive your next dose"' },
+              { day: 'Day 27', subject: '"Intake due by 5pm tomorrow to receive next month\'s dose"' },
+              { day: 'Day 28', subject: '"Do it today — next prescription will arrive within 5 business days, guaranteed"' },
+              { day: 'Day 31', subject: '"You missed your refill intake. Complete it today to avoid interruption"' },
+              { day: 'Day 37', subject: '"Complete your intake by Day 44 or your membership will become inactive"' },
+              { day: 'Day 43', subject: '"Final nudge — complete refill by tomorrow 5pm and receive $25 off with code COMMIT"' },
+            ].map(e => (
+              <div class="flex gap-3">
+                <span class="font-inter text-dark/30 text-xs font-mono w-12 flex-shrink-0">{e.day}</span>
+                <span class="font-inter text-dark/60 text-xs">{e.subject}</span>
+              </div>
+            ))}
+            <div class="flex gap-3 border-t border-dark/8 pt-2 mt-2">
+              <span class="font-inter text-dark/30 text-xs font-mono w-12 flex-shrink-0">All</span>
+              <span class="font-inter text-dark/40 text-xs">Scheduled send: 8:00 AM CT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3-Month Timeline -->
+      <div id="panel-tl-3mo" class="hidden">
+        <div class="bg-white border border-dark/8 rounded-2xl overflow-hidden mb-4">
+          <div class="grid grid-cols-12 bg-warm-gray/50 border-b border-dark/8 px-5 py-3">
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-2">Day</p>
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-4">Event</p>
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-3">Status</p>
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-3">Trigger</p>
+          </div>
+          {[
+            { day: 'Day 1', event: 'Purchase — full 3-month charged', status: 'Active', trigger: 'Payment success', hi: false },
+            { day: 'Day 2', event: 'MDI approved, sent to pharmacy', status: 'Active – Pending Fulfillment', trigger: 'Clinical approval', hi: false },
+            { day: 'Day 7', event: 'Medication received', status: 'Active – In Treatment', trigger: 'Shipment delivered', hi: false },
+            { day: 'Day 77', event: 'Auto-renewal warning — 7 days out', status: 'Active', trigger: 'Scheduled', hi: false },
+            { day: 'Day 82', event: 'Final auto-renewal reminder — 2 days out', status: 'Active', trigger: 'Scheduled', hi: false },
+            { day: 'Day 84', event: '✅ Auto-renewal payment success', status: 'Active – Renewed', trigger: 'invoice.payment_succeeded', hi: false },
+            { day: 'Day 84', event: '❌ Auto-renewal payment failure', status: 'Active – Past Due', trigger: 'invoice.payment_failed', hi: true },
+            { day: 'Day 84 + 7', event: 'Dunning: update payment method', status: 'Active – Past Due', trigger: 'Scheduled fallback', hi: true },
+            { day: 'Day 84 + 14', event: 'Final warning + $50 win-back offer', status: 'Active – Past Due', trigger: 'Scheduled fallback', hi: true },
+            { day: 'End of period', event: 'Unresolved payment → Inactive at 11:59 PM CT', status: 'Inactive', trigger: 'System trigger', hi: true },
+          ].map(r => (
+            <div class={`grid grid-cols-12 px-5 py-3 border-b border-dark/5 last:border-0 ${r.hi ? 'bg-red-50/40' : ''}`}>
+              <p class="font-inter text-dark/50 text-xs font-mono col-span-2 self-center">{r.day}</p>
+              <p class="font-inter text-dark/70 text-xs col-span-4 self-center">{r.event}</p>
+              <p class={`font-inter text-xs font-semibold col-span-3 self-center ${r.status === 'Inactive' ? 'text-dark/40' : r.status === 'Active – Past Due' ? 'text-terracotta' : r.status === 'Active – Renewed' ? 'text-teal' : 'text-teal'}`}>{r.status}</p>
+              <p class="font-inter text-dark/30 text-xs col-span-3 self-center font-mono">{r.trigger}</p>
+            </div>
+          ))}
+        </div>
+        <div class="bg-terracotta/5 border border-terracotta/15 rounded-xl p-4">
+          <p class="font-inter text-dark/60 text-xs font-semibold mb-2">3-Month Email Sequence</p>
+          <div class="space-y-1.5">
+            {[
+              { day: 'Day 77', subject: '"Your 3-month subscription renews in 7 days on [date]. No action needed."' },
+              { day: 'Day 82', subject: '"Final reminder — subscription renews in 2 days. Cancel before midnight to avoid renewal."' },
+              { day: 'Day 84', subject: '✅ "Payment confirmed — your next 3 months are locked in." OR ❌ "Payment failed — we\'ll retry automatically."' },
+              { day: '+7 fail', subject: '"We\'re still having trouble with your payment. Please add a new payment method."' },
+              { day: '+14 fail', subject: '"Your account will become inactive at end of billing period. Renew now and get $50 off."' },
+            ].map(e => (
+              <div class="flex gap-3">
+                <span class="font-inter text-dark/30 text-xs font-mono w-14 flex-shrink-0">{e.day}</span>
+                <span class="font-inter text-dark/60 text-xs">{e.subject}</span>
+              </div>
+            ))}
+            <div class="flex gap-3 border-t border-dark/8 pt-2 mt-2">
+              <span class="font-inter text-dark/30 text-xs font-mono w-14 flex-shrink-0">Timing</span>
+              <span class="font-inter text-dark/40 text-xs">Renewal emails: 8:00 AM CT. Post-charge & dunning: within 1 hour of Stripe webhook.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6-Month Timeline -->
+      <div id="panel-tl-6mo" class="hidden">
+        <div class="bg-white border border-dark/8 rounded-2xl overflow-hidden mb-4">
+          <div class="grid grid-cols-12 bg-warm-gray/50 border-b border-dark/8 px-5 py-3">
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-2">Day</p>
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-4">Event</p>
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-3">Status</p>
+            <p class="font-inter text-dark/50 text-xs font-semibold col-span-3">Trigger</p>
+          </div>
+          {[
+            { day: 'Day 1', event: 'Purchase — full 6-month charged', status: 'Active', trigger: 'Payment success', hi: false },
+            { day: 'Day 2', event: 'MDI approved, sent to pharmacy', status: 'Active – Pending Fulfillment', trigger: 'Clinical approval', hi: false },
+            { day: 'Day 7', event: 'Medication received', status: 'Active – In Treatment', trigger: 'Shipment delivered', hi: false },
+            { day: 'Day 161', event: 'Auto-renewal warning — 7 days out', status: 'Active', trigger: 'Scheduled', hi: false },
+            { day: 'Day 166', event: 'Final auto-renewal reminder — 2 days out', status: 'Active', trigger: 'Scheduled', hi: false },
+            { day: 'Day 168', event: '✅ Auto-renewal payment success', status: 'Active – Renewed', trigger: 'invoice.payment_succeeded', hi: false },
+            { day: 'Day 168', event: '❌ Auto-renewal payment failure', status: 'Active – Past Due', trigger: 'invoice.payment_failed', hi: true },
+            { day: 'Day 168 + 7', event: 'Dunning: update payment method', status: 'Active – Past Due', trigger: 'Scheduled fallback', hi: true },
+            { day: 'Day 168 + 14', event: 'Final warning + $100 win-back offer', status: 'Active – Past Due', trigger: 'Scheduled fallback', hi: true },
+            { day: 'End of period', event: 'Unresolved payment → Inactive at 11:59 PM CT', status: 'Inactive', trigger: 'System trigger', hi: true },
+          ].map(r => (
+            <div class={`grid grid-cols-12 px-5 py-3 border-b border-dark/5 last:border-0 ${r.hi ? 'bg-red-50/40' : ''}`}>
+              <p class="font-inter text-dark/50 text-xs font-mono col-span-2 self-center">{r.day}</p>
+              <p class="font-inter text-dark/70 text-xs col-span-4 self-center">{r.event}</p>
+              <p class={`font-inter text-xs font-semibold col-span-3 self-center ${r.status === 'Inactive' ? 'text-dark/40' : r.status === 'Active – Past Due' ? 'text-terracotta' : r.status === 'Active – Renewed' ? 'text-teal' : 'text-teal'}`}>{r.status}</p>
+              <p class="font-inter text-dark/30 text-xs col-span-3 self-center font-mono">{r.trigger}</p>
+            </div>
+          ))}
+        </div>
+        <div class="bg-terracotta/5 border border-terracotta/15 rounded-xl p-4">
+          <p class="font-inter text-dark/60 text-xs font-semibold mb-2">6-Month Email Sequence</p>
+          <div class="space-y-1.5">
+            {[
+              { day: 'Day 161', subject: '"Your 6-month subscription renews in 7 days on [date]. No action needed."' },
+              { day: 'Day 166', subject: '"Final reminder — subscription renews in 2 days. Cancel before midnight to avoid renewal."' },
+              { day: 'Day 168', subject: '✅ "Payment confirmed — your next 6 months are locked in." OR ❌ "Payment failed — we\'ll retry."' },
+              { day: '+7 fail', subject: '"We\'re still having trouble with your payment. Please add a new payment method."' },
+              { day: '+14 fail', subject: '"Your account will become inactive at end of billing period. Renew now and get $100 off."' },
+            ].map(e => (
+              <div class="flex gap-3">
+                <span class="font-inter text-dark/30 text-xs font-mono w-14 flex-shrink-0">{e.day}</span>
+                <span class="font-inter text-dark/60 text-xs">{e.subject}</span>
+              </div>
+            ))}
+            <div class="flex gap-3 border-t border-dark/8 pt-2 mt-2">
+              <span class="font-inter text-dark/30 text-xs font-mono w-14 flex-shrink-0">Timing</span>
+              <span class="font-inter text-dark/40 text-xs">Renewal emails: 8:00 AM CT. Post-charge & dunning: within 1 hour of Stripe webhook.</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -302,6 +520,94 @@ const pending = 'inline-flex items-center px-2 py-0.5 rounded-full bg-amber-100 
       </div>
     </section>
 
+    <!-- ─── INACTIVE STATE & WIN-BACK ─── -->
+    <section id="inactive" class="mb-16 scroll-mt-8">
+      <h2 class="font-fraunces text-2xl font-semibold text-dark mb-2">Inactive State & Win-back</h2>
+      <p class="font-inter text-dark/40 text-sm mb-6">What the patient sees when inactive, and how they resume.</p>
+
+      <div class="space-y-4">
+
+        <!-- Portal overlay -->
+        <div class="bg-white border border-dark/8 rounded-2xl overflow-hidden">
+          <div class="bg-warm-gray/40 px-5 py-3 border-b border-dark/8">
+            <p class="font-inter text-dark/60 text-xs font-semibold uppercase tracking-widest">Portal UX when Inactive</p>
+          </div>
+          <div class="p-5 space-y-2">
+            <div class="flex gap-3 items-start">
+              <span class="text-dark/30 text-sm mt-0.5">→</span>
+              <p class="font-inter text-dark/60 text-sm">Full portal UI remains <strong class="text-dark/80">visible but greyed out</strong> — patients can see their history.</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span class="text-dark/30 text-sm mt-0.5">→</span>
+              <p class="font-inter text-dark/60 text-sm">An overlay activates with copy driven by an <code class="bg-warm-gray px-1.5 py-0.5 rounded text-xs font-mono text-dark/70">inactive_reason</code> field — three distinct messages depending on why they went inactive.</p>
+            </div>
+            <div class="flex gap-3 items-start">
+              <span class="text-dark/30 text-sm mt-0.5">→</span>
+              <p class="font-inter text-dark/60 text-sm">Resume CTA initiates payment + intake questionnaire. On success → status returns to <strong class="text-teal">Active – Pending Fulfillment</strong>. No full re-enrollment, record preserved.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic overlay copy -->
+        <div class="bg-white border border-dark/8 rounded-2xl overflow-hidden">
+          <div class="bg-warm-gray/40 px-5 py-3 border-b border-dark/8">
+            <p class="font-inter text-dark/60 text-xs font-semibold uppercase tracking-widest">Dynamic Overlay Copy — by Inactive Reason</p>
+          </div>
+          <div class="divide-y divide-dark/5">
+            {[
+              {
+                reason: 'Missed intake deadline',
+                msg: '"Your account is inactive. Complete your questionnaire and provide payment to resume — medication cannot be shipped until both are complete."',
+                cta: 'Resume',
+              },
+              {
+                reason: 'Unresolved payment',
+                msg: '"Your account is inactive. Complete your questionnaire and provide payment to resume — medication cannot be shipped until both are complete."',
+                cta: 'Resume',
+              },
+              {
+                reason: 'Migration not completed',
+                msg: '"Your account is paused until you migrate to the new WeightWiseRX portal. Migrating takes just a few minutes and your history is preserved."',
+                cta: 'Migrate Now',
+              },
+            ].map(o => (
+              <div class="px-5 py-4 grid grid-cols-12 gap-4">
+                <div class="col-span-3">
+                  <p class="font-inter text-dark/60 text-xs font-semibold">{o.reason}</p>
+                  <span class="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-full bg-teal/10 text-teal text-xs font-semibold">{o.cta}</span>
+                </div>
+                <p class="font-inter text-dark/50 text-xs leading-relaxed col-span-9 italic">{o.msg}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Win-back discounts -->
+        <div class="bg-white border border-dark/8 rounded-2xl overflow-hidden">
+          <div class="bg-warm-gray/40 px-5 py-3 border-b border-dark/8">
+            <p class="font-inter text-dark/60 text-xs font-semibold uppercase tracking-widest">Win-back Discounts — Auto-applied at Resume Checkout</p>
+          </div>
+          <div class="p-5">
+            <div class="grid grid-cols-3 gap-3">
+              {[
+                { plan: '1-Month', discount: 'N/A', note: '$25 COMMIT code expires at Day 44 deadline — not available at resume.' },
+                { plan: '3-Month', discount: '$50 off', note: 'Applied automatically at resume checkout. Not redeemable via any other flow.' },
+                { plan: '6-Month', discount: '$100 off', note: 'Applied automatically at resume checkout. Not redeemable via any other flow.' },
+              ].map(w => (
+                <div class="bg-warm-gray/40 rounded-xl p-4">
+                  <p class="font-inter text-dark/40 text-xs mb-1">{w.plan}</p>
+                  <p class={`font-fraunces text-2xl font-semibold mb-2 ${w.discount === 'N/A' ? 'text-dark/30' : 'text-teal'}`}>{w.discount}</p>
+                  <p class="font-inter text-dark/50 text-xs leading-relaxed">{w.note}</p>
+                </div>
+              ))}
+            </div>
+            <p class="font-inter text-dark/30 text-xs mt-4 border-t border-dark/6 pt-3">Resume resets the billing cycle anchor to the date of reactivation.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- ─── PLAN CHANGES ─── -->
     <section id="plan-changes" class="mb-16 scroll-mt-8">
       <h2 class="font-fraunces text-2xl font-semibold text-dark mb-2">Plan Changes & Commitment Rules</h2>
@@ -436,5 +742,59 @@ const pending = 'inline-flex items-center px-2 py-0.5 rounded-full bg-amber-100 
       </div>
     </section>
 
+    <!-- ─── ACTION ITEMS ─── -->
+    <section id="action-items" class="mb-16 scroll-mt-8">
+      <h2 class="font-fraunces text-2xl font-semibold text-dark mb-2">Open Action Items</h2>
+      <p class="font-inter text-dark/40 text-sm mb-6">Decisions confirmed — these tasks still need to be built or confirmed. All owners are from the March 2026 alignment session.</p>
+
+      <div class="bg-white border border-dark/8 rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-12 bg-warm-gray/50 border-b border-dark/8 px-5 py-3">
+          <p class="font-inter text-dark/50 text-xs font-semibold col-span-7">Action Item</p>
+          <p class="font-inter text-dark/50 text-xs font-semibold col-span-2 text-center">Owner</p>
+          <p class="font-inter text-dark/50 text-xs font-semibold col-span-3 text-center">Status</p>
+        </div>
+        {[
+          { item: 'Confirm ESP supports webhook-triggered emails and queued email cancellation on invoice.payment_succeeded', owner: 'Lance', open: true },
+          { item: 'Implement inactive_reason field to drive dynamic portal overlay copy (3 states: intake deadline, payment, migration)', owner: 'Lance', open: true },
+          { item: 'Remove self-serve cancellation from portal for 3/6-month subscribers — CS-handled only per refund policy', owner: 'Lance + Bristelle', open: true },
+          { item: 'Implement $25 COMMIT code expiry gated on status = Active, not timestamp alone', owner: 'Lance', open: true },
+          { item: 'Implement win-back discount auto-generation at resume checkout (3-month: $50 / 6-month: $100)', owner: 'Lance', open: true },
+          { item: 'Share DRAFT Refund Policy downgrade and cancellation criteria with Lance so CS-gated flow can be built', owner: 'Bristelle', open: true },
+          { item: 'Write migration benefits copy for T+0 email and Inactive portal overlay', owner: 'Anne', open: true },
+          { item: 'Brief Bristelle on CS inbound playbook for patients who are Inactive but still being billed (migration scenario)', owner: 'Anne', open: true },
+          { item: 'Confirm minimum viable MDI approval + pharmacy fulfillment turnaround time with Jobby to validate 5-business-day assumption', owner: 'Jobby', open: true },
+          { item: 'Implement automated refund on provider decline event — no manual CS intervention required', owner: 'Lance', open: true },
+          { item: 'Integrate Klarna and Afterpay for 3/6-month plans at checkout', owner: 'Lance', open: true },
+          { item: 'Add HSA eligibility messaging to pricing page', owner: 'Anne', open: true },
+        ].map(a => (
+          <div class="grid grid-cols-12 px-5 py-3.5 border-b border-dark/5 last:border-0 items-start">
+            <p class="font-inter text-dark/65 text-xs leading-relaxed col-span-7 pr-4">{a.item}</p>
+            <p class="font-inter text-dark/50 text-xs col-span-2 text-center self-center">{a.owner}</p>
+            <div class="col-span-3 flex justify-center self-center">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block"></span>Open
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
   </div>
+
+<script is:inline>
+  function switchTimeline(active) {
+    ['1mo','3mo','6mo'].forEach(id => {
+      const panel = document.getElementById('panel-tl-' + id);
+      const btn = document.querySelector(`[data-tl="${id}"]`);
+      if (id === active) {
+        panel.classList.remove('hidden');
+        btn.className = 'tl-tab px-4 py-2 rounded-full text-sm font-medium transition-all bg-dark text-cream';
+      } else {
+        panel.classList.add('hidden');
+        btn.className = 'tl-tab px-4 py-2 rounded-full text-sm font-medium transition-all bg-dark/8 text-dark/50 hover:bg-dark/12 hover:text-dark';
+      }
+    });
+  }
+</script>
 </Layout>
