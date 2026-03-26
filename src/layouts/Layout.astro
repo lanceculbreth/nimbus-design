@@ -9,17 +9,27 @@ interface Props {
 
 const { title, active, sections = [] } = Astro.props;
 
-const navItems = [
-  { label: 'Overview', href: '/', id: 'overview' },
-  { label: 'Assets', href: '/assets', id: 'assets' },
-  { label: 'Positioning', href: '/marketing', id: 'marketing' },
-  { label: 'Intakes', href: '/intakes', id: 'intakes' },
-  { label: 'Web', href: '/web', id: 'web' },
-  { label: 'Portal', href: '/portal', id: 'portal' },
-  { label: 'Customer Touchpoints', href: '/email', id: 'email' },
-  { label: 'CX Strategy', href: '/strategy', id: 'strategy' },
-  { label: 'Fulfillment', href: '/fulfillment', id: 'fulfillment' },
-  { label: 'Sales Resources', href: '/sales-resource', id: 'sales-resource' },
+const navGroups = [
+  {
+    label: 'Design',
+    items: [
+      { label: 'Overview', href: '/', id: 'overview' },
+      { label: 'Assets', href: '/assets', id: 'assets' },
+      { label: 'Positioning', href: '/marketing', id: 'marketing' },
+      { label: 'Intakes', href: '/intakes', id: 'intakes' },
+      { label: 'Web', href: '/web', id: 'web' },
+      { label: 'Portal', href: '/portal', id: 'portal' },
+    ],
+  },
+  {
+    label: 'Communication',
+    items: [
+      { label: 'Customer Touchpoints', href: '/email', id: 'email' },
+      { label: 'CX Strategy', href: '/strategy', id: 'strategy' },
+      { label: 'Fulfillment', href: '/fulfillment', id: 'fulfillment' },
+      { label: 'Sales Resources', href: '/sales-resource', id: 'sales-resource' },
+    ],
+  },
 ];
 ---
 
@@ -47,23 +57,30 @@ const navItems = [
         </div>
 
         <!-- Navigation -->
-        <nav class="flex-1 px-4">
-          <ul class="space-y-1">
-            {navItems.map(item => (
-              <li>
-                <a
-                  href={item.href}
-                  class={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-                    active === item.id
-                      ? 'bg-cream/10 text-cream'
-                      : 'text-cream/40 hover:text-cream/70 hover:bg-cream/5'
-                  }`}
-                >
-                  {item.label}
-                </a>
-              </li>
+        <nav class="flex-1 px-4 overflow-y-auto">
+          <div class="space-y-5">
+            {navGroups.map((group, gi) => (
+              <div>
+                <p class="font-inter text-cream/25 text-[10px] font-semibold tracking-widest uppercase px-3 mb-1.5">{group.label}</p>
+                <ul class="space-y-0.5">
+                  {group.items.map(item => (
+                    <li>
+                      <a
+                        href={item.href}
+                        class={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                          active === item.id
+                            ? 'bg-cream/10 text-cream'
+                            : 'text-cream/40 hover:text-cream/70 hover:bg-cream/5'
+                        }`}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </nav>
 
         <!-- Footer -->
