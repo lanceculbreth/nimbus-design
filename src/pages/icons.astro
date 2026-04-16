@@ -24,21 +24,16 @@ import Layout from '../layouts/Layout.astro';
           type="text"
           id="icon-search"
           placeholder="Search icons..."
-          style="padding-left: 16px; padding-right: 16px; max-width: 280px;"
-          class="w-full h-9 rounded-lg border border-dark/10 bg-cream font-inter text-sm text-dark placeholder:text-dark/30 focus:outline-none focus:border-teal focus:ring-1 focus:ring-teal transition-colors"
+          style="padding-left: 16px; padding-right: 16px;"
+          class="flex-1 h-10 rounded-lg border border-dark/10 bg-cream font-inter text-sm text-dark placeholder:text-dark/30 focus:outline-none focus:border-teal focus:ring-1 focus:ring-teal transition-colors"
         />
-        <div class="flex items-center gap-4 ml-auto font-inter text-[11px] text-dark/35">
-          <span>Outline, 2px</span>
-          <span>24&times;24</span>
-          <a href="https://tabler.io/icons" target="_blank" rel="noopener noreferrer" class="text-teal hover:underline">tabler.io</a>
-        </div>
         <!-- Light/Dark toggle -->
-        <div id="mode-toggle" class="flex items-center rounded-lg p-0.5 flex-shrink-0" style="background: rgba(26,24,22,0.06);">
-          <button data-mode="light" class="mode-btn flex items-center justify-center w-7 h-7 rounded-md transition-all" style="background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #1A1816;"><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"/></svg>
+        <div id="mode-toggle" class="flex items-center rounded-xl p-1 flex-shrink-0" style="background: rgba(26,24,22,0.06);">
+          <button data-mode="light" class="mode-btn flex items-center justify-center rounded-lg transition-all" style="width: 36px; height: 36px; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #1A1816;"><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"/></svg>
           </button>
-          <button data-mode="dark" class="mode-btn flex items-center justify-center w-7 h-7 rounded-md transition-all" style="background: transparent;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(26,24,22,0.3);"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/></svg>
+          <button data-mode="dark" class="mode-btn flex items-center justify-center rounded-lg transition-all" style="width: 36px; height: 36px; background: transparent;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(26,24,22,0.3);"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/></svg>
           </button>
         </div>
       </div>
@@ -259,20 +254,21 @@ import Layout from '../layouts/Layout.astro';
       const wrap = document.getElementById('icon-grid-wrap');
       const lightBtn = document.querySelector('[data-mode="light"]');
       const darkBtn = document.querySelector('[data-mode="dark"]');
+      var shadow = '0 1px 3px rgba(0,0,0,0.1)';
       if (darkMode) {
         wrap.style.backgroundColor = '#1A1816';
-        lightBtn.style.backgroundColor = 'transparent';
+        lightBtn.style.background = 'transparent';
         lightBtn.style.boxShadow = 'none';
         lightBtn.querySelector('svg').style.color = 'rgba(26,24,22,0.3)';
-        darkBtn.style.backgroundColor = 'white';
-        darkBtn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+        darkBtn.style.background = 'white';
+        darkBtn.style.boxShadow = shadow;
         darkBtn.querySelector('svg').style.color = '#1A1816';
       } else {
         wrap.style.backgroundColor = '';
-        lightBtn.style.backgroundColor = 'white';
-        lightBtn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+        lightBtn.style.background = 'white';
+        lightBtn.style.boxShadow = shadow;
         lightBtn.querySelector('svg').style.color = '#1A1816';
-        darkBtn.style.backgroundColor = 'transparent';
+        darkBtn.style.background = 'transparent';
         darkBtn.style.boxShadow = 'none';
         darkBtn.querySelector('svg').style.color = 'rgba(26,24,22,0.3)';
       }
