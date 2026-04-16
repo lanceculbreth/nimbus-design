@@ -39,17 +39,19 @@ import Layout from '../layouts/Layout.astro';
     <!-- Search + Filters (sticky) -->
     <div class="sticky top-0 z-30 bg-cream pb-4" style="padding-top: 12px;">
       <!-- Search -->
-      <div class="relative mb-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-dark/30">
-          <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/>
-        </svg>
-        <input
-          type="text"
-          id="icon-search"
-          placeholder="Search 5,039 icons..."
-          class="w-full pl-10 pr-20 py-2.5 rounded-xl border border-dark/10 bg-white font-inter text-sm text-dark placeholder:text-dark/30 focus:outline-none focus:border-teal focus:ring-1 focus:ring-teal transition-colors"
-        />
-        <span id="result-count" class="absolute right-3.5 top-1/2 -translate-y-1/2 font-inter text-[11px] text-dark/30"></span>
+      <div class="flex items-center gap-3 mb-3">
+        <div class="relative flex-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 -translate-y-1/2 text-dark/30 pointer-events-none">
+            <path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/>
+          </svg>
+          <input
+            type="text"
+            id="icon-search"
+            placeholder="Search icons..."
+            class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-dark/10 bg-white font-inter text-sm text-dark placeholder:text-dark/30 focus:outline-none focus:border-teal focus:ring-1 focus:ring-teal transition-colors"
+          />
+        </div>
+        <span id="result-count" class="font-inter text-[11px] text-dark/30 whitespace-nowrap flex-shrink-0"></span>
       </div>
 
       <!-- Category Tabs (wrapping) -->
