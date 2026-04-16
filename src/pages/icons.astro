@@ -16,59 +16,41 @@ import Layout from '../layouts/Layout.astro';
       </p>
     </div>
 
-    <!-- Usage bar + mode toggle -->
-    <div class="bg-dark rounded-2xl px-6 py-4 mb-8 flex items-center justify-between font-inter text-xs">
-      <div class="flex flex-wrap items-center gap-6">
-        <div>
-          <span class="text-cream/40">Style</span>
-          <span class="text-cream ml-2">Outline, 2px stroke</span>
-        </div>
-        <div>
-          <span class="text-cream/40">Size</span>
-          <span class="text-cream ml-2">24 &times; 24</span>
-        </div>
-        <div>
-          <span class="text-cream/40">Color</span>
-          <span class="text-cream ml-2">currentColor</span>
-        </div>
-        <div>
-          <span class="text-cream/40">Source</span>
-          <a href="https://tabler.io/icons" target="_blank" rel="noopener noreferrer" class="text-teal ml-2 hover:underline">tabler.io/icons</a>
-        </div>
-      </div>
-      <!-- Light/Dark toggle -->
-      <div id="mode-toggle" class="flex items-center rounded-lg p-0.5 flex-shrink-0 ml-4" style="background: rgba(245,241,235,0.1);">
-        <button data-mode="light" class="mode-btn flex items-center justify-center w-7 h-7 rounded-md transition-all" style="background: rgba(245,241,235,0.2);">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #F5F1EB;"><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"/></svg>
-        </button>
-        <button data-mode="dark" class="mode-btn flex items-center justify-center w-7 h-7 rounded-md transition-all" style="background: transparent;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(245,241,235,0.4);"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Search + Filters (sticky) -->
-    <div class="sticky top-0 z-30 bg-cream pb-4" style="padding-top: 12px;">
-      <!-- Search -->
-      <div class="mb-4">
+    <!-- Toolbar -->
+    <div class="sticky top-0 z-30 rounded-2xl border border-dark/8 bg-white mb-6" style="padding: 16px 20px;">
+      <!-- Top row: search + mode toggle -->
+      <div class="flex items-center gap-3 mb-3">
         <input
           type="text"
           id="icon-search"
           placeholder="Search icons..."
-          style="padding-left: 20px; padding-right: 20px; max-width: 300px;"
-          class="w-full h-10 rounded-xl border border-dark/10 bg-white font-inter text-sm text-dark placeholder:text-dark/30 focus:outline-none focus:border-teal focus:ring-1 focus:ring-teal transition-colors"
+          style="padding-left: 16px; padding-right: 16px; max-width: 280px;"
+          class="w-full h-9 rounded-lg border border-dark/10 bg-cream font-inter text-sm text-dark placeholder:text-dark/30 focus:outline-none focus:border-teal focus:ring-1 focus:ring-teal transition-colors"
         />
+        <div class="flex items-center gap-4 ml-auto font-inter text-[11px] text-dark/35">
+          <span>Outline, 2px</span>
+          <span>24&times;24</span>
+          <a href="https://tabler.io/icons" target="_blank" rel="noopener noreferrer" class="text-teal hover:underline">tabler.io</a>
+        </div>
+        <!-- Light/Dark toggle -->
+        <div id="mode-toggle" class="flex items-center rounded-lg p-0.5 flex-shrink-0" style="background: rgba(26,24,22,0.06);">
+          <button data-mode="light" class="mode-btn flex items-center justify-center w-7 h-7 rounded-md transition-all" style="background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #1A1816;"><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"/></svg>
+          </button>
+          <button data-mode="dark" class="mode-btn flex items-center justify-center w-7 h-7 rounded-md transition-all" style="background: transparent;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(26,24,22,0.3);"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/></svg>
+          </button>
+        </div>
       </div>
-
-      <!-- Category Tabs (wrapping) -->
+      <!-- Category Tabs -->
       <div class="flex flex-wrap items-center gap-1.5" id="category-tabs">
         <button data-cat="All" class="cat-tab active px-3 py-1 rounded-full font-inter text-[11px] font-medium transition-colors bg-dark text-cream">All</button>
-        <button data-cat="Popular" class="cat-tab px-3 py-1 rounded-full font-inter text-[11px] font-medium transition-colors bg-teal/10 text-teal hover:bg-teal/20">Popular</button>
+        <button data-cat="Popular" class="cat-tab px-3 py-1 rounded-full font-inter text-[11px] font-medium transition-colors" style="background: rgba(42,157,143,0.1); color: #2A9D8F;">Popular</button>
       </div>
     </div>
 
     <!-- Icon Grid -->
-    <div id="icon-grid-wrap" class="mt-4 rounded-2xl p-3 transition-colors duration-300">
+    <div id="icon-grid-wrap" class="rounded-2xl transition-colors duration-300" style="padding: 12px;">
       <div id="icon-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 6px;">
         <div class="font-inter text-sm text-dark/40 col-span-full py-20 text-center">Loading icons...</div>
       </div>
@@ -280,15 +262,19 @@ import Layout from '../layouts/Layout.astro';
       if (darkMode) {
         wrap.style.backgroundColor = '#1A1816';
         lightBtn.style.backgroundColor = 'transparent';
-        lightBtn.querySelector('svg').style.color = 'rgba(245,241,235,0.4)';
-        darkBtn.style.backgroundColor = 'rgba(245,241,235,0.2)';
-        darkBtn.querySelector('svg').style.color = '#F5F1EB';
+        lightBtn.style.boxShadow = 'none';
+        lightBtn.querySelector('svg').style.color = 'rgba(26,24,22,0.3)';
+        darkBtn.style.backgroundColor = 'white';
+        darkBtn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+        darkBtn.querySelector('svg').style.color = '#1A1816';
       } else {
         wrap.style.backgroundColor = '';
-        lightBtn.style.backgroundColor = 'rgba(245,241,235,0.2)';
-        lightBtn.querySelector('svg').style.color = '#F5F1EB';
+        lightBtn.style.backgroundColor = 'white';
+        lightBtn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+        lightBtn.querySelector('svg').style.color = '#1A1816';
         darkBtn.style.backgroundColor = 'transparent';
-        darkBtn.querySelector('svg').style.color = 'rgba(245,241,235,0.4)';
+        darkBtn.style.boxShadow = 'none';
+        darkBtn.querySelector('svg').style.color = 'rgba(26,24,22,0.3)';
       }
       renderIcons();
     }
