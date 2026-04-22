@@ -57,6 +57,15 @@ const navGroups = [
           </a>
         </div>
 
+        <!-- Audience Toggle -->
+        <div class="px-4 mb-6">
+          <div class="flex items-center rounded-xl p-1" style="background: rgba(245,241,235,0.06);">
+            <button data-audience="B2B" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: rgba(245,241,235,0.15); color: #F5F1EB;">B2B</button>
+            <button data-audience="B2C" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: transparent; color: rgba(245,241,235,0.4);">B2C</button>
+            <button data-audience="LHP" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: transparent; color: rgba(245,241,235,0.4);">LHP</button>
+          </div>
+        </div>
+
         <!-- Navigation -->
         <nav class="flex-1 px-4 overflow-y-auto">
           <div class="space-y-5">
@@ -123,6 +132,25 @@ const navGroups = [
         )}
       </main>
     </div>
+
+    <!-- Audience toggle behavior -->
+    <script is:inline>
+      (function () {
+        const saved = localStorage.getItem('audience') || 'B2B';
+        const btns = document.querySelectorAll('.audience-btn');
+        function apply(aud) {
+          btns.forEach(b => {
+            const active = b.dataset.audience === aud;
+            b.style.background = active ? 'rgba(245,241,235,0.15)' : 'transparent';
+            b.style.color = active ? '#F5F1EB' : 'rgba(245,241,235,0.4)';
+          });
+          localStorage.setItem('audience', aud);
+          document.body.dataset.audience = aud;
+        }
+        btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.audience)));
+        apply(saved);
+      })();
+    </script>
 
     {sections.length > 0 && (
       <script is:inline>
