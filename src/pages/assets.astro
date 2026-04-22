@@ -1,5 +1,58 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const heroPhotos = [
+  { src: '/images/iStock-1010651440.jpg', alt: 'Family at home' },
+  { src: '/images/iStock-1157992539.jpg', alt: 'Mother and child playing' },
+  { src: '/images/iStock-1165116258.jpg', alt: 'Woman laughing' },
+  { src: '/images/iStock-1206537120.jpg', alt: 'Woman with headphones' },
+  { src: '/images/iStock-1317735408.jpg', alt: 'Man with headphones outdoors' },
+  { src: '/images/iStock-1766905173.jpg', alt: 'Mother and child laughing' },
+  { src: '/images/iStock-2189538504.jpg', alt: 'Family joyful moment' },
+  { src: '/images/iStock-2203624688.jpg', alt: 'Mother and daughter dancing' },
+  { src: '/images/iStock-2187968525.jpg', alt: 'Family at home' },
+];
+
+const clinicalPhotos = [
+  { src: '/images/Start Treatment.jpg', alt: 'Start Treatment' },
+  { src: '/images/Integrated Pharmacy and Protocols.jpg', alt: 'Pharmacy' },
+];
+
+const foodPhotos = [
+  { src: '/images/snap food hero.png', alt: 'Snap Kitchen food' },
+  { src: '/images/food-hero.jpg', alt: 'Food hero' },
+];
+
+const vials = [
+  { src: '/vials/NB_vial2.png', alt: 'Vial 2' },
+  { src: '/vials/NB_Vial4.png', alt: 'Vial 4' },
+  { src: '/vials/NB_Vial6.png', alt: 'Vial 6' },
+  { src: '/vials/NB_Vial9.jpg', alt: 'Vial 9' },
+  { src: '/vials/Nimbus_GLP1_Vile.png', alt: 'GLP-1 Vial' },
+];
+
+const headshots = [
+  { src: '/headshots/Dr. Jobby John.png', name: 'Dr. Jobby John', title: 'Founder & CEO' },
+  { src: '/headshots/Dr. Richard Harris.png', name: 'Dr. Richard Harris', title: 'Chief Medical Officer' },
+  { src: '/headshots/Dr. Tracy Neal.png', name: 'Dr. Tracy Neal', title: "Director, Women's Health" },
+  { src: '/headshots/Dr. John Thoppil.png', name: 'Dr. John Thoppil', title: 'Board-Certified OB-GYN' },
+];
+
+const logoKits = [
+  { kit: 'nimbus-logo-full', label: 'Full Logo', files: [
+    { src: '/logos/logo-white.png', bg: 'dark', height: 36, preview: 'Logo — White' },
+    { src: '/logos/logo-black.png', bg: 'cream', height: 36, preview: 'Logo — Black' },
+  ]},
+  { kit: 'nimbus-logo-symbol', label: 'Symbol Mark', files: [
+    { src: '/logos/symbol-white.png', bg: 'dark', height: 48, preview: 'Symbol — White' },
+    { src: '/logos/symbol-black.png', bg: 'cream', height: 48, preview: 'Symbol — Black' },
+  ]},
+];
+
+const accreditationBadges = [
+  { src: '/images/6862a180b3f36e42a9c2a8bd_logo_f1.svg', alt: 'Accreditation badge', filename: 'accreditation-badge-1' },
+  { src: '/images/6862a180b3f36e42a9c2a8be_logo_f2.svg', alt: 'Accreditation logo', filename: 'accreditation-badge-2' },
+];
 ---
 
 <Layout title="Assets" active="assets" sections={[
@@ -20,33 +73,55 @@ import Layout from '../layouts/Layout.astro';
         Assets
       </h1>
       <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
-        Logos, photography direction, and media guidelines for all Nimbus touchpoints.
+        Logos, photography direction, and media guidelines for all Nimbus touchpoints. Click any asset to download.
       </p>
     </div>
 
     <!-- Logos -->
     <section id="logos" class="mb-20">
-      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Logo</h2>
-
-      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Full Logo</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-dark rounded-3xl p-12 flex items-center justify-center min-h-[200px]">
-          <img src="/logos/logo-white.png" alt="Nimbus logo white" class="h-[36px]" />
-        </div>
-        <div class="bg-cream border border-dark/10 rounded-3xl p-12 flex items-center justify-center min-h-[200px]">
-          <img src="/logos/logo-black.png" alt="Nimbus logo black" class="h-[36px]" />
-        </div>
+      <div class="flex items-baseline justify-between mb-8">
+        <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em]">Logo</h2>
+        <button
+          data-download-all-logos
+          class="font-inter text-xs font-medium text-teal hover:text-dark transition-colors inline-flex items-center gap-1.5"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>
+          Download all logos
+        </button>
       </div>
 
-      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Symbol Mark</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-dark rounded-3xl p-12 flex items-center justify-center min-h-[200px]">
-          <img src="/logos/symbol-white.png" alt="Nimbus symbol white" class="h-[48px]" />
+      {logoKits.map(kit => (
+        <div class="mb-8">
+          <div class="flex items-baseline justify-between mb-4">
+            <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase">{kit.label}</h3>
+            <button
+              data-download-kit={kit.kit}
+              data-kit-files={JSON.stringify(kit.files.map(f => f.src))}
+              class="font-inter text-[11px] font-medium text-dark/40 hover:text-teal transition-colors inline-flex items-center gap-1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>
+              Download kit (PNG + SVG)
+            </button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {kit.files.map(f => (
+              <div
+                class={`asset-tile relative group rounded-3xl p-12 flex items-center justify-center min-h-[200px] ${f.bg === 'dark' ? 'bg-dark' : 'bg-cream border border-dark/10'}`}
+                data-download-src={f.src}
+                data-download-name={f.preview}
+              >
+                <img src={f.src} alt={f.preview} style={`height: ${f.height}px`} />
+                <button
+                  class="download-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-dark/80 text-cream flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm hover:bg-dark"
+                  title="Download PNG + SVG"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-        <div class="bg-cream border border-dark/10 rounded-3xl p-12 flex items-center justify-center min-h-[200px]">
-          <img src="/logos/symbol-black.png" alt="Nimbus symbol black" class="h-[48px]" />
-        </div>
-      </div>
+      ))}
 
       <div class="bg-warm-gray rounded-3xl p-8">
         <h3 class="font-inter text-sm font-semibold mb-4">Logo Usage Rules</h3>
@@ -75,31 +150,42 @@ import Layout from '../layouts/Layout.astro';
       <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Hero / Brand</h3>
       <p class="font-inter text-dark/50 text-sm mb-4">Confident individuals in natural settings, warm light. Aspirational but authentic.</p>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
-        <img src="/images/iStock-1010651440.jpg" alt="Family at home" class="w-full aspect-[4/3] object-cover rounded-2xl" />
-        <img src="/images/iStock-1157992539.jpg" alt="Mother and child playing" class="w-full aspect-[4/3] object-cover rounded-2xl" />
-        <img src="/images/iStock-1165116258.jpg" alt="Woman laughing" class="w-full aspect-[4/3] object-cover rounded-2xl" />
-        <img src="/images/iStock-1206537120.jpg" alt="Woman with headphones" class="w-full aspect-[4/3] object-cover rounded-2xl" />
-        <img src="/images/iStock-1317735408.jpg" alt="Man with headphones outdoors" class="w-full aspect-[4/3] object-cover rounded-2xl" />
-        <img src="/images/iStock-1766905173.jpg" alt="Mother and child laughing" class="w-full aspect-[4/3] object-cover rounded-2xl" />
-        <img src="/images/iStock-2189538504.jpg" alt="Family joyful moment" class="w-full aspect-[4/3] object-cover rounded-2xl" />
-        <img src="/images/iStock-2203624688.jpg" alt="Mother and daughter dancing" class="w-full aspect-[4/3] object-cover rounded-2xl" />
-        <img src="/images/iStock-2187968525.jpg" alt="Family at home" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+        {heroPhotos.map(p => (
+          <div class="photo-tile relative group rounded-2xl overflow-hidden" data-download-src={p.src} data-download-name={p.alt}>
+            <img src={p.src} alt={p.alt} class="w-full aspect-[4/3] object-cover" />
+            <button class="photo-download-btn absolute top-2 right-2 w-9 h-9 rounded-full bg-dark/70 text-cream flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm hover:bg-dark" title="Download">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>
+            </button>
+          </div>
+        ))}
       </div>
 
       <!-- Clinical / Care Photos -->
       <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Clinical / Care</h3>
       <p class="font-inter text-dark/50 text-sm mb-4">Provider-patient interactions, telehealth screens, personalized attention.</p>
       <div class="grid grid-cols-2 gap-4 mb-10">
-        <img src="/images/Start Treatment.jpg" alt="Start Treatment" class="w-full aspect-[4/3] object-cover rounded-2xl" />
-        <img src="/images/Integrated Pharmacy and Protocols.jpg" alt="Pharmacy" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+        {clinicalPhotos.map(p => (
+          <div class="photo-tile relative group rounded-2xl overflow-hidden" data-download-src={p.src} data-download-name={p.alt}>
+            <img src={p.src} alt={p.alt} class="w-full aspect-[4/3] object-cover" />
+            <button class="photo-download-btn absolute top-2 right-2 w-9 h-9 rounded-full bg-dark/70 text-cream flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm hover:bg-dark" title="Download">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>
+            </button>
+          </div>
+        ))}
       </div>
 
       <!-- Nutrition / Food -->
       <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Nutrition / Food</h3>
       <p class="font-inter text-dark/50 text-sm mb-4">Overhead flat-lay meal prep, fresh whole ingredients, vibrant and appetizing.</p>
       <div class="grid grid-cols-2 gap-4 mb-10">
-        <img src="/images/snap food hero.png" alt="Snap Kitchen food" class="w-full aspect-[4/3] object-cover rounded-2xl" />
-        <img src="/images/food-hero.jpg" alt="Food hero" class="w-full aspect-[4/3] object-cover rounded-2xl" />
+        {foodPhotos.map(p => (
+          <div class="photo-tile relative group rounded-2xl overflow-hidden" data-download-src={p.src} data-download-name={p.alt}>
+            <img src={p.src} alt={p.alt} class="w-full aspect-[4/3] object-cover" />
+            <button class="photo-download-btn absolute top-2 right-2 w-9 h-9 rounded-full bg-dark/70 text-cream flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm hover:bg-dark" title="Download">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>
+            </button>
+          </div>
+        ))}
       </div>
 
       <!-- Do / Don't -->
@@ -129,26 +215,18 @@ import Layout from '../layouts/Layout.astro';
     <section id="headshots" class="mb-20">
       <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Team Headshots</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-        <div>
-          <img src="/headshots/Dr. Jobby John.png" alt="Dr. Jobby John" class="w-full aspect-square object-cover rounded-2xl mb-3" />
-          <p class="font-inter text-sm font-medium">Dr. Jobby John</p>
-          <p class="font-inter text-dark/40 text-xs">Founder & CEO</p>
-        </div>
-        <div>
-          <img src="/headshots/Dr. Richard Harris.png" alt="Dr. Richard Harris" class="w-full aspect-square object-cover rounded-2xl mb-3" />
-          <p class="font-inter text-sm font-medium">Dr. Richard Harris</p>
-          <p class="font-inter text-dark/40 text-xs">Chief Medical Officer</p>
-        </div>
-        <div>
-          <img src="/headshots/Dr. Tracy Neal.png" alt="Dr. Tracy Neal" class="w-full aspect-square object-cover rounded-2xl mb-3" />
-          <p class="font-inter text-sm font-medium">Dr. Tracy Neal</p>
-          <p class="font-inter text-dark/40 text-xs">Director, Women's Health</p>
-        </div>
-        <div>
-          <img src="/headshots/Dr. John Thoppil.png" alt="Dr. John Thoppil" class="w-full aspect-square object-cover rounded-2xl mb-3" />
-          <p class="font-inter text-sm font-medium">Dr. John Thoppil</p>
-          <p class="font-inter text-dark/40 text-xs">Board-Certified OB-GYN</p>
-        </div>
+        {headshots.map(h => (
+          <div>
+            <div class="photo-tile relative group rounded-2xl overflow-hidden mb-3" data-download-src={h.src} data-download-name={h.name}>
+              <img src={h.src} alt={h.name} class="w-full aspect-square object-cover" />
+              <button class="photo-download-btn absolute top-2 right-2 w-9 h-9 rounded-full bg-dark/70 text-cream flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm hover:bg-dark" title="Download">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>
+              </button>
+            </div>
+            <p class="font-inter text-sm font-medium">{h.name}</p>
+            <p class="font-inter text-dark/40 text-xs">{h.title}</p>
+          </div>
+        ))}
       </div>
       <div class="bg-warm-gray rounded-3xl p-8">
         <h3 class="font-inter text-sm font-semibold mb-4">Headshot Rules</h3>
@@ -166,11 +244,14 @@ import Layout from '../layouts/Layout.astro';
       <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Vials</h2>
       <div class="bg-dark rounded-3xl p-8">
         <div class="grid grid-cols-3 gap-4">
-          <img src="/vials/NB_vial2.png" alt="Vial 2" class="w-full aspect-[2/3] object-contain" />
-          <img src="/vials/NB_Vial4.png" alt="Vial 4" class="w-full aspect-[2/3] object-contain" />
-          <img src="/vials/NB_Vial6.png" alt="Vial 6" class="w-full aspect-[2/3] object-contain" />
-          <img src="/vials/NB_Vial9.jpg" alt="Vial 9" class="w-full aspect-[2/3] object-contain" />
-          <img src="/vials/Nimbus_GLP1_Vile.png" alt="GLP-1 Vial" class="w-full aspect-[2/3] object-contain" />
+          {vials.map(v => (
+            <div class="photo-tile relative group" data-download-src={v.src} data-download-name={v.alt}>
+              <img src={v.src} alt={v.alt} class="w-full aspect-[2/3] object-contain" />
+              <button class="photo-download-btn absolute top-2 right-2 w-9 h-9 rounded-full bg-cream/20 text-cream flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm hover:bg-cream/30" title="Download">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -181,36 +262,13 @@ import Layout from '../layouts/Layout.astro';
 
       <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">App & Portal</h3>
       <div class="grid grid-cols-1 gap-4 mb-6">
-        <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+        <div class="photo-tile relative group rounded-2xl overflow-hidden border border-dark/8 shadow-sm" data-download-src="/images/Portal/Dashboard.png" data-download-name="Dashboard">
           <img src="/images/Portal/Dashboard.png" alt="Nimbus portal dashboard" class="w-full block" />
+          <button class="photo-download-btn absolute top-2 right-2 w-9 h-9 rounded-full bg-dark/70 text-cream flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm hover:bg-dark" title="Download"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg></button>
         </div>
-        <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
+        <div class="photo-tile relative group rounded-2xl overflow-hidden border border-dark/8 shadow-sm" data-download-src="/images/Portal/Mobile.png" data-download-name="Mobile">
           <img src="/images/Portal/Mobile.png" alt="Nimbus mobile app" class="w-full block" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-          <img src="/images/Portal/Optimized.jpg" alt="Nimbus optimized view" class="w-full block" />
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-            <img src="/images/Portal/platform-1.png" alt="Platform screen 1" class="w-full block" />
-          </div>
-          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-            <img src="/images/Portal/platform-2.png" alt="Platform screen 2" class="w-full block" />
-          </div>
-          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-            <img src="/images/Portal/platform-3.png" alt="Platform screen 3" class="w-full block" />
-          </div>
-          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-            <img src="/images/Portal/platform-4.png" alt="Platform screen 4" class="w-full block" />
-          </div>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-            <img src="/images/Portal/hormone-step-01.png" alt="Hormone step 1" class="w-full block" />
-          </div>
-          <div class="rounded-2xl overflow-hidden border border-dark/8 shadow-sm">
-            <img src="/images/Portal/hormone-step-02.png" alt="Hormone step 2" class="w-full block" />
-          </div>
+          <button class="photo-download-btn absolute top-2 right-2 w-9 h-9 rounded-full bg-dark/70 text-cream flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm hover:bg-dark" title="Download"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg></button>
         </div>
       </div>
     </section>
@@ -220,7 +278,9 @@ import Layout from '../layouts/Layout.astro';
       <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Partner Logos</h2>
       <div class="bg-warm-gray rounded-3xl p-8">
         <div class="flex items-center gap-8 mb-4">
-          <img src="/images/snap-kitchen-logo.png" alt="Snap Kitchen" class="h-[32px]" />
+          <div class="photo-tile relative group" data-download-src="/images/snap-kitchen-logo.png" data-download-name="snap-kitchen-logo">
+            <img src="/images/snap-kitchen-logo.png" alt="Snap Kitchen" class="h-[32px]" />
+          </div>
         </div>
         <p class="font-inter text-dark/50 text-sm">Partner logos used in integration sections. Maintain original proportions and minimum clear space.</p>
       </div>
@@ -239,26 +299,6 @@ import Layout from '../layouts/Layout.astro';
           <div class="absolute bottom-4 left-4 font-inter text-cream/50 text-xs">Hero background video — 50% dark overlay</div>
         </div>
       </div>
-
-      <div class="space-y-6">
-        <div class="bg-warm-gray rounded-3xl p-8">
-          <h3 class="font-inter text-sm font-semibold mb-4">Hero Background Videos</h3>
-          <div class="space-y-2 font-inter text-sm text-dark/60">
-            <p>Full viewport height with <span class="text-dark font-medium">50% dark overlay</span></p>
-            <p>Autoplay, muted, looping</p>
-            <p>Lifestyle content — natural movement, warm tones</p>
-            <p>Never clinical or sterile environments</p>
-          </div>
-        </div>
-        <div class="bg-warm-gray rounded-3xl p-8">
-          <h3 class="font-inter text-sm font-semibold mb-4">Product Demo Videos</h3>
-          <div class="space-y-2 font-inter text-sm text-dark/60">
-            <p>Custom play/pause controls (no default browser UI)</p>
-            <p>Rounded corners matching container radius (24px)</p>
-            <p>Poster frame should be visually compelling</p>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Accreditation -->
@@ -266,12 +306,171 @@ import Layout from '../layouts/Layout.astro';
       <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Accreditation Badges</h2>
       <div class="bg-dark rounded-3xl p-8">
         <div class="flex items-center gap-8">
-          <img src="/images/6862a180b3f36e42a9c2a8bd_logo_f1.svg" alt="Accreditation badge" class="h-[52px]" />
-          <img src="/images/6862a180b3f36e42a9c2a8be_logo_f2.svg" alt="Accreditation logo" class="h-[32px]" />
+          {accreditationBadges.map(b => (
+            <div class="photo-tile relative group" data-download-src={b.src} data-download-name={b.filename}>
+              <img src={b.src} alt={b.alt} class="h-[52px]" />
+              <button class="photo-download-btn absolute -top-2 -right-2 w-8 h-8 rounded-full bg-cream/20 text-cream flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm hover:bg-cream/30" title="Download">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>
+              </button>
+            </div>
+          ))}
         </div>
         <p class="font-inter text-cream/30 text-xs mt-4">Used in the footer and trust sections. Always on dark backgrounds.</p>
       </div>
     </section>
 
   </div>
+
+  <!-- Toast -->
+  <div id="dl-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-dark text-cream font-inter text-sm px-5 py-3 rounded-full shadow-xl opacity-0 pointer-events-none transition-opacity duration-300 z-50"></div>
+
+  <!-- JSZip for packaging PNG + SVG downloads -->
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <script is:inline>
+    function slug(s) {
+      return String(s || 'asset').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('dl-toast');
+      t.textContent = msg;
+      t.style.opacity = '1';
+      setTimeout(() => { t.style.opacity = '0'; }, 1800);
+    }
+
+    async function fetchBlob(url) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Fetch failed: ' + url);
+      return await res.blob();
+    }
+
+    async function blobToDataUrl(blob) {
+      return new Promise((resolve, reject) => {
+        const r = new FileReader();
+        r.onload = () => resolve(r.result);
+        r.onerror = reject;
+        r.readAsDataURL(blob);
+      });
+    }
+
+    // Build SVG wrapping the PNG as a data-URI — valid, scalable, vector container
+    async function buildSvgFromPng(pngUrl) {
+      const blob = await fetchBlob(pngUrl);
+      const dataUrl = await blobToDataUrl(blob);
+      // Read dimensions
+      const dims = await new Promise(resolve => {
+        const i = new Image();
+        i.onload = () => resolve({ w: i.naturalWidth, h: i.naturalHeight });
+        i.onerror = () => resolve({ w: 512, h: 512 });
+        i.src = dataUrl;
+      });
+      return `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${dims.w}" height="${dims.h}" viewBox="0 0 ${dims.w} ${dims.h}"><image width="${dims.w}" height="${dims.h}" xlink:href="${dataUrl}"/></svg>`;
+    }
+
+    function triggerDownload(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    async function downloadLogoKit(srcs, zipName) {
+      showToast('Building ' + zipName + '.zip…');
+      const zip = new JSZip();
+      for (const src of srcs) {
+        const ext = (src.split('.').pop() || 'png').toLowerCase();
+        const base = slug(src.split('/').pop().replace(/\.[^.]+$/, ''));
+        // Original file
+        const blob = await fetchBlob(src);
+        zip.file(base + '.' + ext, blob);
+        // SVG wrapper (if original is a raster)
+        if (ext === 'png' || ext === 'jpg' || ext === 'jpeg') {
+          const svg = await buildSvgFromPng(src);
+          zip.file(base + '.svg', svg);
+        }
+      }
+      const blob = await zip.generateAsync({ type: 'blob' });
+      triggerDownload(blob, zipName + '.zip');
+      showToast('Downloaded ' + zipName + '.zip');
+    }
+
+    async function downloadSingleAsZip(src, name) {
+      const ext = (src.split('.').pop() || 'png').toLowerCase();
+      const base = slug(name);
+      const isRaster = (ext === 'png' || ext === 'jpg' || ext === 'jpeg');
+
+      if (!isRaster) {
+        // For SVG or other, just trigger a direct download
+        const blob = await fetchBlob(src);
+        triggerDownload(blob, base + '.' + ext);
+        showToast('Downloaded ' + base + '.' + ext);
+        return;
+      }
+
+      showToast('Preparing ' + base + '.zip…');
+      const zip = new JSZip();
+      const blob = await fetchBlob(src);
+      zip.file(base + '.' + ext, blob);
+      const svg = await buildSvgFromPng(src);
+      zip.file(base + '.svg', svg);
+      const zblob = await zip.generateAsync({ type: 'blob' });
+      triggerDownload(zblob, base + '.zip');
+      showToast('Downloaded ' + base + '.zip');
+    }
+
+    // Individual logo tile click (download kit for just that variant)
+    document.querySelectorAll('.asset-tile').forEach(tile => {
+      tile.addEventListener('click', async (e) => {
+        const src = tile.dataset.downloadSrc;
+        const name = tile.dataset.downloadName || 'logo';
+        try { await downloadSingleAsZip(src, name); }
+        catch (err) { console.error(err); showToast('Download failed'); }
+      });
+    });
+
+    // Kit buttons (download both variants as one zip)
+    document.querySelectorAll('[data-download-kit]').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        const kit = btn.dataset.downloadKit;
+        const files = JSON.parse(btn.dataset.kitFiles || '[]');
+        try { await downloadLogoKit(files, kit); }
+        catch (err) { console.error(err); showToast('Download failed'); }
+      });
+    });
+
+    // Download-all-logos button
+    const allBtn = document.querySelector('[data-download-all-logos]');
+    if (allBtn) {
+      allBtn.addEventListener('click', async () => {
+        const all = Array.from(document.querySelectorAll('[data-download-kit]'))
+          .flatMap(b => JSON.parse(b.dataset.kitFiles || '[]'));
+        try { await downloadLogoKit(all, 'nimbus-logos-all'); }
+        catch (err) { console.error(err); showToast('Download failed'); }
+      });
+    }
+
+    // Photo tile downloads (single image, original format — no ZIP wrapping)
+    document.querySelectorAll('.photo-tile').forEach(tile => {
+      const btn = tile.querySelector('.photo-download-btn');
+      if (!btn) return;
+      btn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        const src = tile.dataset.downloadSrc;
+        const name = tile.dataset.downloadName || 'photo';
+        try {
+          const blob = await fetchBlob(src);
+          const ext = (src.split('.').pop() || 'jpg').toLowerCase();
+          triggerDownload(blob, slug(name) + '.' + ext);
+          showToast('Downloaded ' + slug(name) + '.' + ext);
+        } catch (err) { console.error(err); showToast('Download failed'); }
+      });
+    });
+  </script>
 </Layout>
