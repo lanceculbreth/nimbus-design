@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  { name: 'High-Volume Prescription Fulfillment', desc: 'Automated, compliant fulfillment built for scale.' },
+  { name: 'Custom Compounding', desc: 'Sterile and non-sterile formulations tailored to each patient.' },
+  { name: 'Custom Branding & Packaging', desc: 'White-label packaging and custom label design for partners.' },
+  { name: 'Shipment & Delivery', desc: 'Direct-to-patient shipping across supported states.' },
+  { name: 'Robust APIs & Unified Communications', desc: 'Developer-grade APIs and a unified comms platform for providers.' },
+  { name: 'End-to-End Digital Pharmacy', desc: 'Powered by Health OS™ — from intake to delivery.' },
+];
+
+const specialties = [
+  { label: '503A Compounding', body: 'Independent, NABP-accredited 503A compounding pharmacy.' },
+  { label: 'Long-Term Care', body: 'Medication management for senior care facilities and residents.' },
+  { label: 'Wellness Consultations', body: 'Certified pharmacist-led consultations and med reviews.' },
+  { label: 'Retail + Supplements', body: 'Retail prescriptions and a curated line of supplements.' },
+];
+
+const accreditations = [
+  { label: 'NABP', desc: 'National Association of Boards of Pharmacy accreditation' },
+  { label: 'LegitScript', desc: 'LegitScript verified and monitored' },
+  { label: 'PCAB', desc: 'Compounding pharmacy certification' },
+];
+
+const navStructure = ['Products', 'Supplements', 'Services', 'Long-Term Care', 'About Us', 'Blog', 'Licenses'];
+---
+
+<Layout title="Lake Hills Pharmacy" active="lhp" sections={[
+  { label: 'Overview', id: 'overview' },
+  { label: 'Positioning', id: 'positioning' },
+  { label: 'Services', id: 'services' },
+  { label: 'Specialties', id: 'specialties' },
+  { label: 'Accreditation', id: 'accreditation' },
+  { label: 'Contact', id: 'contact' },
+  { label: 'Site Map', id: 'sitemap' },
+]}>
+  <div class="max-w-[900px] mx-auto px-10 py-16">
+
+    <!-- Page Header -->
+    <div class="mb-16">
+      <p class="font-inter text-teal text-sm font-semibold uppercase tracking-[0.12em] mb-3">Nimbus Design · LHP</p>
+      <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
+        Lake Hills Pharmacy
+      </h1>
+      <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[620px]">
+        Nimbus Healthcare's 503A NABP-accredited compounding pharmacy — an independent partner pharmacy powering personalized medicine.
+      </p>
+      <a
+        href="https://www.lakehillsrx.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full bg-dark text-cream text-xs font-inter font-medium hover:bg-dark/80 transition-colors"
+      >
+        Visit lakehillsrx.com
+        <span>&rarr;</span>
+      </a>
+    </div>
+
+    <!-- Overview -->
+    <section id="overview" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">What is Lake Hills Pharmacy?</h2>
+      <div class="bg-dark rounded-3xl p-8 mb-6">
+        <p class="font-inter text-cream text-lg leading-[1.7]">
+          Lake Hills Pharmacy is Nimbus Healthcare's independent, NABP-accredited 503A compounding pharmacy — the fulfillment and compounding engine behind every Nimbus prescription.
+        </p>
+      </div>
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <p class="font-inter text-sm text-dark/70 leading-[1.7]">
+          Operating out of Bee Caves, Texas, LHP combines certified pharmacist clinical support with a digital-first pharmacy platform, supporting both Nimbus patients directly and external clinical partners through custom compounding, branding, and fulfillment services.
+        </p>
+      </div>
+    </section>
+
+    <!-- Positioning -->
+    <section id="positioning" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Positioning</h2>
+
+      <div class="bg-dark rounded-3xl p-10 mb-6 text-center">
+        <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-[0.15em] mb-4">Brand Promise</p>
+        <h3 class="font-fraunces text-cream text-[clamp(28px,4vw,44px)] leading-[1.1] tracking-[-0.02em] mb-4">
+          The Pharmacy Powering<br/>Personalized Medicine
+        </h3>
+        <p class="font-inter text-cream/60 text-sm">powered by Health OS&trade;</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <p class="font-inter text-xs text-dark/40 font-semibold uppercase tracking-[0.1em] mb-3">Core Audience</p>
+          <p class="font-inter text-sm text-dark font-medium mb-1">Providers</p>
+          <p class="font-inter text-xs text-dark/60 leading-[1.6]">Clinicians and partners who need scalable compounding, APIs, and fulfillment infrastructure.</p>
+        </div>
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <p class="font-inter text-xs text-dark/40 font-semibold uppercase tracking-[0.1em] mb-3">Secondary</p>
+          <p class="font-inter text-sm text-dark font-medium mb-1">Patients</p>
+          <p class="font-inter text-xs text-dark/60 leading-[1.6]">Direct retail pickup, supplements, and long-term care wellness in the Bee Caves region.</p>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        {['Trusted', 'Accredited', 'Precision', 'Personalized', 'Compounding Excellence'].map(tag => (
+          <span class="bg-teal/10 text-teal font-inter text-xs font-medium px-3 py-1.5 rounded-full">{tag}</span>
+        ))}
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {services.map(s => (
+          <div class="bg-warm-gray rounded-2xl p-6">
+            <p class="font-inter text-sm font-semibold text-dark mb-1.5">{s.name}</p>
+            <p class="font-inter text-sm text-dark/60 leading-[1.6]">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Specialties -->
+    <section id="specialties" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Specialties</h2>
+      <div class="space-y-3">
+        {specialties.map(s => (
+          <div class="bg-warm-gray rounded-2xl p-6">
+            <p class="font-inter text-sm font-semibold text-teal mb-1">{s.label}</p>
+            <p class="font-inter text-sm text-dark/60 leading-[1.6]">{s.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Accreditation -->
+    <section id="accreditation" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Accreditation &amp; Trust</h2>
+      <div class="bg-dark rounded-3xl p-8">
+        <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-[0.15em] mb-6">Verified &amp; Certified</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {accreditations.map(a => (
+            <div class="bg-cream/5 rounded-2xl p-5">
+              <p class="font-fraunces text-cream text-lg mb-2">{a.label}</p>
+              <p class="font-inter text-cream/60 text-xs leading-[1.6]">{a.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Contact</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <p class="font-inter text-xs text-dark/40 font-semibold uppercase tracking-[0.1em] mb-3">Location</p>
+          <p class="font-inter text-sm text-dark leading-[1.6]">
+            12005 Bee Caves Rd #1-A<br/>
+            Bee Caves, TX 78738
+          </p>
+        </div>
+        <div class="bg-warm-gray rounded-2xl p-6">
+          <p class="font-inter text-xs text-dark/40 font-semibold uppercase tracking-[0.1em] mb-3">Phone</p>
+          <p class="font-inter text-sm text-dark leading-[1.8]">
+            <span class="text-dark/40">Toll-free</span> <a href="tel:833-493-1044" class="hover:text-teal transition-colors">833-493-1044</a><br/>
+            <span class="text-dark/40">Local</span> <a href="tel:512-608-9355" class="hover:text-teal transition-colors">512-608-9355</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Site Map -->
+    <section id="sitemap" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Site Structure</h2>
+      <p class="font-inter text-dark/50 text-sm mb-6">Top-level navigation from lakehillsrx.com</p>
+      <div class="flex flex-wrap gap-2">
+        {navStructure.map(item => (
+          <span class="bg-dark/5 text-dark font-inter text-sm font-medium px-4 py-2 rounded-full border border-dark/8">{item}</span>
+        ))}
+      </div>
+
+      <div class="mt-8 bg-warm-gray rounded-2xl p-6">
+        <p class="font-inter text-xs text-dark/40 font-semibold uppercase tracking-[0.1em] mb-3">Utility Pages</p>
+        <div class="flex flex-wrap gap-2">
+          {['Login', 'Register', 'Our Team', 'FAQ', 'Contact Us', 'Privacy Policy', 'Terms &amp; Conditions', 'Licenses'].map(item => (
+            <span class="font-mono text-[11px] text-dark/50 bg-cream px-2.5 py-1 rounded">{item}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</Layout>

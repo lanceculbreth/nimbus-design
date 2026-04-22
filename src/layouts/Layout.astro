@@ -136,19 +136,35 @@ const navGroups = [
     <!-- Audience toggle behavior -->
     <script is:inline>
       (function () {
+        const AUDIENCE_ROUTES = { B2B: '/', B2C: '/', LHP: '/lhp' };
         const saved = localStorage.getItem('audience') || 'B2B';
         const btns = document.querySelectorAll('.audience-btn');
-        function apply(aud) {
+
+        function paint(aud) {
           btns.forEach(b => {
             const active = b.dataset.audience === aud;
             b.style.background = active ? 'rgba(245,241,235,0.15)' : 'transparent';
             b.style.color = active ? '#F5F1EB' : 'rgba(245,241,235,0.4)';
           });
-          localStorage.setItem('audience', aud);
           document.body.dataset.audience = aud;
         }
-        btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.audience)));
-        apply(saved);
+
+        function apply(aud, navigate) {
+          localStorage.setItem('audience', aud);
+          paint(aud);
+          if (navigate && AUDIENCE_ROUTES[aud] && window.location.pathname !== AUDIENCE_ROUTES[aud]) {
+            window.location.href = AUDIENCE_ROUTES[aud];
+          }
+        }
+
+        btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.audience, true)));
+
+        // On load: if we're on /lhp but audience isn't LHP, sync it
+        if (window.location.pathname.startsWith('/lhp')) {
+          apply('LHP', false);
+        } else {
+          paint(saved);
+        }
       })();
     </script>
 
