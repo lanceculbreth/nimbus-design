@@ -60,8 +60,8 @@ const navGroups = [
         <!-- Audience Toggle -->
         <div class="px-4 mb-6">
           <div class="flex items-center rounded-xl p-1" style="background: rgba(245,241,235,0.06);">
-            <button data-audience="B2B" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: rgba(245,241,235,0.15); color: #F5F1EB;">B2B</button>
-            <button data-audience="B2C" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: transparent; color: rgba(245,241,235,0.4);">B2C</button>
+            <button data-audience="B2C" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: rgba(245,241,235,0.15); color: #F5F1EB;">B2C</button>
+            <button data-audience="B2B" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: transparent; color: rgba(245,241,235,0.4);">B2B</button>
             <button data-audience="LHP" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: transparent; color: rgba(245,241,235,0.4);">LHP</button>
           </div>
         </div>
@@ -77,6 +77,8 @@ const navGroups = [
                     <li>
                       <a
                         href={item.href}
+                        data-nav-id={item.id}
+                        data-active={active === item.id ? 'true' : 'false'}
                         class={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                           active === item.id
                             ? 'bg-cream/10 text-cream'
@@ -136,8 +138,25 @@ const navGroups = [
     <!-- Audience toggle behavior -->
     <script is:inline>
       (function () {
-        const AUDIENCE_ROUTES = { B2B: '/', B2C: '/', LHP: '/lhp' };
-        const saved = localStorage.getItem('audience') || 'B2B';
+        // Route map per page ID, per audience
+        const NAV_MAP = {
+          B2C: {
+            overview: '/', assets: '/assets', marketing: '/marketing',
+            intakes: '/intakes', web: '/web', portal: '/portal', icons: '/icons',
+          },
+          B2B: {
+            overview: '/', assets: '/assets', marketing: '/marketing',
+            intakes: '/intakes', web: '/web', portal: '/portal', icons: '/icons',
+          },
+          LHP: {
+            overview: '/lhp', assets: '/lhp/assets', marketing: '/lhp/marketing',
+            intakes: '/lhp/intakes', web: '/lhp/web', portal: '/lhp/portal', icons: '/icons',
+          },
+        };
+
+        const onLHP = window.location.pathname === '/lhp' || window.location.pathname.startsWith('/lhp/');
+        const saved = localStorage.getItem('audience');
+        const initial = onLHP ? 'LHP' : (saved || 'B2C');
         const btns = document.querySelectorAll('.audience-btn');
 
         function paint(aud) {
@@ -149,22 +168,33 @@ const navGroups = [
           document.body.dataset.audience = aud;
         }
 
+        function rewriteNav(aud) {
+          const map = NAV_MAP[aud] || NAV_MAP.B2C;
+          document.querySelectorAll('[data-nav-id]').forEach(a => {
+            const id = a.dataset.navId;
+            if (map[id]) a.setAttribute('href', map[id]);
+          });
+        }
+
         function apply(aud, navigate) {
           localStorage.setItem('audience', aud);
           paint(aud);
-          if (navigate && AUDIENCE_ROUTES[aud] && window.location.pathname !== AUDIENCE_ROUTES[aud]) {
-            window.location.href = AUDIENCE_ROUTES[aud];
+          rewriteNav(aud);
+          if (!navigate) return;
+          const map = NAV_MAP[aud] || NAV_MAP.B2C;
+          // Find the current page's nav id (the active one) and jump to the audience's equivalent
+          const activeLink = document.querySelector('[data-nav-id][data-active="true"]');
+          const id = activeLink ? activeLink.dataset.navId : 'overview';
+          const target = map[id] || map.overview;
+          if (target && window.location.pathname !== target) {
+            window.location.href = target;
           }
         }
 
         btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.audience, true)));
 
-        // On load: if we're on /lhp but audience isn't LHP, sync it
-        if (window.location.pathname.startsWith('/lhp')) {
-          apply('LHP', false);
-        } else {
-          paint(saved);
-        }
+        paint(initial);
+        rewriteNav(initial);
       })();
     </script>
 

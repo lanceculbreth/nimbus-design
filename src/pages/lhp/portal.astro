@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="LHP Portal" active="portal">
+  <div class="max-w-[900px] mx-auto px-10 py-16">
+
+    <div class="mb-16">
+      <p class="font-inter text-teal text-sm font-semibold uppercase tracking-[0.12em] mb-3">Nimbus Design &middot; LHP</p>
+      <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
+        Portal
+      </h1>
+      <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
+        Health OS&trade; — the pharmacy platform powering Lake Hills Pharmacy fulfillment, compounding, and partner APIs.
+      </p>
+    </div>
+
+    <section class="mb-12">
+      <p class="font-inter text-xs font-semibold text-dark/30 uppercase tracking-[0.12em] mb-4">Platform</p>
+      <div class="bg-dark rounded-3xl p-8">
+        <p class="font-fraunces text-cream text-[clamp(24px,3vw,36px)] leading-[1.1] tracking-[-0.02em] mb-4">Health OS&trade;</p>
+        <p class="font-inter text-cream/70 text-sm leading-[1.7] mb-6">
+          End-to-end digital pharmacy operating system — powers intake, compounding workflows, inventory, fulfillment, and unified communications for providers.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {[
+            { label: 'Intake API', desc: 'Prescription and compounding order ingestion' },
+            { label: 'Compounding Workflow', desc: 'Batch management and formulation tracking' },
+            { label: 'Inventory', desc: 'Real-time stock across sterile and non-sterile' },
+            { label: 'Fulfillment', desc: 'Shipping, tracking, and delivery confirmation' },
+            { label: 'Communications', desc: 'Unified patient + provider messaging' },
+            { label: 'Reporting', desc: 'Compliance, audit trail, and metrics' },
+          ].map(item => (
+            <div class="bg-cream/5 rounded-xl p-4">
+              <p class="font-inter text-cream text-sm font-semibold mb-1">{item.label}</p>
+              <p class="font-inter text-cream/50 text-xs leading-[1.5]">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <p class="font-inter text-xs font-semibold text-dark/30 uppercase tracking-[0.12em] mb-4">Partner Access</p>
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <p class="font-inter text-sm text-dark/70 leading-[1.7]">
+          Developer-grade APIs give clinical and digital-health partners direct programmatic access to compounding, fulfillment, and tracking &mdash; the same backbone that powers Nimbus Healthcare.
+        </p>
+      </div>
+    </section>
+
+  </div>
+</Layout>

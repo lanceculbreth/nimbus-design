@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="LHP Intakes" active="intakes" sections={[
+  { label: 'Overview', id: 'overview' },
+  { label: 'Prescription Flow', id: 'rx' },
+  { label: 'Compounding Request', id: 'compound' },
+]}>
+  <div class="max-w-[900px] mx-auto px-10 py-16">
+
+    <div class="mb-16">
+      <p class="font-inter text-teal text-sm font-semibold uppercase tracking-[0.12em] mb-3">Nimbus Design &middot; LHP</p>
+      <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
+        Intakes
+      </h1>
+      <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
+        Prescription and compounding intake patterns for Lake Hills Pharmacy patients and providers.
+      </p>
+    </div>
+
+    <section id="overview" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Intake Overview</h2>
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <p class="font-inter text-sm text-dark/70 leading-[1.7]">
+          LHP intakes separate retail prescription pickup from provider-initiated compounding orders. Both flows connect to Health OS&trade; for routing, verification, and pharmacist review.
+        </p>
+      </div>
+    </section>
+
+    <section id="rx" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Prescription Flow</h2>
+      <div class="bg-dark rounded-3xl p-8">
+        <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-[0.15em] mb-4">Patient</p>
+        <ul class="space-y-2 font-inter text-sm text-cream/70 leading-[1.6]">
+          <li>Register or log in at lakehillsrx.com</li>
+          <li>Upload prescription or transfer from current pharmacy</li>
+          <li>Select pickup (Bee Caves) or delivery</li>
+          <li>Pharmacist review &amp; patient consultation if needed</li>
+          <li>Fulfillment and notification</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="compound" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Compounding Request</h2>
+      <div class="bg-dark rounded-3xl p-8">
+        <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-[0.15em] mb-4">Provider</p>
+        <ul class="space-y-2 font-inter text-sm text-cream/70 leading-[1.6]">
+          <li>Submit custom compounding request via API or portal</li>
+          <li>Specify formulation (sterile / non-sterile), strength, and packaging</li>
+          <li>Pharmacist compounds to spec</li>
+          <li>Branded packaging applied if white-label partner</li>
+          <li>Direct-to-patient shipment</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+</Layout>

@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="LHP Assets" active="assets" sections={[
+  { label: 'Logo', id: 'logos' },
+  { label: 'Photography', id: 'photography' },
+  { label: 'Packaging', id: 'packaging' },
+  { label: 'Accreditation', id: 'accreditation' },
+]}>
+  <div class="max-w-[900px] mx-auto px-10 py-16">
+
+    <div class="mb-16">
+      <p class="font-inter text-teal text-sm font-semibold uppercase tracking-[0.12em] mb-3">Nimbus Design &middot; LHP</p>
+      <h1 class="font-fraunces text-dark text-[clamp(40px,5vw,64px)] leading-[1.05] tracking-[-0.02em] mb-5">
+        Assets
+      </h1>
+      <p class="font-inter text-dark/50 text-lg leading-[1.6] max-w-[600px]">
+        Lake Hills Pharmacy brand assets — logo, photography, packaging, and certification badges.
+      </p>
+    </div>
+
+    <section id="logos" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Logo</h2>
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <p class="font-inter text-sm text-dark/60 leading-[1.7]">
+          Lake Hills Pharmacy logo assets coming soon. Sourced from lakehillsrx.com and internal brand files.
+        </p>
+      </div>
+    </section>
+
+    <section id="photography" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Photography</h2>
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <p class="font-inter text-sm text-dark/60 leading-[1.7]">
+          Professional imagery featuring pharmacists, compounding processes, and the Bee Caves location. Clinical and trustworthy tone.
+        </p>
+      </div>
+    </section>
+
+    <section id="packaging" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Packaging</h2>
+      <div class="bg-warm-gray rounded-3xl p-8">
+        <p class="font-inter text-sm text-dark/60 leading-[1.7]">
+          Custom-branded packaging and labels for partner programs. White-label options for clinicians and external brands.
+        </p>
+      </div>
+    </section>
+
+    <section id="accreditation" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-8">Accreditation Badges</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { label: 'NABP', desc: 'National Association of Boards of Pharmacy' },
+          { label: 'LegitScript', desc: 'Verified online pharmacy' },
+          { label: 'PCAB', desc: 'Compounding pharmacy certification' },
+        ].map(a => (
+          <div class="bg-warm-gray rounded-2xl p-6">
+            <p class="font-fraunces text-dark text-lg mb-2">{a.label}</p>
+            <p class="font-inter text-xs text-dark/60 leading-[1.6]">{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </div>
+</Layout>
