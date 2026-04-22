@@ -29,6 +29,7 @@ const navStructure = ['Products', 'Supplements', 'Services', 'Long-Term Care', '
 <Layout title="LHP Overview" active="overview" sections={[
   { label: 'Overview', id: 'overview' },
   { label: 'Positioning', id: 'positioning' },
+  { label: 'Colors', id: 'colors' },
   { label: 'Services', id: 'services' },
   { label: 'Specialties', id: 'specialties' },
   { label: 'Accreditation', id: 'accreditation' },
@@ -101,6 +102,84 @@ const navStructure = ['Products', 'Supplements', 'Services', 'Long-Term Care', '
         {['Trusted', 'Accredited', 'Precision', 'Personalized', 'Compounding Excellence'].map(tag => (
           <span class="bg-teal/10 text-teal font-inter text-xs font-medium px-3 py-1.5 rounded-full">{tag}</span>
         ))}
+      </div>
+    </section>
+
+    <!-- Colors -->
+    <section id="colors" class="mb-20">
+      <h2 class="font-fraunces text-dark text-2xl tracking-[-0.02em] mb-4">Brand Colors</h2>
+      <p class="font-inter text-dark/50 text-sm mb-8">Pulled from lakehillsrx.com. The palette centers on deep teal, with lighter teals for accents and neutrals for type and structure.</p>
+
+      <!-- Primary Teals -->
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Primary — Teal Family</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        {[
+          { name: 'Deep Teal', hex: '#033634', role: 'Darkest — footer, deep sections' },
+          { name: 'Primary Teal', hex: '#044846', role: 'Dominant — hero, headers' },
+          { name: 'Teal', hex: '#066B68', role: 'Standard — buttons, links' },
+          { name: 'Mid Teal', hex: '#088F8B', role: 'Hover states' },
+          { name: 'Accent Teal', hex: '#03A29D', role: 'Highlights, icons' },
+          { name: 'Bright Teal', hex: '#00A6A6', role: 'Primary CTAs' },
+          { name: 'Light Teal', hex: '#0AB3AE', role: 'Accents, tags' },
+          { name: 'Soft Teal', hex: '#52ACA7', role: 'Muted accent' },
+        ].map(c => (
+          <div>
+            <div class="w-full aspect-square rounded-2xl mb-3" style={`background: ${c.hex}`}></div>
+            <p class="font-inter text-sm font-medium">{c.name}</p>
+            <p class="font-mono text-xs text-dark/40 mb-1">{c.hex}</p>
+            <p class="font-inter text-[11px] text-dark/40 leading-[1.4]">{c.role}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Backgrounds / Washes -->
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Backgrounds</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        {[
+          { name: 'Teal Wash', hex: '#EBF2F2', role: 'Section backgrounds' },
+          { name: 'Cool White', hex: '#F8FAFA', role: 'Page background' },
+          { name: 'White', hex: '#FFFFFF', role: 'Cards, base' },
+        ].map(c => (
+          <div>
+            <div class="w-full aspect-square rounded-2xl mb-3 border border-dark/10" style={`background: ${c.hex}`}></div>
+            <p class="font-inter text-sm font-medium">{c.name}</p>
+            <p class="font-mono text-xs text-dark/40 mb-1">{c.hex}</p>
+            <p class="font-inter text-[11px] text-dark/40 leading-[1.4]">{c.role}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Neutrals -->
+      <h3 class="font-inter text-dark/40 text-xs font-semibold tracking-[0.15em] uppercase mb-4">Neutrals</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        {[
+          { name: 'Ink', hex: '#000000', role: 'High-contrast type' },
+          { name: 'Graphite', hex: '#1C1C1C', role: 'Headings' },
+          { name: 'Slate', hex: '#363636', role: 'Body text' },
+          { name: 'Ash', hex: '#3F3F3F', role: 'Secondary text' },
+          { name: 'Dim', hex: '#787878', role: 'Muted text' },
+          { name: 'Mist', hex: '#B7B7B7', role: 'Borders, disabled' },
+          { name: 'Silver', hex: '#D6D6D6', role: 'Dividers' },
+          { name: 'Fog', hex: '#DADADA', role: 'Subtle borders' },
+        ].map(c => (
+          <div>
+            <div class="w-full aspect-square rounded-2xl mb-3" style={`background: ${c.hex}`}></div>
+            <p class="font-inter text-sm font-medium">{c.name}</p>
+            <p class="font-mono text-xs text-dark/40 mb-1">{c.hex}</p>
+            <p class="font-inter text-[11px] text-dark/40 leading-[1.4]">{c.role}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Usage Rules -->
+      <div class="rounded-3xl p-8" style="background: #EBF2F2;">
+        <h3 class="font-inter text-sm font-semibold mb-4" style="color: #044846;">Usage Notes</h3>
+        <ul class="space-y-2 font-inter text-sm leading-[1.6]" style="color: #363636;">
+          <li><span class="font-medium" style="color: #044846;">#044846</span> is the dominant brand color — headers, hero, primary surfaces.</li>
+          <li><span class="font-medium" style="color: #044846;">#066B68</span> is the workhorse — buttons, links, interactive elements.</li>
+          <li>Use <span class="font-medium" style="color: #044846;">#EBF2F2</span> for section backgrounds to create airy, cool contrast against the darker teals.</li>
+          <li>Keep neutrals cool-leaning — avoid warm grays; they clash with the teal family.</li>
+        </ul>
       </div>
     </section>
 
