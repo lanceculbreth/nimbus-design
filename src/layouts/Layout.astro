@@ -145,7 +145,7 @@ const navGroups = [
             intakes: '/intakes', web: '/web', portal: '/portal', icons: '/icons',
           },
           B2B: {
-            overview: '/', assets: '/assets', marketing: '/marketing',
+            overview: '/b2b', assets: '/assets', marketing: '/marketing',
             intakes: '/intakes', web: '/web', portal: '/portal', icons: '/icons',
           },
           LHP: {
@@ -154,9 +154,11 @@ const navGroups = [
           },
         };
 
-        const onLHP = window.location.pathname === '/lhp' || window.location.pathname.startsWith('/lhp/');
+        const path = window.location.pathname;
+        const onLHP = path === '/lhp' || path.startsWith('/lhp/');
+        const onB2B = path === '/b2b' || path.startsWith('/b2b/');
         const saved = localStorage.getItem('audience');
-        const initial = onLHP ? 'LHP' : (saved || 'B2C');
+        const initial = onLHP ? 'LHP' : onB2B ? 'B2B' : (saved || 'B2C');
         const btns = document.querySelectorAll('.audience-btn');
 
         function paint(aud) {
