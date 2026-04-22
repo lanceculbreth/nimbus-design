@@ -60,7 +60,7 @@ const navGroups = [
         <!-- Audience Toggle -->
         <div class="px-4 mb-6">
           <div class="flex items-center rounded-xl p-1" style="background: rgba(245,241,235,0.06);">
-            <button data-audience="B2C" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: rgba(245,241,235,0.15); color: #F5F1EB;">B2C</button>
+            <button data-audience="D2C" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: rgba(245,241,235,0.15); color: #F5F1EB;">D2C</button>
             <button data-audience="B2B" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: transparent; color: rgba(245,241,235,0.4);">B2B</button>
             <button data-audience="LHP" class="audience-btn flex-1 rounded-lg px-2 py-1.5 font-inter text-[11px] font-medium transition-all" style="background: transparent; color: rgba(245,241,235,0.4);">LHP</button>
           </div>
@@ -140,7 +140,7 @@ const navGroups = [
       (function () {
         // Route map per page ID, per audience
         const NAV_MAP = {
-          B2C: {
+          D2C: {
             overview: '/', assets: '/assets', marketing: '/marketing',
             intakes: '/intakes', web: '/web', portal: '/portal', icons: '/icons',
           },
@@ -158,7 +158,7 @@ const navGroups = [
         const onLHP = path === '/lhp' || path.startsWith('/lhp/');
         const onB2B = path === '/b2b' || path.startsWith('/b2b/');
         const saved = localStorage.getItem('audience');
-        const initial = onLHP ? 'LHP' : onB2B ? 'B2B' : (saved || 'B2C');
+        const initial = onLHP ? 'LHP' : onB2B ? 'B2B' : (saved || 'D2C');
         const btns = document.querySelectorAll('.audience-btn');
 
         function paint(aud) {
@@ -171,7 +171,7 @@ const navGroups = [
         }
 
         function rewriteNav(aud) {
-          const map = NAV_MAP[aud] || NAV_MAP.B2C;
+          const map = NAV_MAP[aud] || NAV_MAP.D2C;
           document.querySelectorAll('[data-nav-id]').forEach(a => {
             const id = a.dataset.navId;
             if (map[id]) a.setAttribute('href', map[id]);
@@ -183,7 +183,7 @@ const navGroups = [
           paint(aud);
           rewriteNav(aud);
           if (!navigate) return;
-          const map = NAV_MAP[aud] || NAV_MAP.B2C;
+          const map = NAV_MAP[aud] || NAV_MAP.D2C;
           // Find the current page's nav id (the active one) and jump to the audience's equivalent
           const activeLink = document.querySelector('[data-nav-id][data-active="true"]');
           const id = activeLink ? activeLink.dataset.navId : 'overview';
